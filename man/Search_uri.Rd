@@ -159,7 +159,7 @@ Full text search of Elasticsearch with URI search
 # URI string queries
 Search_uri(x, index="shakespeare")
 ## if you're using an older ES version, you may have types
-if (gsub("\\\\.", "", x$ping()$version$number) < 700) {
+if (x$es_ver() < 700) {
 Search_uri(x, index="shakespeare", type="act")
 Search_uri(x, index="shakespeare", type="scene")
 Search_uri(x, index="shakespeare", type="line")
@@ -187,7 +187,7 @@ Search_uri(x, index="shakespeare", search_type = "dfs_query_then_fetch")
 
 ## sorting
 Search_uri(x, index="shakespeare", sort="text_entry")
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
   Search_uri(x, index="shakespeare", sort="speaker:desc", fields='speaker')
   Search_uri(x, index="shakespeare", sort=c("speaker:desc","play_name:asc"),
     fields=c('speaker','play_name'))

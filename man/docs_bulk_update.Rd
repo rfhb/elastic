@@ -104,10 +104,10 @@ Search(x, "foobar", asdf = TRUE)$hits$hits
 }
 \seealso{
 Other bulk-functions: 
+\code{\link{docs_bulk}()},
 \code{\link{docs_bulk_create}()},
 \code{\link{docs_bulk_delete}()},
 \code{\link{docs_bulk_index}()},
-\code{\link{docs_bulk_prep}()},
-\code{\link{docs_bulk}()}
+\code{\link{docs_bulk_prep}()}
 }
 \concept{bulk-functions}

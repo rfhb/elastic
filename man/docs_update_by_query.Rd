@@ -45,7 +45,7 @@ Change batch size with this parameter.}
 Elasticsearch will perform some preflight checks, launch the request, and
 then return a task which can be used with Tasks APIs to cancel or get the
 status of the task. Elasticsearch will also create a record of this task
-as a document at .tasks/task/${taskId}. This is yours to keep or remove
+as a document at \verb{.tasks/task/$\{taskId\}}. This is yours to keep or remove
 as you see fit. When you are done with it, delete it so Elasticsearch
 can reclaim the space it uses. Default: \code{TRUE}}
 

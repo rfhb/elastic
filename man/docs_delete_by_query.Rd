@@ -44,7 +44,7 @@ Change batch size with this parameter.}
 Elasticsearch will perform some preflight checks, launch the request, and
 then return a task which can be used with Tasks APIs to cancel or get the
 status of the task. Elasticsearch will also create a record of this task
-as a document at .tasks/task/${taskId}. This is yours to keep or remove
+as a document at \verb{.tasks/task/$\{taskId\}}. This is yours to keep or remove
 as you see fit. When you are done with it, delete it so Elasticsearch
 can reclaim the space it uses. Default: \code{TRUE}}
 
@@ -79,7 +79,7 @@ if (!index_exists(x, "plos")) invisible(docs_bulk(x, plosdat))
 
 # delete with fuzzy matching
 body <- '{
-  "query": { 
+  "query": {
     "match": {
       "title": {
         "query": "cells",
@@ -88,14 +88,14 @@ body <- '{
     }
   }
 }'
-docs_delete_by_query(x, index='plos', body = body) 
+docs_delete_by_query(x, index='plos', body = body)
 
 # delete with no fuzziness
 if (index_exists(x, "plos")) index_delete(x, 'plos')
 invisible(docs_bulk(x, plosdat))
 count(x, "plos")
 body <- '{
-  "query": { 
+  "query": {
     "match": {
       "title": {
         "query": "cells",
@@ -110,13 +110,13 @@ docs_delete_by_query(x, index='plos', body = body)
 if (index_exists(x, "plos")) index_delete(x, 'plos')
 invisible(docs_bulk(x, plosdat))
 body <- '{
-  "query": { 
+  "query": {
     "match_all": {}
   }
 }'
 docs_delete_by_query(x, index='plos', body = body)
 
-# put plos back in 
+# put plos back in
 if (index_exists(x, "plos")) index_delete(x, 'plos')
 invisible(docs_bulk(x, plosdat))
 
@@ -127,11 +127,11 @@ bar <- system.file("examples/bar.json", package = "elastic")
 if (!index_exists(x, "bar")) invisible(docs_bulk(x, bar))
 
 body <- '{
-  "query": { 
+  "query": {
     "match_all": {}
   }
 }'
-docs_delete_by_query(x, index=c('foo','bar'), 
+docs_delete_by_query(x, index=c('foo','bar'),
   body = body, verbose = TRUE)
 }
 }

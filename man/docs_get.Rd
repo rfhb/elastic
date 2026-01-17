@@ -71,7 +71,7 @@ docs_get(x, index='shakespeare', id=12)
 docs_get(x, index='shakespeare', id=12, source=TRUE)
 
 # Get certain fields
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
   ### ES < v5
   docs_get(x, index='shakespeare', id=10, fields='play_name')
   docs_get(x, index='shakespeare', id=10, fields=c('play_name','speaker'))

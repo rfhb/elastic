@@ -213,14 +213,14 @@ if (!index_exists(x, "plos")) {
 # URI string queries
 Search(x, index="shakespeare")
 ## if you're using an older ES version, you may have types
-if (gsub("\\\\.", "", x$ping()$version$number) < 700) {
+if (x$es_ver() < 700) {
   Search(x, index="shakespeare", type="act")
   Search(x, index="shakespeare", type="scene")
   Search(x, index="shakespeare", type="line")
 }
 
 ## Return certain fields
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
   ### ES < v5
   Search(x, index="shakespeare", fields=c('play_name','speaker'))
 } else {
@@ -251,7 +251,7 @@ Search(x, index="shakespeare", size = 0, terminate_after = 1)
 ## sorting
 ### if ES >5, we need to make sure fielddata is turned on for a field 
 ### before using it for sort 
-if (gsub("\\\\.", "", x$ping()$version$number) >= 500) {
+if (x$es_ver() >= 500) {
  if (index_exists(x, "shakespeare")) index_delete(x, "shakespeare")
  index_create(x, "shakespeare")
  mapping_create(x, "shakespeare", body = '{
@@ -271,7 +271,7 @@ if (gsub("\\\\.", "", x$ping()$version$number) >= 500) {
  vapply(z$hits$hits, function(w) w$`_source`$speaker, "")
 }
 
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
   Search(x, index="shakespeare", type="line", sort="speaker:desc", 
     fields='speaker')
   Search(x, index="shakespeare", type="line",
@@ -352,7 +352,7 @@ out <- Search(x, index="shakespeare", verbose = TRUE)
 
 ### if ES >5, we need to make sure fielddata is turned on for a field 
 ### before using it for aggregations 
-if (gsub("\\\\.", "", x$ping()$version$number) >= 500) {
+if (x$es_ver() >= 500) {
   mapping_create(x, "shakespeare", update_all_types = TRUE, body = '{
     "properties": {
       "text_entry": { 
@@ -366,7 +366,7 @@ if (gsub("\\\\.", "", x$ping()$version$number) >= 500) {
 }
 
 ### if ES >5, you don't need to worry about fielddata
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
    aggs <- list(aggs = list(stats = list(terms = list(field = "text_entry"))))
    Search(x, index="shakespeare", body=aggs)
 }
@@ -876,7 +876,7 @@ out$hits$total$value
 
 
 # Missing filter
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
   ### ES < v5
   body <- '{
    "query":{
@@ -922,7 +922,7 @@ vapply(z$hits$hits, "[[", "", c("_source", "speaker"))
 
 
 # ids filter
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
   ### ES < v5
   body <- '{
    "query":{
@@ -958,7 +958,7 @@ if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
 }
 
 # combined prefix and ids filters
-if (gsub("\\\\.", "", x$ping()$version$number) < 500) {
+if (x$es_ver() < 500) {
   ### ES < v5
   body <- '{
    "query":{

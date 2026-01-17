@@ -90,6 +90,15 @@ The following are illegal characters, and can not be used in index names or type
 also illegal.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://docs.ropensci.org/elastic/ (website)}
+  \item \url{https://github.com/ropensci/elastic}
+  \item Report bugs at \url{https://github.com/ropensci/elastic/issues}
+}
+
+}
 \author{
 Scott Chamberlain
 }
