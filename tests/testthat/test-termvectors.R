@@ -9,7 +9,7 @@ if (!index_exists(x, 'omdb')) {
 
 test_that("termvectors works", {
   skip_on_travis()
-  if (gsub("\\.", "", x$ping()$version$number) < 130) skip('feature not in this ES version')
+  if (x$es_ver() < 130) skip('feature not in this ES version')
 
   body <- '{
     "fields" : ["Plot"],
@@ -20,12 +20,10 @@ test_that("termvectors works", {
   }'
 
   id <- vapply(Search(x, "omdb", size = 1)$hits$hits, "[[", "", "_id")
-  aa <- termvectors(x, 'omdb', 'omdb', id, body = body)
-
+  aa <- termvectors(x, 'omdb', id = id, body = body)
 
   expect_is(aa, 'list')
   expect_equal(aa$`_index`, "omdb")
-  expect_equal(aa$`_type`, "omdb")
   expect_is(aa$`_id`, "character")
 
   expect_is(aa$term_vectors, "list")
@@ -39,11 +37,11 @@ test_that("termvectors works", {
 
 test_that("termvectors fails well", {
   skip_on_travis()
-  if (gsub("\\.", "", x$ping()$version$number) < 130) skip('feature not in this ES version')
+  if (x$es_ver() < 130) skip('feature not in this ES version')
 
   expect_error(termvectors(x), "argument \"index\" is missing")
   # expect_error(termvectors(x, "omdb"), "argument \"type\" is missing")
-  expect_error(termvectors(x, "omdb", "omdb"), "Validation Failed")
+  expect_error(termvectors(x, "omdb"), "Validation Failed")
 
   body <- '{
      "fields" : ["Plot"],
@@ -53,8 +51,6 @@ test_that("termvectors fails well", {
     "field_statistics" : true
   }'
 
-  expect_error(termvectors(x, 'omdb', 'omdb', body = body),
-               "Validation Failed")
-  expect_equal(length(termvectors(x, 'omdb', 'omdb', 'AVXdx8Eqg_0Z_tpMDyP_')$term_vectors),
-               0)
+  expect_error(termvectors(x, 'omdb', body = body), "Validation Failed")
+  expect_equal(length(termvectors(x, 'omdb', id = 'AVXdx8Eqg_0Z_tpMDyP_')$term_vectors), 0)
 })

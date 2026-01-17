@@ -16,15 +16,14 @@ body <- sprintf('{
 
 test_that("mtermvectors works", {
   skip_on_travis()
-  if (gsub("\\.", "", x$ping()$version$number) < 130) skip('feature not in this ES version')
+  if (x$es_ver() < 130) skip('feature not in this ES version')
 
-  aa <- mtermvectors(x, 'omdb', 'omdb', body = body)
+  aa <- mtermvectors(x, 'omdb', body = body)
 
   expect_is(aa, 'list')
   expect_named(aa, 'docs')
 
   expect_equal(aa$docs[[1]]$`_index`, "omdb")
-  expect_equal(aa$docs[[1]]$`_type`, "omdb")
   expect_is(aa$docs[[1]]$`_id`, "character")
 
   expect_is(aa$docs[[1]]$term_vectors, "list")
@@ -41,7 +40,7 @@ test_that("mtermvectors fails well", {
 
   expect_error(mtermvectors(x, body = body), "index is missing")
 
-  if (es_version(x) < 700) {
+  if (x$es_ver() < 700) {
     expect_error(mtermvectors(x, "omdb", body = body), "type is missing")
   }
 })

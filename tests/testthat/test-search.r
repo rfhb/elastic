@@ -8,8 +8,8 @@ Sys.sleep(2) # wait for data to be available
 
 test_that("basic search works", {
 
-  a <- Search(x, index="shakespeare")
-  expect_equal(names(a), c('took','timed_out','_shards','hits'))
+  a <- Search(x, index = "shakespeare")
+  expect_equal(names(a), c('took', 'timed_out', '_shards','hits'))
   expect_is(a, "list")
   expect_is(a$hits$hits, "list")
   if (x$es_ver() >= 700) {
@@ -18,24 +18,36 @@ test_that("basic search works", {
     expect_type(a$hits$total, "integer")
   }
   expect_equal(names(a$hits$hits[[1]]),
-    c('_index','_type','_id','_score','_source'))
+               c('_index', '_id', '_score', '_source'))
 })
 
 test_that("search for document type works, and differently for different ES versions", {
-  if (z$es_ver() >= 700) {
-    expect_warning(
-      bb <- Search(z, index="shakespeare", type="line"),
-      "Specifying types in search requests is deprecated"
-    )
+
+  if (x$es_ver() > 800) {
+
+    cc <- Search(z, index = "shakespeare")
+    expect_match(vapply(cc$hits$hits, "[[", "", "_index"), "shakespeare")
+
   } else {
-    cc <- Search(z, index="shakespeare", type="line")
-    expect_match(vapply(cc$hits$hits, "[[", "", "_type"), "line")
+
+    if (z$es_ver() >= 700 ) {
+      expect_warning(
+        bb <- Search(z, index = "shakespeare", type = "line"),
+        "Specifying types in search requests is deprecated"
+      )
+
+    } else {
+
+      cc <- Search(z, index = "shakespeare", type = "line")
+      expect_match(vapply(cc$hits$hits, "[[", "", "_type"), "line")
+
+    }
   }
 })
 
 test_that("search for specific fields works", {
 
-  if (gsub("\\.", "", x$ping()$version$number) >= 500) {
+  if (x$es_ver() >= 500) {
     c <- Search(x, index="shakespeare", body = '{
       "_source": ["play_name", "speaker"]
     }')
@@ -48,7 +60,7 @@ test_that("search for specific fields works", {
 
 test_that("search paging works", {
 
-  if (gsub("\\.", "", x$ping()$version$number) >= 500) {
+  if (x$es_ver() >= 500) {
     d <- Search(x, index = "shakespeare", size = 1, body = '{
       "_source": ["text_entry"]
     }')$hits$hits
@@ -68,13 +80,21 @@ test_that("getting json data back from search works", {
 
   suppressMessages(require('jsonlite'))
 
-  if (z$es_ver() >= 700) {
-    expect_warning(
-      f <- Search(z, index="shakespeare", type="scene", raw=TRUE),
-      "Specifying types in search requests is deprecated"
-    )
+  if (x$es_ver() > 800) {
+
+    f <- Search(z, index = "shakespeare", raw = TRUE)
+
   } else {
-    f <- Search(z, index="shakespeare", type="scene", raw=TRUE)
+
+    if (z$es_ver() >= 700) {
+      expect_warning(
+        f <- Search(z, index = "shakespeare", type = "scene", raw = TRUE),
+        "Specifying types in search requests is deprecated"
+      )
+    } else {
+      f <- Search(z, index = "shakespeare", type = "scene", raw = TRUE)
+    }
+
   }
   expect_is(f, "character")
   expect_true(jsonlite::validate(f))
@@ -82,61 +102,65 @@ test_that("getting json data back from search works", {
 })
 
 test_that("Search works with special characters - +", {
+
   if (x$es_ver() < 200) skip('skipping for this ES version')
   invisible(tryCatch(index_delete(x, "a+b"), error = function(e) e))
   invisible(index_create(x, "a+b"))
-  invisible(docs_create(x, index = "a+b", type = "wiz", id=1, body=list(a="ddd", b="eee")))
-  
+  invisible(docs_create(x, index = "a+b", id = 1, body = list(a = "ddd", b = "eee")))
+
   Sys.sleep(1)
   aplusb <- Search(x, index = "a+b")
-  
+
   expect_is(aplusb, "list")
   expect_equal(length(aplusb$hits$hits), 1)
   expect_equal(vapply(aplusb$hits$hits, "[[", "", "_index"), 'a+b')
 })
 
 test_that("Search works with special characters - ^", {
+
   invisible(tryCatch(index_delete(x, "a^z"), error = function(e) e))
   invisible(index_create(x, "a^z"))
-  invisible(docs_create(x, index = "a^z", type = "bang", id=1, body=list(a="fff", b="ggg")))
-  
+  invisible(docs_create(x, index = "a^z", id = 1, body = list(a = "fff", b = "ggg")))
+
   Sys.sleep(1)
   ahatz <- Search(x, index = "a^z")
-  
+
   expect_is(ahatz, "list")
   expect_equal(length(ahatz$hits$hits), 1)
   expect_equal(vapply(ahatz$hits$hits, "[[", "", "_index"), 'a^z')
 })
-  
+
 test_that("Search works with special characters - $", {
+
   invisible(tryCatch(index_delete(x, "a$z"), error = function(e) e))
   invisible(index_create(x, "a$z"))
-  invisible(docs_create(x, index = "a$z", type = "bang", id=1, body=list(a="fff", b="ggg")))
-  
+  invisible(docs_create(x, index = "a$z", id = 1, body = list(a = "fff", b = "ggg")))
+
   Sys.sleep(1)
   adollarz <- Search(x, index = "a$z")
-  
+
   expect_is(adollarz, "list")
   expect_equal(length(adollarz$hits$hits), 1)
   expect_equal(vapply(adollarz$hits$hits, "[[", "", "_index"), 'a$z')
 })
 
 test_that("Search works with wild card", {
+
   if (index_exists(x, "voobardang1")) {
     invisible(index_delete(x, "voobardang1"))
   }
   invisible(index_create(x, "voobardang1"))
-  invisible(docs_create(x, index = "voobardang1", type = "wiz", id=1, body=list(a="ddd", b="eee")))
+  invisible(docs_create(x, index = "voobardang1", id = 1, body = list(a = "ddd", b = "eee")))
 
   if (index_exists(x, "voobardang2")) {
     invisible(index_delete(x, "voobardang2"))
   }
   index_create(x, "voobardang2")
-  invisible(docs_create(x, index = "voobardang2", type = "bang", id=1, body=list(a="fff", b="ggg")))
-  
+  invisible(docs_create(x, index = "voobardang2", id = 1, body = list(a = "fff", b = "ggg")))
+
   Sys.sleep(1)
   aster <- Search(x, index = "voobardang*")
-  
+
   expect_is(aster, "list")
   expect_equal(length(aster$hits$hits), 2)
   expect_equal(vapply(aster$hits$hits, "[[", "", "_index"), c('voobardang1', 'voobardang2'))
@@ -146,36 +170,37 @@ test_that("Search works with wild card", {
 test_that("Search fails as expected", {
 
   aggs <- list(aggs = list(stats = list(stfff = list(field = "text_entry"))))
-  if (gsub("\\.", "", x$ping()$version$number) >= 500) {
-    if (gsub("\\.", "", x$ping()$version$number) >= 770) {
-      expect_error(Search(x, index = "shakespeare", body = aggs), 
+
+  if (x$es_ver() >= 500) {
+    if (x$es_ver() >= 770) {
+      expect_error(Search(x, index = "shakespeare", body = aggs),
                    "known")
-    } else if (gsub("\\.", "", x$ping()$version$number) >= 630) {
+    } else if (x$es_ver() >= 630) {
       expect_error(Search(x, index = "shakespeare", body = aggs))
-    } else if (gsub("\\.", "", x$ping()$version$number) >= 530) {
-      expect_error(Search(x, index = "shakespeare", body = aggs), 
+    } else if (x$es_ver() >= 530) {
+      expect_error(Search(x, index = "shakespeare", body = aggs),
                    "Unknown BaseAggregationBuilder \\[stfff\\]")
     } else {
-      expect_error(Search(x, index = "shakespeare", body = aggs), 
+      expect_error(Search(x, index = "shakespeare", body = aggs),
                    "Could not find aggregator type \\[stfff\\] in \\[stats\\]")
     }
   } else {
     expect_error(Search(x, index = "shakespeare", body = aggs), "all shards failed")
   }
 
-  expect_error(Search(x, index = "shakespeare", type = "act", sort = "text_entryasasfd"), "all shards failed")
+  expect_error(Search(x, index = "shakespeare", sort = "text_entryasasfd"), "all shards failed")
 
   expect_error(Search(x, index = "shakespeare", size = "adf"), "size should be a numeric or integer class value")
 
   expect_error(Search(x, index = "shakespeare", from = "asdf"), "from should be a numeric or integer class value")
 
-  expect_error(Search(x, index="shakespeare", q="~text_entry:ma~"), "all shards failed")
-  
+  expect_error(Search(x, index = "shakespeare", q = "~text_entry:ma~"), "all shards failed")
+
   if (x$es_ver() < 600) {
-    expect_error(Search(x, index="shakespeare", q="line_id:[10 TO x]"), 
+    expect_error(Search(x, index = "shakespeare", q = "line_id:[10 TO x]"),
                  "all shards failed||SearchPhaseExecutionException")
   }
 
-  expect_error(Search(x, index="shakespeare", terminate_after="Afd"), 
+  expect_error(Search(x, index = "shakespeare", terminate_after = "Afd"),
                "terminate_after should be a numeric")
 })

@@ -7,7 +7,7 @@ test_that("nodes_stats", {
   out <- nodes_stats(x)
   out2 <- nodes_stats(x, node = names(out$nodes))
 
-  if (gsub("\\.", "", x$ping()$version$number) >= 500) {
+  if (x$es_ver() >= 500) {
     expect_equal(sort(names(out)), c("_nodes", "cluster_name", "nodes"))
   } else {
     expect_equal(sort(names(out)), c("cluster_name", "nodes"))
@@ -24,7 +24,7 @@ test_that("nodes_info", {
   out <- nodes_info(x)
   out2 <- nodes_info(x, node = names(out$nodes))
 
-  if (gsub("\\.", "", x$ping()$version$number) >= 500) {
+  if (x$es_ver() >= 500) {
     expect_equal(sort(names(out)), c("_nodes", "cluster_name", "nodes"))
   } else {
     expect_equal(sort(names(out)), c("cluster_name", "nodes"))

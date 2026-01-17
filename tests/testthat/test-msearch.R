@@ -11,7 +11,7 @@ test_that("basic multi-search works", {
   aa <- msearch(x, tf)
 
   expect_is(aa, "list")
-  if (es_version(x) >= 700) {
+  if (x$es_ver() >= 700) {
     expect_named(aa, c('took', 'responses'))
   } else {
     expect_named(aa, 'responses')
@@ -38,7 +38,7 @@ test_that("multi-search fails well", {
   ff <- tempfile(fileext = ".json")
   cat('{"query" : {"match_all" : {}}, "from" : 0, "size" : 5}',  sep = "\n",
       file = ff, append = TRUE)
-  if (es_version(x) >= 700) {
+  if (x$es_ver() >= 700) {
     expect_error(msearch(x, ff), "not supported")
   } else {
     expect_error(msearch(x, ff), "Validation Failed")
@@ -46,7 +46,7 @@ test_that("multi-search fails well", {
 
   ### same, but complete errors
   x <- connect(port = Sys.getenv("TEST_ES_PORT"), errors = "complete")
-  expect_error(msearch(x, ff), 
+  expect_error(msearch(x, ff),
     "action_request_validation_exception||ActionRequestValidationException")
 
   ## same as above

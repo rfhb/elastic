@@ -31,7 +31,7 @@ test_that("explain", {
     if (x$es_ver() >= 200) {
       expect_match(a$explanation$description, "sum of")
       expect_match(b$explanation$description, "sum of")
-      expect_match(c$explanation$description, "Failure to meet condition")  
+      expect_match(c$explanation$description, "Failure to meet condition")
     }
   } else {
     expect_match(a$explanation$description, "max of")

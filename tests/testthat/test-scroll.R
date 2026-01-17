@@ -2,24 +2,24 @@ context("scroll")
 
 x <- connect(port = Sys.getenv("TEST_ES_PORT"), warn = FALSE)
 load_shakespeare(x)
+Sys.sleep(2L)
 
 test_that("basic scroll works", {
   res <- Search(x, time_scroll = "1m")
   a <- scroll(x, res$`_scroll_id`)
-  
+
   expect_is(res, "list")
   expect_equal(attr(res, "scroll"), "1m")
   expect_is(res$`_scroll_id`, "character")
-  
+
   expect_is(vapply(a$hits$hits, "[[", 1, "_score"), "numeric")
-  expect_equal(names(a$hits$hits[[1]]), 
-               c('_index','_type','_id','_score','_source'))
+  expect_equal(names(a$hits$hits[[1]]), c('_index', '_id', '_score', '_source'))
 })
 
 test_that("scroll: on specific index", {
   res <- Search(x, index = 'shakespeare', q = "a*", time_scroll = "1m")
   a <- scroll(x, res$`_scroll_id`)
-  
+
   expect_is(res, "list")
   expect_is(res$hits$hits, "list")
   expect_equal(attr(res, "scroll"), "1m")
@@ -44,13 +44,13 @@ test_that("scroll::list - force_scroll works as expected", {
   res <- Search(x, index = 'shakespeare', q = "a*", time_scroll = "1m")
   a <- scroll(x, res, time_scroll = "30s", force_scroll = TRUE)
   expect_equal(attr(a, "scroll"), "30s")
-  
+
   b <- scroll(x, res, time_scroll = "30s")
   expect_equal(attr(b, "scroll"), "1m")
 })
 
 test_that("scroll - scroll parameter is gone", {
-  expect_error(scroll(x, 'foobar', scroll = "1m"), 
+  expect_error(scroll(x, 'foobar', scroll = "1m"),
     "The parameter `scroll` has been removed")
 })
 
@@ -59,7 +59,7 @@ test_that("scroll fails well", {
   expect_error(scroll(x, 5), "no 'scroll\\(\\)' method for numeric")
   expect_error(scroll(x, matrix()), "no 'scroll\\(\\)' method for matrix")
   expect_error(scroll(x, mtcars), "no 'scroll\\(\\)' method for data.frame")
-  
+
   # inputs
   expect_error(scroll(x, ), "argument \"x\" is missing")
   if (x$es_ver() >= 500) {
@@ -71,7 +71,7 @@ test_that("scroll fails well", {
       expect_error(scroll(x, "asdf"), "ArrayIndexOutOfBoundsException")
     }
   }
-  
+
   # skip if ES version < 2
   if (x$es_ver() >= 200) {
     if (x$es_ver() >= 620) {

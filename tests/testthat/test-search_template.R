@@ -37,7 +37,7 @@ iris2 <- stats::setNames(iris, gsub("\\.", "_", names(iris)))
 
 test_that("basic Search_template works", {
   if (x$es_ver() < 200) skip('feature not in this ES version')
-  
+
   if (index_exists(x, "iris")) invisible(suppressMessages(index_delete(x, "iris")))
   if (x$es_ver() < 700) {
     invisible(docs_bulk(x, iris2, "iris", type = "iris", quiet = TRUE))
@@ -47,7 +47,7 @@ test_that("basic Search_template works", {
   Sys.sleep(2)
 
   a <- Search_template(x, body = body1)
-  expect_equal(names(a), c('took','timed_out','_shards','hits'))
+  expect_equal(names(a), c('took', 'timed_out', '_shards', 'hits', 'status'))
   expect_is(a, "list")
   expect_is(a$hits$hits, "list")
   # expect_equal(
@@ -59,14 +59,14 @@ test_that("basic Search_template works", {
 
 test_that("Search_template - raw parameter works", {
   if (x$es_ver() < 200) skip('feature not in this ES version')
-  
+
   b <- Search_template(x, body = body1, raw = TRUE)
   expect_is(b, "character")
 })
 
 test_that("Search_template pre-registration works", {
   if (x$es_ver() < 200) skip('feature not in this ES version')
-  
+
   if (!index_exists(x, "iris")) invisible(suppressMessages(index_delete(x, "iris")))
   if (x$es_ver() < 700) {
     invisible(docs_bulk(x, iris2, "iris", type = "iris", quiet = TRUE))
@@ -83,7 +83,7 @@ test_that("Search_template pre-registration works", {
     } else {
       expect_equal(a$`_id`, "foobar")
     }
-    
+
     b <- Search_template_get(x, 'foobar')
     expect_is(b, "list")
     expect_equal(b$`_id`, "foobar")
@@ -93,25 +93,25 @@ test_that("Search_template pre-registration works", {
     # } else {
     #   expect_equal(b$script$lang, "mustache")
     # }
-    
+
     c <- Search_template_delete(x, 'foobar')
     expect_is(c, "list")
-    if (gsub("\\.", "", x$ping()$version$number) >= 500) {
+    if (x$es_ver() >= 500) {
       expect_named(c, "acknowledged")
     } else {
       expect_equal(c$`_id`, "foobar")
       expect_true(c$found)
     }
-    expect_error(Search_template_get(x, "foobar"), 
+    expect_error(Search_template_get(x, "foobar"),
                  "Not Found")
   }
 })
 
 test_that("Search_template validate (aka, render) works", {
   if (x$es_ver() < 200) skip('Search_template not in this ES version')
-  
+
   a <- Search_template_render(x, body = body1)
-  
+
   expect_is(a, "list")
   expect_equal(names(a), 'template_output')
   expect_is(a$template_output, "list")
@@ -123,7 +123,7 @@ test_that("Search_template validate (aka, render) works", {
 
 test_that("search_template fails as expected", {
   if (x$es_ver() < 200) skip('feature not in this ES version')
-  
+
   if (x$es_ver() >= 770) {
     expect_error(Search_template(x, index = "shakespeare", body = list(a = 5)),
                  "\\[search_template\\] unknown field \\[a\\]")
@@ -132,14 +132,14 @@ test_that("search_template fails as expected", {
                  "\\[search_template\\] unknown field \\[a\\], parser not found")
   } else {
     expect_error(Search_template(x, index = "shakespeare", body = list(a = 5)),
-                 "all shards failed") 
+                 "all shards failed")
   }
-  
+
   if (x$es_ver() >= 500) {
     expect_error(Search_template(x, body = 5))
   } else {
     expect_error(Search_template(x, body = 5), "all shards failed")
   }
-  
-  expect_error(Search_template(x, raw = 4), "'raw' parameter must be") 
+
+  expect_error(Search_template(x, raw = 4), "'raw' parameter must be")
 })

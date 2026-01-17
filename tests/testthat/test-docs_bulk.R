@@ -7,7 +7,7 @@ test_that("docs_bulk - works with bulk format file", {
   if (index_exists(x, "gbifnewgeo")) {
     index_delete(x, "gbifnewgeo")
   }
-  
+
   gsmall <- system.file("examples", "gbif_geo.json",
     package = "elastic")
   if (x$es_ver() >= 700) gsmall <- type_remover(gsmall)
@@ -24,7 +24,7 @@ test_that("docs_bulk - works with data.frame input", {
   if (index_exists(x, "hello")) {
     index_delete(x, "hello")
   }
-  
+
   iris <- stats::setNames(iris, gsub("\\.", "_", names(iris)))
   if (x$es_ver() < 700) {
     a <- docs_bulk(x, iris[3:NROW(iris),], index = "hello", type = "world",
@@ -38,7 +38,7 @@ test_that("docs_bulk - works with data.frame input", {
   expect_equal(length(a), 1)
   expect_named(a[[1]], c('took', 'errors', 'items'))
   expect_equal(length(a[[1]]$items), NROW(iris[3:NROW(iris),]))
-  if (gsub("\\.", "", x$ping()$version$number) >= 500) {
+  if (x$es_ver() >= 500) {
     expect_equal(a[[1]]$items[[1]]$index$`_index`, "hello")
   } else {
     expect_equal(a[[1]]$items[[1]]$create$`_index`, "hello")
@@ -85,7 +85,7 @@ test_that("docs_bulk - works with list input", {
   expect_named(a[[1]], c('took', 'errors', 'items'))
   expect_equal(length(a[[1]]$items), 50)
 
-  if (gsub("\\.", "", x$ping()$version$number) >= 500) {
+  if (x$es_ver() >= 500) {
     expect_equal(a[[1]]$items[[1]]$index$`_index`, "arrests")
   } else {
     expect_equal(a[[1]]$items[[1]]$create$`_index`, "arrests")
@@ -146,7 +146,7 @@ test_that("dataset with NA's", {
     x[n] <- NA
     x
   })
-  res <- invisible(docs_bulk(x, test1, "mtcars", "mtcars", quiet = TRUE))
+  res <- invisible(docs_bulk(x, test1, "mtcars", quiet = TRUE))
 
   expect_is(res, "list")
   expect_is(res[[1]]$items[[1]], "list")
@@ -169,7 +169,7 @@ test_that("dataset with NA's", {
     x
   })
   mtcarslist <- apply(test2, 1, as.list)
-  res <- invisible(docs_bulk(x, mtcarslist, "mtcars", "mtcars", quiet = TRUE))
+  res <- invisible(docs_bulk(x, mtcarslist, "mtcars", quiet = TRUE))
 
   expect_is(res, "list")
   expect_is(res[[1]]$items[[1]], "list")
@@ -216,7 +216,7 @@ test_that("docs_bulk cleans up temp files", {
   if (index_exists(x, "iris")) {
     index_delete(x, "iris")
   }
-  aa <- docs_bulk(x, apply(iris, 1, as.list), index="iris", type="flowers",
+  aa <- docs_bulk(x, apply(iris, 1, as.list), index="iris",
     quiet = TRUE)
 
   expect_equal(length(list.files(curr_tempdir, pattern = "elastic__")), 0)
@@ -230,17 +230,20 @@ test_that("docs_bulk: suppressing progress bar works", {
   }
 
   quiet_true <- capture.output(invisible(
-    docs_bulk(x, mtcars, index="asdfdafasdf", type="asdfadfsdfsdfdf",
+    docs_bulk(x, mtcars, index="asdfdafasdf",
       quiet = TRUE)))
   quiet_false <- capture.output(invisible(
-    docs_bulk(x, mtcars, index="asdfdafasdf", type="asdfadfsdfsdfdf",
+    docs_bulk(x, mtcars, index="asdfdafasdf",
       quiet = FALSE)))
   expect_equal(length(quiet_true), 0)
   expect_match(quiet_false, "=====")
 })
 
 
-test_that("docs_bulk: pipline attachments work", {
+test_that("docs_bulk: pipeline attachments work", {
+
+  skip("ES plugin typically not installed")
+
   skip_on_ci() # would need an ES plugin
 
   body <- '{
@@ -276,7 +279,7 @@ test_that("docs_bulk: pipline attachments work", {
          category = "hello world")
   )
   if (x$es_ver() < 700) {
-    invisible(docs_bulk(x, docs, index = "myindex", type = "myindex",
+    invisible(docs_bulk(x, docs, index = "myindex",
       doc_ids = 1:2, es_ids = FALSE, quiet = TRUE,
       query = list(pipeline = 'attachment')))
   } else {
@@ -291,7 +294,7 @@ test_that("docs_bulk: pipline attachments work", {
   expect_equal(sort(names(doc1$fulltext)),
     c("content", "content_length", "content_type", "language"))
   expect_true(
-    grepl(if (x$es_ver() < 700) "text/plain" else "application/rtf", 
+    grepl(if (x$es_ver() < 700) "text/plain" else "application/rtf",
       doc1$fulltext$content_type
     )
   )

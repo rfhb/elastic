@@ -20,7 +20,7 @@ test_that("aliases_get works", {
   expect_is(c$plos, "list")
   expect_named(c$plos, "aliases")
   expect_null(c$adfafafadfasdf)
-  # sort order is different for the two functions, 
+  # sort order is different for the two functions,
   #   but contents the same otherwise
   expect_equal(sort(names(alias_get(x))), sort(names(aliases_get(x))))
 })
@@ -32,7 +32,7 @@ test_that("alias_create works", {
 
 test_that("alias_exists works", {
   expect_false(alias_exists(x, index = "fog"))
-  
+
   invisible(tryCatch(index_delete(x, "fog", verbose = FALSE), error = function(e) e))
   invisible(index_create(x, "fog", verbose = FALSE))
   invisible(alias_create(x, index = "fog", alias = "tables"))
@@ -43,7 +43,7 @@ test_that("alias_delete works", {
   invisible(tryCatch(index_delete(x, "fog", verbose = FALSE), error = function(e) e))
   invisible(index_create(x, "fog", verbose = FALSE))
   invisible(alias_create(x, index = "fog", alias = "chairs"))
-  
+
   ff <- alias_delete(x, index = "fog", alias = "chairs")
   expect_is(ff, "list")
   expect_true(ff$acknowledged)

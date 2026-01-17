@@ -122,11 +122,11 @@ test_that("docs_bulk_update - works with data.frame where ids are factors", {
   }
 
   df <- data.frame(name = letters[1:3], size = 1:3, id =c("AB", "CD", "EF"))
-  invisible(docs_bulk(x ,df, index = "mars", type = "mars", quiet = TRUE, es_ids = FALSE))
+  invisible(docs_bulk(x ,df, index = "mars", quiet = TRUE, es_ids = FALSE))
   # alter data.frame
   df$name <- letters[4:6]
   # update data
-  a <- docs_bulk_update(x, df, index = "mars", type = "mars", quiet = TRUE)
+  a <- docs_bulk_update(x, df, index = "mars", quiet = TRUE)
   Sys.sleep(1)
 
   expect_is(df$id, "character")
@@ -183,7 +183,7 @@ test_that("docs_bulk_update - works with data.frame with boolean types", {
 
   # # toggle mapping types based on ES version
   # mixed_mapping <- if (x$es_ver() < 500) {
-  #   mixed_mapping_lt_v5 
+  #   mixed_mapping_lt_v5
   # } else if (x$es_ver() >= 700) {
   #   mixed_mapping_lt_v7
   # } else {
@@ -248,8 +248,8 @@ test_that("docs_bulk_update cleans up temp files", {
   }
 
   df <- data.frame(name = letters[1:3], size = 1:3, id = 100:102)
-  invisible(docs_bulk(x ,df, "googoo", "googoo", quiet = TRUE, es_ids = FALSE))
-  aa <- docs_bulk_update(x, df, index="googoo", type="googoo",
+  invisible(docs_bulk(x ,df, "googoo", quiet = TRUE, es_ids = FALSE))
+  aa <- docs_bulk_update(x, df, index = "googoo",
     quiet = TRUE)
 
   expect_equal(length(list.files(curr_tempdir, pattern = "elastic__")), 0)
@@ -264,12 +264,12 @@ test_that("docs_bulk_update: suppressing progress bar works", {
   }
 
   df <- data.frame(name = letters[1:3], size = 1:3, id = 100:102)
-  invisible(docs_bulk(x, df, z, z, quiet = TRUE, es_ids = FALSE))
+  invisible(docs_bulk(x, df, z, quiet = TRUE, es_ids = FALSE))
 
   quiet_true <- capture.output(invisible(
-    docs_bulk_update(x, df, index=z, type=z, quiet = TRUE)))
+    docs_bulk_update(x, df, index = z, quiet = TRUE)))
   quiet_false <- capture.output(invisible(
-    docs_bulk_update(x, df, index=z, type=z, quiet = FALSE)))
+    docs_bulk_update(x, df, index = z, quiet = FALSE)))
   expect_equal(length(quiet_true), 0)
   expect_match(quiet_false, "=====")
 })

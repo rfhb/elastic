@@ -1,19 +1,28 @@
-library('testthat')
-library('elastic')
+library("testthat")
+library("elastic")
 
 port <- Sys.getenv("CI_ES_PORT", "9200")
 Sys.setenv(TEST_ES_PORT = port)
 
 x <- elastic::connect(port = Sys.getenv("TEST_ES_PORT"))
 try_conn <- tryCatch(x$ping(), error = function(e) e)
+
 if (inherits(try_conn, "error")) {
+
   cat("Elasticsearch not available, skipping tests")
+
 } else {
+
   if (x$es_ver() < 600) {
+
     shakespeare <- system.file("examples", "shakespeare_data.json", package = "elastic")
+
   } else {
+
     shakespeare <- system.file("examples", "shakespeare_data_.json", package = "elastic")
+
   }
+
   invisible(elastic::docs_bulk(x, shakespeare))
 
   plos <- system.file("examples", "plos_data.json", package = "elastic")
@@ -22,5 +31,5 @@ if (inherits(try_conn, "error")) {
   omdb <- system.file("examples", "omdb.json", package = "elastic")
   invisible(elastic::docs_bulk(x, omdb))
 
-  test_check('elastic')  
+  test_check("elastic")
 }
