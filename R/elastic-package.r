@@ -9,7 +9,7 @@
 #' If you're connecting to a Elasticsearch server already running, skip ahead to **Search**
 #'
 #' Install Elasticsearch (on OSX)
-#' 
+#'
 #' - Download zip or tar file from Elasticsearch see here for download:
 #'  <https://www.elastic.co/downloads/elasticsearch>
 #' - Unzip it: `untar elasticsearch-2.3.5.tar.gz`
@@ -62,13 +62,13 @@
 #' - Queries and filters have been merged - all filter clauses are now query clauses.
 #'     Instead, query clauses can now be used in query context or in filter context. See
 #'     examples in [Search()] or [Search_uri()]
-#' 
+#'
 #' @section index names:
-#' The following are illegal characters, and can not be used in index names or types: 
-#' `\\`, `/`, `*`, `?`, `<`, `>`, `|`, `,` (comma). double quote and whitespace are 
+#' The following are illegal characters, and can not be used in index names or types:
+#' `\\`, `/`, `*`, `?`, `<`, `>`, `|`, `,` (comma). double quote and whitespace are
 #' also illegal.
 #'
-#' @importFrom utils read.table read.delim txtProgressBar 
+#' @importFrom utils read.table read.delim txtProgressBar
 #' setTxtProgressBar URLdecode modifyList
 #' @importFrom crul upload HttpClient
 #' @importFrom curl curl_escape
@@ -78,4 +78,4 @@
 #' @aliases elastic-package
 #' @author Scott Chamberlain
 #' @name elastic
-NULL
+"_PACKAGE"

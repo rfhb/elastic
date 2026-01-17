@@ -1,3 +1,4 @@
+\.DS_Store$
 .gitignore
 ^Makefile$
 .travis.yml
@@ -8,6 +9,7 @@ CONTRIBUTING.md
 ^appveyor\.yml$
 README.Rmd
 README.md
+README-not.md
 ^cran-comments\.md$
 \.deb$
 es_matrix_travis.yml
@@ -21,3 +23,4 @@ notes-v2.md
 ^docs$
 ^revdep$
 vignettes
+private
