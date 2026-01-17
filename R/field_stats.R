@@ -33,7 +33,7 @@
 #' @examples \dontrun{
 #' x <- connect()
 #' 
-#' if (gsub("\\.", "", x$ping()$version$number) < 500) {
+#' if (x$es_ver() < 500) {
 #'   field_stats(x, body = '{ "fields": ["speaker"] }', index = "shakespeare")
 #'   ff <- c("scientificName", "continent", "decimalLatitude", "play_name", 
 #'     "speech_number")

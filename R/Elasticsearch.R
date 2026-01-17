@@ -27,7 +27,7 @@ elastic_env <- new.env()
 #' @param cainfo (character) path to a crt bundle, passed to curl option
 #' `cainfo`
 #' @param ignore_version (logical) ignore Elasticsearch version checks?
-#' default: `FALSE`. Setting this to `TRUE` may cause some problems, it 
+#' default: `FALSE`. Setting this to `TRUE` may cause some problems, it
 #' has not been fully tested yet. You may want to set this to `TRUE` if
 #' it's not possible to ping the root route of the Elasticsearch instance,
 #' which has the Elasticsearch version. We use the version to do
@@ -45,7 +45,7 @@ elastic_env <- new.env()
 #' store them in various env vars, but are now contained within the object
 #' so you can have any number of connection objects and they shouldn't
 #' conflict with one another.
-#' 
+#'
 #' @section What is the connection object?:
 #' Creating a connection object with `connect()` does not create
 #' a DBI-like connection object. DBI-like objects have externalptr, etc.,
@@ -53,7 +53,7 @@ elastic_env <- new.env()
 #' instance (host, port, authentication, etc.) that is used by other
 #' methods in this package to interact with your instances' ES API.
 #' `connect()` is more or less a fancy list.
-#' 
+#'
 #' You can connect to different Elasticsearch intances within the same
 #' R session by creating a separate connection object for each instance;
 #' then pass the appropriate connection object to each `elastic` method.
@@ -214,7 +214,9 @@ Elasticsearch <- R6::R6Class(
       if (is.null(pinged)) {
         elastic_env$ping_result <- pinged <- self$ping()
       }
-      ver <- pinged$version$number
+      # ver <- pinged$version$number
+      # 2026-01-17 changed to
+      ver <- pinged$version$lucene_version
 
       # get only 1st 3 digits, so major:minor:patch
       digs <- stats::na.omit(extractr(ver, "[[:digit:]]+")[[1]][1:3])
