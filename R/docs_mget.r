@@ -107,7 +107,7 @@ docs_mget <- function(conn, index=NULL, type=NULL, ids=NULL, type_id=NULL,
     # check for 2 elements in each element
     stopifnot(all(sapply(type_id, function(x) length(x) == 2)))
     docs <- lapply(type_id, function(x){
-      list(`_type` = esc(x[[1]]), `_id` = x[[2]])
+      list(`_id` = x[[2]])
     })
     tt <- jsonlite::toJSON(list("docs" = docs))
     url <- paste(base, esc(index), '_mget', sep = "/")
@@ -119,7 +119,7 @@ docs_mget <- function(conn, index=NULL, type=NULL, ids=NULL, type_id=NULL,
     # check for 3 elements in each element
     stopifnot(all(sapply(index_type_id, function(x) length(x) == 3)))
     docs <- lapply(index_type_id, function(x){
-      list(`_index` = esc(x[[1]]), `_type` = esc(x[[2]]), `_id` = x[[3]])
+      list(`_index` = esc(x[[1]]), `_id` = x[[3]])
     })
     tt <- jsonlite::toJSON(list("docs" = docs))
     url <- paste(base, '_mget', sep = "/")

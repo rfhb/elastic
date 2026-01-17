@@ -11,7 +11,7 @@ make_bulk_plos <- function(n = 1000, index='plos', type='article', fields=c('id'
     lapply(x, function(y) if(length(y) > 1) paste0(y, collapse = ",") else y)
   })
   for(i in seq_along(docs)){
-    dat <- list(index = list(`_index` = index, `_type` = type, `_id` = i-1))
+    dat <- list(index = list(`_index` = index, `_id` = i-1))
     cat(proc_doc(dat), sep = "\n", file = filename, append = TRUE)
     cat(proc_doc(docs[[i]]), sep = "\n", file = filename, append = TRUE)
   }
@@ -35,7 +35,7 @@ make_bulk_gbif <- function(n = 600, index='gbif', type='record', filename = "~/g
   })
   if(add_coordinates) res <- lapply(res, function(x) c(x, coordinates = sprintf("[%s,%s]", x$decimalLongitude, x$decimalLatitude)))
   for(i in seq_along(res)){
-    dat <- list(index = list(`_index` = index, `_type` = type, `_id` = i-1))
+    dat <- list(index = list(`_index` = index, `_id` = i-1))
     cat(proc_doc(dat), sep = "\n", file = filename, append = TRUE)
     cat(proc_doc(res[[i]]), sep = "\n", file = filename, append = TRUE)
   }
