@@ -105,5 +105,5 @@ docs_mget(x, index_type_id = list(
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-mget}
 }

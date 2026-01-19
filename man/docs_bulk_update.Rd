@@ -100,7 +100,7 @@ Search(x, "foobar", asdf = TRUE)$hits$hits
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html#bulk-update}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk}
 }
 \seealso{
 Other bulk-functions: 

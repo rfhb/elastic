@@ -74,7 +74,7 @@ Use the bulk API to create, index, update, or delete documents.
 }
 \details{
 More on the Bulk API:
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk}
 
 This function dispatches on data.frame or character input. Character input
 has to be a file name or the function stops with an error message.
@@ -128,7 +128,7 @@ fills those in for you. Now, fields with \code{NA}'s are made into
 \code{null}, and are not dropped in Elasticsearch.
 
 Note also that null values can not be indexed or searched
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/5.3/null-value.html}
+\url{https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/null-value}
 }
 
 \section{Tips}{

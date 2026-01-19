@@ -3,37 +3,37 @@
 #' @export
 #' @param conn an Elasticsearch connection object, see [connect()]
 #' @param index (character) The name of the index. Required
-#' @param id (numeric/character) The document ID. Can be numeric or character. 
+#' @param id (numeric/character) The document ID. Can be numeric or character.
 #' Required
 #' @param type (character) The type of the document. optional
-#' @param source (logical) If `TRUE` (default), return source. note that 
-#' it is actually set to `NULL` in the function definition, but within 
-#' Elasticsearch, it returns the source by default. alternatively, 
+#' @param source (logical) If `TRUE` (default), return source. note that
+#' it is actually set to `NULL` in the function definition, but within
+#' Elasticsearch, it returns the source by default. alternatively,
 #' you can pass a vector of field names to return.
 #' @param fields Fields to return from the response object.
 #' @param source_includes,source_excludes (character) fields to include in the
 #' returned document, or to exclude. a character vector
-#' @param exists (logical) Only return a logical as to whether the document 
+#' @param exists (logical) Only return a logical as to whether the document
 #' exists or not.
-#' @param raw If `TRUE` (default), data is parsed to list. If `FALSE`, then raw 
+#' @param raw If `TRUE` (default), data is parsed to list. If `FALSE`, then raw
 #' JSON.
 #' @param callopts Curl args passed on to [crul::HttpClient]
 #' @param verbose If TRUE (default) the url call used printed to console.
 #' @param ... Further args passed on to elastic search HTTP API as parameters.
 #'
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get>
 #'
 #' @examples \dontrun{
 #' (x <- connect())
-#' 
+#'
 #' if (!index_exists(x, "shakespeare")) {
 #'   shakespeare <- system.file("examples", "shakespeare_data_.json",
 #'     package = "elastic")
 #'   shakespeare <- type_remover(shakespeare)
 #'   invisible(docs_bulk(x, shakespeare))
 #' }
-#' 
+#'
 #' docs_get(x, index='shakespeare', id=10)
 #' docs_get(x, index='shakespeare', id=12)
 #' docs_get(x, index='shakespeare', id=12, source=TRUE)
@@ -52,7 +52,7 @@
 #' # Just test for existence of the document
 #' docs_get(x, index='plos', id=1, exists=TRUE)
 #' docs_get(x, index='plos', id=123456, exists=TRUE)
-#' 
+#'
 #' # source includes / excludes
 #' docs_get(x, index='shakespeare', id=10, source_includes = "play_name")
 #' docs_get(x, index='shakespeare', id=10, source_excludes = "play_name")
@@ -61,7 +61,7 @@
 docs_get <- function(conn, index, id, type = NULL, source = NULL,
   fields = NULL, source_includes = NULL, source_excludes = NULL, exists=FALSE,
   raw=FALSE, callopts=list(), verbose=TRUE, ...) {
-  
+
   is_conn(conn)
   url <- conn$make_url()
   # fields parameter changed to stored_fields in Elasticsearch v5.0

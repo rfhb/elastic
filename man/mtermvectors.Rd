@@ -145,7 +145,7 @@ body <- '{
 mtermvectors(x, 'omdb', body = sprintf(body, ids[1], ids[2]))
 
 # you can give user provided documents via the 'docs' parameter
-## though you have to give index and type that exist in your Elasticsearch 
+## though you have to give index and type that exist in your Elasticsearch
 ## instance
 body <- '{
    "docs": [
@@ -169,7 +169,7 @@ mtermvectors(x, body = body)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-termvectors.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-mtermvectors}
 }
 \seealso{
 \code{\link[=termvectors]{termvectors()}}

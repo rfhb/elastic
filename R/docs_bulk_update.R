@@ -11,7 +11,7 @@
 #'
 #' Only data.frame's are supported for now.
 #' @family bulk-functions
-#' @references <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html#bulk-update>
+#' @references <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk>
 #' @examples \dontrun{
 #' x <- connect()
 #' if (index_exists(x, "foobar")) index_delete(x, "foobar")

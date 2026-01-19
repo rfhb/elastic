@@ -1,13 +1,13 @@
 #' @references
-#' \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html}
-#' \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html}
+#' \url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search}
+#' \url{https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl}
 #' @details This function name has the "S" capitalized to avoid conflict with the function
 #' \code{base::search}. I hate mixing cases, as I think it confuses users, but in this case
 #' it seems neccessary.
 #' @examples \dontrun{
 #' # make connection object
 #' (x <- connect())
-#' 
+#'
 #' # load some data
 #' if (!index_exists(x, "shakespeare")) {
 #'   shakespeare <- system.file("examples", "shakespeare_data.json",
@@ -27,7 +27,7 @@
 #'   plos <- type_remover(plos)
 #'   invisible(docs_bulk(x, plos))
 #' }
-#' 
+#'
 #'
 #' # URI string queries
 #' Search(x, index="shakespeare")
@@ -68,14 +68,14 @@
 #' Search(x, index="shakespeare", size = 0, terminate_after = 1)
 #'
 #' ## sorting
-#' ### if ES >5, we need to make sure fielddata is turned on for a field 
-#' ### before using it for sort 
+#' ### if ES >5, we need to make sure fielddata is turned on for a field
+#' ### before using it for sort
 #' if (x$es_ver() >= 500) {
 #'  if (index_exists(x, "shakespeare")) index_delete(x, "shakespeare")
 #'  index_create(x, "shakespeare")
 #'  mapping_create(x, "shakespeare", body = '{
 #'     "properties": {
-#'       "speaker": { 
+#'       "speaker": {
 #'         "type":     "text",
 #'         "fielddata": true
 #'       }
@@ -89,14 +89,14 @@
 #'  z <- Search(x, index="shakespeare", sort="speaker", size = 30)
 #'  vapply(z$hits$hits, function(w) w$`_source`$speaker, "")
 #' }
-#' 
+#'
 #' if (x$es_ver() < 500) {
-#'   Search(x, index="shakespeare", type="line", sort="speaker:desc", 
+#'   Search(x, index="shakespeare", type="line", sort="speaker:desc",
 #'     fields='speaker')
 #'   Search(x, index="shakespeare", type="line",
 #'     sort=c("speaker:desc","play_name:asc"), fields=c('speaker','play_name'))
 #' }
-#' 
+#'
 #'
 #' ## pagination
 #' Search(x, index="shakespeare", size=1)$hits$hits
@@ -161,20 +161,20 @@
 #' ## Get raw data
 #' Search(x, index="shakespeare", raw = TRUE)
 #'
-#' ## Curl options 
-#' ### verbose 
+#' ## Curl options
+#' ### verbose
 #' out <- Search(x, index="shakespeare", verbose = TRUE)
 #'
 #'
 #' # Query DSL searches - queries sent in the body of the request
 #' ## Pass in as an R list
 #'
-#' ### if ES >5, we need to make sure fielddata is turned on for a field 
-#' ### before using it for aggregations 
+#' ### if ES >5, we need to make sure fielddata is turned on for a field
+#' ### before using it for aggregations
 #' if (x$es_ver() >= 500) {
 #'   mapping_create(x, "shakespeare", update_all_types = TRUE, body = '{
 #'     "properties": {
-#'       "text_entry": { 
+#'       "text_entry": {
 #'         "type":     "text",
 #'         "fielddata": true
 #'      }
@@ -183,7 +183,7 @@
 #'  aggs <- list(aggs = list(stats = list(terms = list(field = "text_entry"))))
 #'  Search(x, index="shakespeare", body=aggs)
 #' }
-#' 
+#'
 #' ### if ES >5, you don't need to worry about fielddata
 #' if (x$es_ver() < 500) {
 #'    aggs <- list(aggs = list(stats = list(terms = list(field = "text_entry"))))
@@ -205,7 +205,7 @@
 #' ## or pass in collapsed json string
 #' aggs <- '{"aggs":{"stats":{"terms":{"field":"text_entry"}}}}'
 #' Search(x, index="shakespeare", body=aggs)
-#' 
+#'
 #'
 #' ## Aggregations
 #' ### Histograms
@@ -422,14 +422,14 @@
 #'   if(hits > 0)
 #'     out <- c(out, res$hits$hits)
 #' }
-#' 
+#'
 #' ### Sliced scrolling
-#' #### For scroll queries that return a lot of documents it is possible to 
+#' #### For scroll queries that return a lot of documents it is possible to
 #' #### split the scroll in multiple slices which can be consumed independently
 #' body1 <- '{
 #'   "slice": {
-#'     "id": 0, 
-#'     "max": 2 
+#'     "id": 0,
+#'     "max": 2
 #'   },
 #'   "query": {
 #'     "match" : {
@@ -437,11 +437,11 @@
 #'     }
 #'   }
 #' }'
-#' 
+#'
 #' body2 <- '{
 #'   "slice": {
-#'     "id": 1, 
-#'     "max": 2 
+#'     "id": 1,
+#'     "max": 2
 #'   },
 #'   "query": {
 #'     "match" : {
@@ -449,12 +449,12 @@
 #'     }
 #'   }
 #' }'
-#' 
+#'
 #' res1 <- Search(x, index = 'shakespeare', time_scroll="1m", body = body1)
 #' res2 <- Search(x, index = 'shakespeare', time_scroll="1m", body = body2)
 #' scroll(x, res1$`_scroll_id`)
 #' scroll(x, res2$`_scroll_id`)
-#' 
+#'
 #' out1 <- list()
 #' hits <- 1
 #' while(hits != 0){
@@ -463,7 +463,7 @@
 #'   if(hits > 0)
 #'     out1 <- c(out1, tmp1$hits$hits)
 #' }
-#' 
+#'
 #' out2 <- list()
 #' hits <- 1
 #' while(hits != 0) {
@@ -476,9 +476,9 @@
 #' c(
 #'  lapply(out1, "[[", "_source"),
 #'  lapply(out2, "[[", "_source")
-#' ) 
-#' 
-#' 
+#' )
+#'
+#'
 #'
 #' # Using filters
 #' ## A bool filter
@@ -496,7 +496,7 @@
 #' Search(x, 'gbif', body = body)$hits$total$value
 #'
 #' ## Geo filters - fun!
-#' ### Note that filers have many geospatial filter options, but queries 
+#' ### Note that filers have many geospatial filter options, but queries
 #' ### have fewer, andrequire a geo_shape mapping
 #'
 #' body <- '{
@@ -568,7 +568,7 @@
 #'      "geo_distance" : {
 #'         "field": "location",
 #'         "origin" : "4, 50",
-#'         "ranges": [ 
+#'         "ranges": [
 #'           {"from" : 200},
 #'           {"to" : 400}
 #'          ]
@@ -669,8 +669,8 @@
 #' }'
 #' out <- Search(x, 'geoshape', body = body)
 #' out$hits$total$value
-#' 
-#' 
+#'
+#'
 #' # Geofilter with WKT
 #' # format follows "BBOX (minlon, maxlon, maxlat, minlat)"
 #' body <- '{
@@ -691,8 +691,8 @@
 #' }'
 #' out <- Search(x, 'gbifgeopoint', body = body)
 #' out$hits$total$value
-#' 
-#' 
+#'
+#'
 #'
 #' # Missing filter
 #' if (x$es_ver() < 500) {
@@ -713,8 +713,8 @@
 #'    "query":{
 #'      "bool" : {
 #'        "must_not" : {
-#'          "exists" : { 
-#'            "field" : "play_name" 
+#'          "exists" : {
+#'            "field" : "play_name"
 #'          }
 #'        }
 #'     }
@@ -809,7 +809,7 @@
 #'            "ids" : {
 #'              "values": ["1","2","3","10","2000"]
 #'            }
-#'          }, 
+#'          },
 #'          {
 #'            "prefix" : {
 #'              "speaker" : "we"
@@ -822,14 +822,14 @@
 #'   z <- Search(x, "shakespeare", body = body)
 #'   z$hits$total$value
 #' }
-#' 
+#'
 #' # Suggestions
 #' sugg <- '{
 #'  "query" : {
 #'     "match" : {
 #'       "text_entry" : "late"
 #'      }
-#'  },  
+#'  },
 #'  "suggest" : {
 #'    "sugg" : {
 #'      "text" : "late",
@@ -839,19 +839,19 @@
 #'     }
 #'   }
 #' }'
-#' Search(x, index = "shakespeare", body = sugg, 
+#' Search(x, index = "shakespeare", body = sugg,
 #'   asdf = TRUE, size = 0)$suggest$sugg$options
 #'
-#' 
-#' 
+#'
+#'
 #' # stream data out using jsonlite::stream_out
 #' file <- tempfile()
 #' res <- Search(x, "shakespeare", size = 1000, stream_opts = list(file = file))
 #' head(df <- jsonlite::stream_in(file(file)))
 #' NROW(df)
 #' unlink(file)
-#' 
-#' 
+#'
+#'
 #' # get profile data
 #' body <- '{
 #'   "profile": true,

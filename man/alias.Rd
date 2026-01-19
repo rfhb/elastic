@@ -96,14 +96,14 @@ alias_rename(x, index = 'plos', alias = "stools", alias_new = "plates")
 aliases_get(x, "plos")
 
 # filtered aliases
-alias_create(x, index = "plos", alias = "candles", 
+alias_create(x, index = "plos", alias = "candles",
   filter = list(wildcard = list(title = "cell")))
 ## a search with the alias should give titles with cell in them
 (titles <- Search(x, "candles", asdf = TRUE)$hits$hits$`_source.title`)
 grepl("cell", titles, ignore.case = TRUE)
 
 # routing
-alias_create(x, index = "plos", alias = "candles", 
+alias_create(x, index = "plos", alias = "candles",
   routing = "1")
 
 # Check for alias existence
@@ -121,7 +121,7 @@ aliases_get(x, alias = "tables", verbose = TRUE)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases}
 }
 \author{
 Scott Chamberlain \href{mailto:myrmecocystus@gmail.com}{myrmecocystus@gmail.com}

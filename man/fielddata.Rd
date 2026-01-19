@@ -33,7 +33,7 @@ the inverted index. Note that this can however use significant memory."
 To enable fielddata on a text field use the PUT mapping API, for example
 \code{mapping_create("shakespeare", body = '{
   "properties": {
-    "speaker": { 
+    "speaker": {
       "type":     "text",
       "fielddata": true
     }
@@ -45,13 +45,13 @@ You may get an error about \code{update_all_types}, in which case set
 
 \code{mapping_create("shakespeare", update_all_types=TRUE, body = '{
   "properties": {
-    "speaker": { 
+    "speaker": {
       "type":     "text",
       "fielddata": true
     }
   }
 }')}
 
-See \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/fielddata.html#_enabling_fielddata_on_literal_text_literal_fields}
+See \url{https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/text#enable-fielddata-text-fields}
 for more information.
 }

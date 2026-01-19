@@ -37,10 +37,10 @@
 #' @param body The query definition using the Query DSL. This is passed in the
 #' body of the request.
 #' @param raw If `TRUE` (default), data is parsed to list. If `FALSE`, then
-#' raw JSON. 
+#' raw JSON.
 #' @param ... Curl args passed on to [crul::HttpClient]
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/search-explain.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-explain>
 #' @examples \dontrun{
 #' (x <- connect())
 #'

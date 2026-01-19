@@ -88,7 +88,7 @@ docs_bulk_create(x, iris, "flowers")
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk}
 }
 \seealso{
 Other bulk-functions: 

@@ -20,23 +20,23 @@
 #' conducting the search. Added in Elasticsearch v2.0
 #'
 #' @section Pre-registered templates:
-#' Register a template with `Search_template_register`. You can get 
-#' the template with `Search_template_get` and delete the template 
+#' Register a template with `Search_template_register`. You can get
+#' the template with `Search_template_get` and delete the template
 #' with `Search_template_delete`
-#' 
-#' You can also pre-register search templates by storing them in the 
-#' `config/scripts` directory, in a file using the .mustache 
-#' extension. In order to execute the stored template, reference it 
-#' by it's name under the template key, like 
+#'
+#' You can also pre-register search templates by storing them in the
+#' `config/scripts` directory, in a file using the .mustache
+#' extension. In order to execute the stored template, reference it
+#' by it's name under the template key, like
 #' `"file": "templateName", ...`
-#' 
-#' @references 
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html>
+#'
+#' @references
+#' <https://www.elastic.co/docs/solutions/search/search-templates>
 #'
 #' @examples \dontrun{
 #' # connection setup
 #' (x <- connect())
-#' 
+#'
 #' if (!index_exists(x, "iris")) {
 #'   invisible(docs_bulk(x, iris, "iris"))
 #' }
@@ -107,7 +107,7 @@
 #'   }'
 #'   Search_template_register(x, 'foobar', body = body3)
 #' }
-#' 
+#'
 #' ### get template
 #' Search_template_get(x, 'foobar')
 #'
@@ -129,13 +129,13 @@ Search_template <- function(conn, body = list(), raw = FALSE, ...) {
   if (conn$es_ver() < 110) {
     stop("search template not available in this ES version", call. = FALSE)
   }
-  search_POST(conn, "_search/template", args = list(), body = body, raw = raw, 
+  search_POST(conn, "_search/template", args = list(), body = body, raw = raw,
               asdf = FALSE, stream_opts = list(), ...)
 }
 
 #' @export
 #' @rdname Search_template
-Search_template_register <- function(conn, template, body = list(), raw = FALSE, 
+Search_template_register <- function(conn, template, body = list(), raw = FALSE,
                                      ...) {
   is_conn(conn)
   # search template render added in Elasticsearch v1.1, stop if version pre that
@@ -148,8 +148,8 @@ Search_template_register <- function(conn, template, body = list(), raw = FALSE,
   } else {
     path <- file.path("_scripts", template)
   }
-  search_POST(conn, 
-    path = path, args = list(), body = body, raw = raw, asdf = FALSE, 
+  search_POST(conn,
+    path = path, args = list(), body = body, raw = raw, asdf = FALSE,
     stream_opts = list(), ...
   )
 }
@@ -198,6 +198,6 @@ Search_template_render <- function(conn, body = list(), raw = FALSE, ...) {
   if (conn$es_ver() < 200) {
     stop("render template not available in this ES version", call. = FALSE)
   }
-  search_POST(conn, "_render/template", args = list(), body = body, raw = raw, 
+  search_POST(conn, "_render/template", args = list(), body = body, raw = raw,
               asdf = FALSE, stream_opts = list(), ...)
 }

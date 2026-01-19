@@ -59,7 +59,7 @@ x <- connect()
 
 if (x$es_ver() < 500) {
   field_stats(x, body = '{ "fields": ["speaker"] }', index = "shakespeare")
-  ff <- c("scientificName", "continent", "decimalLatitude", "play_name", 
+  ff <- c("scientificName", "continent", "decimalLatitude", "play_name",
     "speech_number")
   field_stats(x, "play_name")
   field_stats(x, "play_name", level = "cluster")
@@ -79,7 +79,7 @@ if (x$es_ver() < 500) {
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/5.6/search-field-stats.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-field-usage-stats}
 }
 \seealso{
 \code{\link[=field_caps]{field_caps()}}

@@ -6,23 +6,23 @@
 #' @param alias_new (character) A new alias name, used in rename only
 #' @param ignore_unavailable (logical) What to do if an specified index name
 #' doesn't exist. If set to `TRUE` then those indices are ignored.
-#' @param filter (named list) provides an easy way to create different "views" of 
-#' the same index. Defined using Query DSL and is applied to all Search, Count, 
-#' Delete By Query and More Like This operations with this alias. See 
+#' @param filter (named list) provides an easy way to create different "views" of
+#' the same index. Defined using Query DSL and is applied to all Search, Count,
+#' Delete By Query and More Like This operations with this alias. See
 #' examples
 #' @param routing,search_routing,index_routing (character) Associate a routing
 #' value with an alias
-#' @param ... Curl args passed on to [crul::verb-POST], [crul::verb-GET], 
+#' @param ... Curl args passed on to [crul::verb-POST], [crul::verb-GET],
 #' [crul::verb-HEAD], or [crul::verb-DELETE]
-#' 
+#'
 #' @details Note that you can also create aliases when you create indices
-#' by putting the directive in the request body. See the Elasticsearch 
+#' by putting the directive in the request body. See the Elasticsearch
 #' docs link
-#' 
+#'
 #' @examples \dontrun{
 #' # connection setup
 #' (x <- connect())
-#' 
+#'
 #' if (!index_exists(x, "plos")) {
 #'   plosdat <- system.file("examples", "plos_data.json", package = "elastic")
 #'   invisible(docs_bulk(x, plosdat))
@@ -31,12 +31,12 @@
 #'   shake <- system.file("examples", "shakespeare_data_.json", package = "elastic")
 #'   invisible(docs_bulk(x, shake))
 #' }
-#' 
+#'
 #' # Create/update an alias
 #' alias_create(x, index = "plos", alias = "candles")
 #' ## more than one alias
 #' alias_create(x, index = "plos", alias = c("tables", "chairs"))
-#' 
+#'
 #' # associate an alias with two multiple different indices
 #' alias_create(x, index = c("plos", "shakespeare"), alias = "stools")
 #'
@@ -45,21 +45,21 @@
 #' alias_get(x, alias="tables")
 #' alias_get(x, alias="stools")
 #' aliases_get(x)
-#' 
+#'
 #' # rename an alias
 #' aliases_get(x, "plos")
 #' alias_rename(x, index = 'plos', alias = "stools", alias_new = "plates")
 #' aliases_get(x, "plos")
-#' 
+#'
 #' # filtered aliases
-#' alias_create(x, index = "plos", alias = "candles", 
+#' alias_create(x, index = "plos", alias = "candles",
 #'   filter = list(wildcard = list(title = "cell")))
 #' ## a search with the alias should give titles with cell in them
 #' (titles <- Search(x, "candles", asdf = TRUE)$hits$hits$`_source.title`)
 #' grepl("cell", titles, ignore.case = TRUE)
-#' 
+#'
 #' # routing
-#' alias_create(x, index = "plos", alias = "candles", 
+#' alias_create(x, index = "plos", alias = "candles",
 #'   routing = "1")
 #'
 #' # Check for alias existence
@@ -76,7 +76,7 @@
 #' aliases_get(x, alias = "tables", verbose = TRUE)
 #' }
 #' @references
-#' \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html}
+#' \url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases}
 #' @author Scott Chamberlain <myrmecocystus@@gmail.com>
 #' @name alias
 NULL
@@ -106,7 +106,7 @@ alias_exists <- function(conn, index=NULL, alias=NULL, ...) {
 
 #' @export
 #' @rdname alias
-alias_create <- function(conn, index, alias, filter=NULL, routing=NULL, 
+alias_create <- function(conn, index, alias, filter=NULL, routing=NULL,
   search_routing=NULL, index_routing=NULL, ...) {
 
   is_conn(conn)
@@ -117,8 +117,8 @@ alias_create <- function(conn, index, alias, filter=NULL, routing=NULL,
   assert(index_routing, "character")
   body <- list(actions =
     unname(Map(function(a, b) {
-      list(add = ec(list(index = esc(a), alias = esc(b), 
-        filter = filter, routing = routing, search_routing = search_routing, 
+      list(add = ec(list(index = esc(a), alias = esc(b),
+        filter = filter, routing = routing, search_routing = search_routing,
         index_routing = index_routing)))
     }, index, alias))
   )

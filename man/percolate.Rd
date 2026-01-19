@@ -159,7 +159,7 @@ perc_body = '{
     }
  }
 }'
-percolate_register(x, index = "myindex", type = "mytype", 
+percolate_register(x, index = "myindex", type = "mytype",
   id = 1, body = perc_body)
 
 ## register another
@@ -170,7 +170,7 @@ perc_body2 <- '{
     }
   }
 }'
-percolate_register(x, index = "myindex", type = "mytype", 
+percolate_register(x, index = "myindex", type = "mytype",
   id = 2, body = perc_body2)
 
 ## match a document to a percolator
@@ -314,5 +314,5 @@ percolate_match(x, index = "myindex", body = query)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html}
+\url{https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-percolate-query}
 }

@@ -1,6 +1,6 @@
 #' @title Index templates
 #'
-#' @description Index templates allow you to define templates that 
+#' @description Index templates allow you to define templates that
 #' will automatically be applied when new indices are created
 #'
 #' @export
@@ -8,26 +8,26 @@
 #' @param conn an Elasticsearch connection object, see [connect()]
 #' @param name (character) The name of the template
 #' @param body (character/list) The template definition
-#' @param create (logical) Whether the index template should only be added 
+#' @param create (logical) Whether the index template should only be added
 #' if new or can also replace an existing one. Default: `FALSE`
-#' @param flat_settings (logical) Return settings in flat format. 
+#' @param flat_settings (logical) Return settings in flat format.
 #' Default: `FALSE`
 #' @param master_timeout (integer) Specify timeout for connection to master
-#' @param order (integer) The order for this template when merging 
-#' multiple matching ones (higher numbers are merged later, overriding the 
+#' @param order (integer) The order for this template when merging
+#' multiple matching ones (higher numbers are merged later, overriding the
 #' lower numbers)
-#' @param filter_path (character) a regex for filtering output path, 
+#' @param filter_path (character) a regex for filtering output path,
 #' see example
 #' @param timeout (integer) Explicit operation timeout
-#' @param ... Curl options. Or in `percolate_list` function, further 
+#' @param ... Curl options. Or in `percolate_list` function, further
 #' args passed on to [Search()]
 #'
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates.html>
+#' <https://www.elastic.co/docs/manage-data/data-store/templates>
 #'
 #' @examples \dontrun{
 #' (x <- connect())
-#' 
+#'
 #' body <- '{
 #'   "template": "te*",
 #'   "settings": {
@@ -51,7 +51,7 @@
 #'   }
 #' }'
 #' index_template_put(x, "template_1", body = body)
-#' 
+#'
 #' # get templates
 #' index_template_get(x)
 #' index_template_get(x, "template_1")
@@ -59,19 +59,19 @@
 #' index_template_get(x, "template_*")
 #' ## filter path
 #' index_template_get(x, "template_1", filter_path = "*.template")
-#' 
+#'
 #' # template exists
 #' index_template_exists(x, "template_1")
 #' index_template_exists(x, "foobar")
-#' 
+#'
 #' # delete a template
 #' index_template_delete(x, "template_1")
 #' index_template_exists(x, "template_1")
 #' }
 index_template_put <- function(
-  conn, name, body = NULL, create = NULL, flat_settings = NULL, 
+  conn, name, body = NULL, create = NULL, flat_settings = NULL,
   master_timeout = NULL, order = NULL, timeout = NULL, ...) {
-  
+
   is_conn(conn)
   url <- conn$make_url()
   url <- file.path(url, "_template", esc(name))

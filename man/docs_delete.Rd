@@ -61,7 +61,7 @@ if (!index_exists(x, "plos")) {
 
 # delete a document
 if (!docs_get(x, index='plos', id=36, exists=TRUE)) {
-  docs_create(x, index='plos', id=36, 
+  docs_create(x, index='plos', id=36,
     body = list(id="12345", title="New title")
   )
 }
@@ -71,5 +71,5 @@ docs_delete(x, index='plos', id=36)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query}
 }

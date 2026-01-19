@@ -15,7 +15,7 @@
 #' 'closed', 'hidden', 'none', 'all'. default: 'all'. Available in ES >= v7.7
 #' @param ... Curl args passed on to [crul::HttpClient]
 #'
-#' @details See <https://www.elastic.co/guide/en/elasticsearch/reference/current/cat.html>
+#' @details See <https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cat>
 #' for the cat API documentation.
 #'
 #' Note how [cat_()] has an underscore at the end to avoid conflict with the
@@ -24,7 +24,7 @@
 #' @examples \dontrun{
 #' # connection setup
 #' (x <- connect())
-#' 
+#'
 #' # list Elasticsearch cat endpoints
 #' cat_(x)
 #'
@@ -243,7 +243,7 @@ cat_helper <- function(conn, what='', v=FALSE, i=NULL, f=NULL, h=NULL,
                   bytes = ifbytes(bytes),
                   expand_wildcards = asnull(expand_wildcards)))
   cli <- crul::HttpClient$new(url = url,
-    headers = c(conn$headers), 
+    headers = c(conn$headers),
     opts = c(conn$opts, ...),
     auth = crul::auth(conn$user, conn$pwd)
   )

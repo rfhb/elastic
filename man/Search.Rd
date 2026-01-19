@@ -249,14 +249,14 @@ Search(x, index="shakespeare", size = 0)$hits$total$value
 Search(x, index="shakespeare", size = 0, terminate_after = 1)
 
 ## sorting
-### if ES >5, we need to make sure fielddata is turned on for a field 
-### before using it for sort 
+### if ES >5, we need to make sure fielddata is turned on for a field
+### before using it for sort
 if (x$es_ver() >= 500) {
  if (index_exists(x, "shakespeare")) index_delete(x, "shakespeare")
  index_create(x, "shakespeare")
  mapping_create(x, "shakespeare", body = '{
     "properties": {
-      "speaker": { 
+      "speaker": {
         "type":     "text",
         "fielddata": true
       }
@@ -272,7 +272,7 @@ if (x$es_ver() >= 500) {
 }
 
 if (x$es_ver() < 500) {
-  Search(x, index="shakespeare", type="line", sort="speaker:desc", 
+  Search(x, index="shakespeare", type="line", sort="speaker:desc",
     fields='speaker')
   Search(x, index="shakespeare", type="line",
     sort=c("speaker:desc","play_name:asc"), fields=c('speaker','play_name'))
@@ -342,20 +342,20 @@ Search(x, index="shakespeare", version=TRUE, size=2)
 ## Get raw data
 Search(x, index="shakespeare", raw = TRUE)
 
-## Curl options 
-### verbose 
+## Curl options
+### verbose
 out <- Search(x, index="shakespeare", verbose = TRUE)
 
 
 # Query DSL searches - queries sent in the body of the request
 ## Pass in as an R list
 
-### if ES >5, we need to make sure fielddata is turned on for a field 
-### before using it for aggregations 
+### if ES >5, we need to make sure fielddata is turned on for a field
+### before using it for aggregations
 if (x$es_ver() >= 500) {
   mapping_create(x, "shakespeare", update_all_types = TRUE, body = '{
     "properties": {
-      "text_entry": { 
+      "text_entry": {
         "type":     "text",
         "fielddata": true
      }
@@ -605,12 +605,12 @@ while(hits != 0){
 }
 
 ### Sliced scrolling
-#### For scroll queries that return a lot of documents it is possible to 
+#### For scroll queries that return a lot of documents it is possible to
 #### split the scroll in multiple slices which can be consumed independently
 body1 <- '{
   "slice": {
-    "id": 0, 
-    "max": 2 
+    "id": 0,
+    "max": 2
   },
   "query": {
     "match" : {
@@ -621,8 +621,8 @@ body1 <- '{
 
 body2 <- '{
   "slice": {
-    "id": 1, 
-    "max": 2 
+    "id": 1,
+    "max": 2
   },
   "query": {
     "match" : {
@@ -657,7 +657,7 @@ while(hits != 0) {
 c(
  lapply(out1, "[[", "_source"),
  lapply(out2, "[[", "_source")
-) 
+)
 
 
 
@@ -677,7 +677,7 @@ body <- '{
 Search(x, 'gbif', body = body)$hits$total$value
 
 ## Geo filters - fun!
-### Note that filers have many geospatial filter options, but queries 
+### Note that filers have many geospatial filter options, but queries
 ### have fewer, andrequire a geo_shape mapping
 
 body <- '{
@@ -749,7 +749,7 @@ body <- '{
      "geo_distance" : {
         "field": "location",
         "origin" : "4, 50",
-        "ranges": [ 
+        "ranges": [
           {"from" : 200},
           {"to" : 400}
          ]
@@ -894,8 +894,8 @@ if (x$es_ver() < 500) {
    "query":{
      "bool" : {
        "must_not" : {
-         "exists" : { 
-           "field" : "play_name" 
+         "exists" : {
+           "field" : "play_name"
          }
        }
     }
@@ -990,7 +990,7 @@ if (x$es_ver() < 500) {
            "ids" : {
              "values": ["1","2","3","10","2000"]
            }
-         }, 
+         },
          {
            "prefix" : {
              "speaker" : "we"
@@ -1010,7 +1010,7 @@ sugg <- '{
     "match" : {
       "text_entry" : "late"
      }
- },  
+ },
  "suggest" : {
    "sugg" : {
      "text" : "late",
@@ -1020,7 +1020,7 @@ sugg <- '{
     }
   }
 }'
-Search(x, index = "shakespeare", body = sugg, 
+Search(x, index = "shakespeare", body = sugg,
   asdf = TRUE, size = 0)$suggest$sugg$options
 
 
@@ -1049,8 +1049,8 @@ vapply(res$profile$shards, function(w) {
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html}
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search}
+\url{https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl}
 }
 \seealso{
 \code{\link[=Search_uri]{Search_uri()}} \code{\link[=Search_template]{Search_template()}} \code{\link[=scroll]{scroll()}} \code{\link[=count]{count()}}

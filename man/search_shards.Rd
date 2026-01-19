@@ -54,5 +54,5 @@ search_shards(x, index = "plos", verbose = TRUE)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/search-shards.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-shards}
 }

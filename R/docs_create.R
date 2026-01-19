@@ -26,7 +26,7 @@
 #' @param callopts Curl options passed on to [crul::HttpClient]
 #' @param ... Further args to query DSL
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create>
 #' @examples \dontrun{
 #' (x <- connect())
 #'

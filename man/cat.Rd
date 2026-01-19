@@ -211,7 +211,7 @@ to concrete indices that are open, closed or both.  Valid choices: 'open',
 Use the cat Elasticsearch api.
 }
 \details{
-See \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/cat.html}
+See \url{https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cat}
 for the cat API documentation.
 
 Note how \code{\link[=cat_]{cat_()}} has an underscore at the end to avoid conflict with the

@@ -26,15 +26,15 @@
 #' the client. Obviously if there are two percolator queries with same id from different
 #' indices there is no way to find out which percolator query belongs to what index. Any
 #' other value to percolate_format will be ignored.
-#' @param refresh If `TRUE` then refresh the affected shards to make this 
-#' operation visible to search, if "wait_for" then wait for a refresh to 
-#' make this operation visible to search, if `FALSE` (default) then do 
+#' @param refresh If `TRUE` then refresh the affected shards to make this
+#' operation visible to search, if "wait_for" then wait for a refresh to
+#' make this operation visible to search, if `FALSE` (default) then do
 #' nothing with refreshes. Valid choices: `TRUE`, `FALSE`, "wait_for"
 #' @param ... Curl options. Or in `percolate_list` function, further args
 #' passed on to [Search()]
 #'
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html>
+#' <https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-percolate-query>
 #'
 #' @details Additional body options, pass those in the body. These aren't query string
 #' parameters:
@@ -66,17 +66,17 @@
 #'  on how to define highlights. The size option is required for highlighting, the
 #'  performance of highlighting in the percolate API depends of how many matches are
 #'  being highlighted.
-#' 
+#'
 #' @section The Elasticsearch v5 split:
-#' In Elasticsearch < v5, there's a certain set of percolate APIs available, 
+#' In Elasticsearch < v5, there's a certain set of percolate APIs available,
 #' while in Elasticsearch >= v5, there's a different set of APIs available.
-#' 
+#'
 #' Internally within these percolate functions we detect your Elasticsearch
 #' version, then use the appropriate APIs
 #'
 #' @examples \dontrun{
 #' x <- connect(errors = "complete")
-#' 
+#'
 #' ##### Elasticsearch < v5
 #' if (x$es_ver() < 500) {
 #' # typical usage
@@ -106,7 +106,7 @@
 #'     }
 #'  }
 #' }'
-#' percolate_register(x, index = "myindex", type = "mytype", 
+#' percolate_register(x, index = "myindex", type = "mytype",
 #'   id = 1, body = perc_body)
 #'
 #' ## register another
@@ -117,7 +117,7 @@
 #'     }
 #'   }
 #' }'
-#' percolate_register(x, index = "myindex", type = "mytype", 
+#' percolate_register(x, index = "myindex", type = "mytype",
 #'   id = 2, body = perc_body2)
 #'
 #' ## match a document to a percolator
@@ -135,19 +135,19 @@
 #'
 #' ## List percolators - for an index, no type, can't do across indices
 #' percolate_list(x, index = "myindex")$hits$hits
-#' 
+#'
 #' ## Percolate counter
 #' percolate_count(x, index = "myindex", type = "mytype", body = doc)$total
-#' 
+#'
 #' ## delete a percolator
 #' percolate_delete(x, index = "myindex", id = 2)
 #' } # end ES < 5
-#' 
-#' 
+#'
+#'
 #' ##### Elasticsearch >= v5
 #' if (x$es_ver() >= 500 && x$es_ver() <= 700) {
 #' if (index_exists(x, "myindex")) index_delete(x, "myindex")
-#' 
+#'
 #' body <- '{
 #'   "mappings": {
 #'     "mytype": {
@@ -162,7 +162,7 @@
 #'     }
 #'   }
 #' }'
-#' 
+#'
 #' # create the index with mapping
 #' index_create(x, "myindex", body = body)
 #'
@@ -199,14 +199,14 @@
 #' }'
 #' percolate_match(x, index = "myindex", body = query)
 #' } # end ES >= 5
-#' 
-#' 
-#' 
-#' 
+#'
+#'
+#'
+#'
 #' ##### Elasticsearch >= v7
 #' if (x$es_ver() >= 700) {
 #' if (index_exists(x, "myindex")) index_delete(x, "myindex")
-#' 
+#'
 #' body <- '{
 #'   "mappings": {
 #'     "properties": {
@@ -219,7 +219,7 @@
 #'     }
 #'   }
 #' }'
-#' 
+#'
 #' # create the index with mapping
 #' index_create(x, "myindex", body = body)
 #'
@@ -256,8 +256,8 @@
 #' }'
 #' percolate_match(x, index = "myindex", body = query)
 #' } # end ES >= 7
-#' 
-#' 
+#'
+#'
 #' }
 percolate_register <- function(conn, index, id, type = NULL, body=list(),
   routing = NULL, preference = NULL, ignore_unavailable = NULL,
@@ -274,7 +274,7 @@ percolate_register <- function(conn, index, id, type = NULL, body=list(),
   }
   args <- ec(list(routing = routing, preference = preference,
                   ignore_unavailable = as_log(ignore_unavailable),
-                  percolate_format = percolate_format, 
+                  percolate_format = percolate_format,
                   refresh = as_log(refresh)))
   percolate_PUT(conn, url, args, body, ...)
 }
@@ -290,8 +290,8 @@ percolate_match <- function(conn, index, type=NULL, body,
   url <- conn$make_url()
   if (conn$es_ver() >= 500) {
     url <- file.path(
-      url, 
-      if (is.null(type)) esc(index) else file.path(esc(index), esc(type)), 
+      url,
+      if (is.null(type)) esc(index) else file.path(esc(index), esc(type)),
       "_search")
   } else {
     url <- sprintf("%s/%s/%s/_percolate", url, esc(index), esc(type))
@@ -354,5 +354,5 @@ percolate_check_ver <- function(conn) {
   if (conn$es_ver() >= 500) {
     stop("this percolate functionality defunct in ES >= v5
   For ES >= v5 see percolate examples in ?Search")
-  }  
+  }
 }

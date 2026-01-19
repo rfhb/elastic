@@ -6,15 +6,15 @@
 #' @param index (character) A character vector of index names
 #' @param body Query, either a list or json.
 #' @param ... Curl options passed on to [crul::HttpClient]
-#' 
-#' @references 
-#' https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
+#'
+#' @references
+#' <https://www.elastic.co/docs/reference/text-analysis/tokenizer-reference>
 #'
 #' @author Scott Chamberlain <myrmecocystus@@gmail.com>
 #' @examples \dontrun{
 #' # connection setup
 #' (x <- connect())
-#' 
+#'
 #' # set tokenizer
 #'
 #' ## NGram tokenizer
@@ -39,7 +39,7 @@
 #' }'
 #' if (index_exists('test1')) index_delete('test1')
 #' tokenizer_set(index = "test1", body=body)
-#' index_analyze(text = "hello world", index = "test1", 
+#' index_analyze(text = "hello world", index = "test1",
 #'   analyzer='my_ngram_analyzer')
 #' }
 

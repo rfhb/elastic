@@ -6,8 +6,7 @@
 #' @inheritParams docs_delete_by_query
 #' @param pipeline (character) a pipeline name
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html>
-#' <https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-api-reference.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query>
 #' @seealso [docs_delete_by_query()]
 #' @examples \dontrun{
 #' (x <- connect())

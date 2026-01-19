@@ -49,7 +49,7 @@ wait and block to see hot threads that are in wait or block state.}
 Elasticsearch nodes endpoints.
 }
 \details{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats}
 
 By default, all stats are returned. You can limit this by combining any of
 indices, os, process, jvm, network, transport, http, fs, breaker and

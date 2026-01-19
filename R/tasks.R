@@ -13,28 +13,28 @@
 #' @param timeout (integer) timeout time
 #' @param raw If `TRUE` (default), data is parsed to list. If `FALSE`, then
 #' raw JSON.
-#' @param ... Curl args passed on to [crul::verb-GET] or 
+#' @param ... Curl args passed on to [crul::verb-GET] or
 #' [crul::verb-POST]
 #'
-#' @references 
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html>
+#' @references
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks>
 #'
 #' @examples \dontrun{
 #' x <- connect()
-#' 
+#'
 #' tasks(x)
 #' # tasks(x, parent_task_id = "1234")
-#' 
+#'
 #' # delete a task
 #' # tasks_cancel(x)
 #' }
 
 #' @export
 #' @rdname tasks
-tasks <- function(conn, task_id = NULL, nodes = NULL, actions = NULL, 
+tasks <- function(conn, task_id = NULL, nodes = NULL, actions = NULL,
   parent_task_id = NULL, detailed = FALSE, group_by = NULL,
   wait_for_completion = FALSE, timeout = NULL, raw = FALSE, ...) {
-  
+
   is_conn(conn)
   if (!is.null(parent_task_id)) {
     parent_task_id <- paste0("parentTaskId:", parent_task_id)
@@ -49,10 +49,10 @@ tasks <- function(conn, task_id = NULL, nodes = NULL, actions = NULL,
 
 #' @export
 #' @rdname tasks
-tasks_cancel <- function(conn, node_id = NULL, task_id = NULL, nodes = NULL, 
+tasks_cancel <- function(conn, node_id = NULL, task_id = NULL, nodes = NULL,
   actions = NULL, parent_task_id = NULL, detailed = FALSE, group_by = NULL,
   wait_for_completion = FALSE, timeout = NULL, raw = FALSE, ...) {
-  
+
   is_conn(conn)
   if (!is.null(parent_task_id)) {
     parent_task_id <- paste0("parentTaskId:", parent_task_id)
@@ -81,11 +81,11 @@ task_GET <- function(conn, task_id = NULL, raw, args, ...) {
 task_POST <- function(conn, node_id = NULL, task_id = NULL, raw, args, ...) {
   url <- conn$make_url()
   if (!is.null(node_id) && !is.null(task_id)) {
-    url <- file.path(url, '_tasks', 
-                     paste(node_id, task_id, sep = ":", collapse = ""), 
+    url <- file.path(url, '_tasks',
+                     paste(node_id, task_id, sep = ":", collapse = ""),
                      "_cancel")
   } else {
-    url <- file.path(url, '_tasks', "_cancel") 
+    url <- file.path(url, '_tasks', "_cancel")
   }
   if (length(args) == 0) args <- NULL
   tt <- conn$make_conn(url, list(), ...)$post(query = args)

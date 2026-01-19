@@ -12,7 +12,7 @@
 #' @param fields Fields to return from the response object.
 #'
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-mget>
 #'
 #' @details
 #'

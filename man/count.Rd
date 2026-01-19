@@ -24,7 +24,7 @@ Get counts of the number of records per index.
 }
 \details{
 See docs for the count API here
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-count}
 
 You can also get a count of documents using \code{\link[=Search]{Search()}} or
 \code{\link[=Search_uri]{Search_uri()}} and setting \code{size = 0}
@@ -41,7 +41,7 @@ if (!index_exists(x, "plos")) {
   invisible(docs_bulk(x, plosdat))
 }
 if (!index_exists(x, "shakespeare")) {
-  shake <- system.file("examples", "shakespeare_data_.json", 
+  shake <- system.file("examples", "shakespeare_data_.json",
     package = "elastic")
   invisible(docs_bulk(x, shake))
 }

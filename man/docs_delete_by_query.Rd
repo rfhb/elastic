@@ -136,7 +136,7 @@ docs_delete_by_query(x, index=c('foo','bar'),
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query}
 }
 \seealso{
 \code{\link[=docs_update_by_query]{docs_update_by_query()}}

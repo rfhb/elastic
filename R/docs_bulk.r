@@ -35,7 +35,7 @@
 #' @param ... Pass on curl options to [crul::HttpClient]
 #'
 #' @details More on the Bulk API:
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk>
 #'
 #' This function dispatches on data.frame or character input. Character input
 #' has to be a file name or the function stops with an error message.
@@ -82,7 +82,7 @@
 #' `null`, and are not dropped in Elasticsearch.
 #'
 #' Note also that null values can not be indexed or searched
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/5.3/null-value.html>
+#' <https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/null-value>
 #'
 #' @section Tips:
 #' This function returns the response from Elasticsearch, but you'll likely

@@ -123,7 +123,7 @@ body = body)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-termvectors.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-termvectors}
 }
 \seealso{
 \code{\link[=mtermvectors]{mtermvectors()}}

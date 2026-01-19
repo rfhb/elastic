@@ -1,7 +1,7 @@
 #' Index API operations
 #'
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices>
 #' @author Scott Chamberlain <myrmecocystus@@gmail.com>
 #' @name indices
 #'
@@ -66,12 +66,12 @@
 #'
 #' @details
 #' **index_analyze**:
-#' \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html}
+#' \url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze}
 #' This method can accept a string of text in the body, but this function passes it as a
 #' parameter in a GET request to simplify.
 #'
 #' **index_flush**:
-#' \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-flush.html}
+#' \url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush}
 #' From the ES website: The flush process of an index basically frees memory from the index by
 #' flushing data to the index storage and clearing the internal transaction log. By default,
 #' Elasticsearch uses memory heuristics in order to automatically trigger flush operations as
@@ -83,13 +83,13 @@
 #'
 #' **index_settings_update**: There are a lot of options you can change with this
 #' function. See
-#' https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings>
 #' for all the options.
 #'
 #' **index settings**: See
-#' https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html
+#' <https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules>
 #' for the *static* and *dynamic* settings you can set on indices.
-#' 
+#'
 #' @section Mappings:
 #' The "keyword" type is not supported in Elasticsearch < v5. If you do use a mapping
 #' with "keyword" type in Elasticsearch < v5 [index_create()] should fail.
@@ -278,7 +278,7 @@
 #' settings <- list(index = list(number_of_replicas = 4))
 #' index_settings_update(x, "foobar", body = settings)
 #' index_get(x, "foobar")$foobar$settings
-#' 
+#'
 #' # Shrink index - Can only shrink an index if it has >1 shard
 #' ## index must be read only, a copy of every shard in the index must
 #' ## reside on the same node, and the cluster health status must be green
@@ -468,7 +468,7 @@ index_upgrade <- function(conn, index = NULL, wait_for_completion = FALSE, ...) 
   conn$stop_es_version(120, "index_get")
   if (conn$es_ver() >= 500) {
     stop("upgrade is removed in ES >= v5, see
-https://www.elastic.co/guide/en/elasticsearch/reference/current/reindex-upgrade.html")
+https://www.elastic.co/guide/en/elasticsearch/reference/8.18/docs-reindex.html")
   }
   args <- ec(list(wait_for_completion = as_log(wait_for_completion)))
   es_POST_(conn, index, "_upgrade", args, ...)

@@ -9,32 +9,32 @@
 #' @param include_defaults (logical) Whether to return default values
 #' @param include_type_name (logical) If set to `TRUE`, you can include a type
 #' name, if not an error will occur. default: not set. See Details.
-#' @param update_all_types (logical) update all types. default: `FALSE`. 
-#' This parameter is deprecated in ES v6.3.0 and higher, see 
+#' @param update_all_types (logical) update all types. default: `FALSE`.
+#' This parameter is deprecated in ES v6.3.0 and higher, see
 #' https://github.com/elastic/elasticsearch/pull/28284
-#' @param ... Curl options passed on to [crul::verb-PUT], [crul::verb-GET], 
+#' @param ... Curl options passed on to [crul::verb-PUT], [crul::verb-GET],
 #' or [crul::verb-HEAD]
 #' @details
 #' Find documentation for each function at:
-#' 
+#'
 #' - `mapping_create` -
-#'  <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html>
+#'  <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping>
 #' - `type_exists` -
-#'  <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-types-exists.html>
+#'  <https://www.elastic.co/docs/manage-data/data-store/mapping/removal-of-mapping-types>
 #' - `mapping_delete` - FUNCTION DEFUNCT - instead of deleting mapping, delete
 #'  index and recreate index with new mapping
 #' - `mapping_get` -
-#'  <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html>
+#'  <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping>
 #' - `field_mapping_get` -
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-field-mapping.html>
-#' 
-#' See <https://www.elastic.co/guide/en/elasticsearch/reference/current/removal-of-types.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping>
+#'
+#' See <https://www.elastic.co/docs/manage-data/data-store/mapping/removal-of-mapping-types>
 #' for information on type removal
 #'
 #' @examples \dontrun{
 #' # connection setup
 #' (x <- connect())
-#' 
+#'
 #' # Used to check if a type/types exists in an index/indices
 #' type_exists(x, index = "plos", type = "article")
 #' type_exists(x, index = "plos", type = "articles")
@@ -101,12 +101,12 @@
 #' }'
 #' mapping_create(x, "gbifgeopoint", body = body)
 #' invisible(docs_bulk(x, file))
-#' 
+#'
 #' # update_all_fields, see also ?fielddata
 #' if (x$es_ver() < 603) {
 #'  mapping_create(x, "shakespeare", "record", update_all_types=TRUE, body = '{
 #'    "properties": {
-#'      "speaker": { 
+#'      "speaker": {
 #'        "type":     "text",
 #'        "fielddata": true
 #'      }
@@ -116,14 +116,14 @@
 #'  index_create(x, 'brownchair')
 #'  mapping_create(x, 'brownchair', body = '{
 #'    "properties": {
-#'      "foo": { 
+#'      "foo": {
 #'        "type":     "text",
 #'        "fielddata": true
 #'      }
 #'    }
 #'  }')
 #' }
-#' 
+#'
 #' }
 
 #' @export
@@ -135,7 +135,7 @@ mapping_create <- function(conn, index, body, type = NULL, update_all_types = FA
   url <- file.path(url, esc(index), "_mapping")
   if (!is.null(type)) url <- file.path(url, esc(type))
   args <- ec(list(include_type_name = as_log(include_type_name)))
-  if (conn$es_ver() < 603) { 
+  if (conn$es_ver() < 603) {
     args <- ec(list(update_all_types = as_log(update_all_types)))
   }
   es_PUT(conn, url, body, args, ...)
@@ -208,7 +208,7 @@ type_exists <- function(conn, index, type, ...) {
     stop("types are defunct in ES >= v8", call. = FALSE)
   }
   url <- conn$make_url()
-  
+
   if (conn$es_ver() >= 500) {
     # in ES >= v5, new URL format
     url <- file.path(url, esc(index), "_mapping", esc(type))
@@ -216,7 +216,7 @@ type_exists <- function(conn, index, type, ...) {
     # in ES < v5, old URL format
     url <- file.path(url, esc(index), esc(type))
   }
-  
+
   res <- conn$make_conn(url, ...)$head()
   if (conn$warn) catch_warnings(res)
   if (res$status_code == 200) TRUE else FALSE

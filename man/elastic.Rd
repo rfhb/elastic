@@ -32,7 +32,7 @@ Install Elasticsearch (on OSX)
 }
 
 For help on other platforms, see
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html}
+\url{https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch}
 
 \strong{Start Elasticsearch}
 \itemize{
@@ -93,9 +93,9 @@ also illegal.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://docs.ropensci.org/elastic/ (website)}
-  \item \url{https://github.com/ropensci/elastic}
-  \item Report bugs at \url{https://github.com/ropensci/elastic/issues}
+  \item \url{https://www.elastic.co/docs/solutions/search}
+  \item \url{https://github.com/rfhb/elastic}
+  \item Report bugs at \url{https://github.com/rfhb/elastic/issues}
 }
 
 }

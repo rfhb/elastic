@@ -222,12 +222,12 @@ Index API operations
 }
 \details{
 \strong{index_analyze}:
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze}
 This method can accept a string of text in the body, but this function passes it as a
 parameter in a GET request to simplify.
 
 \strong{index_flush}:
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-flush.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush}
 From the ES website: The flush process of an index basically frees memory from the index by
 flushing data to the index storage and clearing the internal transaction log. By default,
 Elasticsearch uses memory heuristics in order to automatically trigger flush operations as
@@ -239,11 +239,11 @@ instead.
 
 \strong{index_settings_update}: There are a lot of options you can change with this
 function. See
-https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings}
 for all the options.
 
 \strong{index settings}: See
-https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html
+\url{https://www.elastic.co/docs/reference/elasticsearch/index-settings/index-modules}
 for the \emph{static} and \emph{dynamic} settings you can set on indices.
 }
 \section{Mappings}{
@@ -454,7 +454,7 @@ cat_recovery(x, index='barbarbar')
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices}
 }
 \author{
 Scott Chamberlain \href{mailto:myrmecocystus@gmail.com}{myrmecocystus@gmail.com}

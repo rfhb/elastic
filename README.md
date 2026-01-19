@@ -28,14 +28,15 @@ This package has been archived. The former README is now in
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-check](https://github.com/ropensci/elastic/workflows/R-check/badge.svg)](https://github.com/ropensci/elastic/actions?query=workflow%3AR-check)
-[![cran
-checks](https://cranchecks.info/badges/worst/elastic)](https://cranchecks.info/pkgs/elastic)
+[![R-check](https://github.com/ropensci-archive/elastic/workflows/R-check/badge.svg)](https://github.com/ropensci-archive/elastic/actions?query=workflow%3AR-check)
 [![rstudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/elastic?color=E664A4)](https://github.com/r-hub/cranlogs.app)
 [![cran
 version](https://www.r-pkg.org/badges/version/elastic)](https://cran.r-project.org/package=elastic)
-<!-- [![codecov.io](https://codecov.io/github/ropensci/elastic/coverage.svg?branch=master)](https://codecov.io/github/ropensci/elastic?branch=master) -->
+<!-- 
+[![cranchecks](https://cranchecks.info/badges/worst/elastic)](https://cranchecks.info/pkgs/elastic)
+[![codecov.io](https://codecov.io/github/ropensci/elastic/coverage.svg?branch=master)](https://codecov.io/github/ropensci/elastic?branch=master) 
+-->
 
 **A general purpose R interface to
 [Elasticsearch](https://www.elastic.co/elasticsearch/)**
@@ -43,8 +44,7 @@ version](https://www.r-pkg.org/badges/version/elastic)](https://cran.r-project.o
 ## Elasticsearch info
 
 - [Elasticsearch home page](https://www.elastic.co/elasticsearch/)
-- [API
-  docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
+- [API docs](https://www.elastic.co/docs/get-started)
 
 ## Compatibility
 
@@ -90,7 +90,7 @@ library('elastic')
 ## Install Elasticsearch
 
 - [Elasticsearch installation
-  help](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)
+  help](https://www.elastic.co/docs/deploy-manage/deploy/self-managed/installing-elasticsearch)
 
 **w/ Docker**
 
@@ -126,8 +126,7 @@ You can also install via Homebrew: `brew install elasticsearch`
 
 > Note: for the 1.6 and greater upgrades of Elasticsearch, they want you
 > to have java 8 or greater. I downloaded Java 8 from here
-> <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
-> and it seemed to work great.
+> <https://www.oracle.com/java/> and it seemed to work great.
 
 ## Upgrading Elasticsearch
 
@@ -141,7 +140,7 @@ a Mac to upgrade it takes care of this for you - not sure.
 
 Obviously, upgrading Elasticsearch while keeping it running is a
 different thing ([some help here from
-Elastic](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html)).
+Elastic](https://www.elastic.co/docs/deploy-manage/upgrade/deployment-or-cluster)).
 
 ## Start Elasticsearch
 
@@ -197,7 +196,7 @@ I have prepare a non-exported function useful for preparing the weird
 format that Elasticsearch wants for bulk data loads, that is somewhat
 specific to PLOS data (See below), but you could modify for your
 purposes. See `make_bulk_plos()` and `make_bulk_gbif()`
-[here](https://github.com/ropensci/elastic/blob/master/R/docs_bulk.r).
+[here](https://github.com/ropensci-archive/elastic/blob/master/R/docs_bulk.r).
 
 ### Shakespeare data
 
@@ -342,7 +341,7 @@ A screencast introducing the package:
 ## Meta
 
 - Please [report any issues or
-  bugs](https://github.com/ropensci/elastic/issues)
+  bugs](https://github.com/ropensci-archive/elastic/issues)
 - License: MIT
 - Get citation information for `elastic` in R doing
   `citation(package = 'elastic')`

@@ -103,5 +103,5 @@ index_template_exists(x, "template_1")
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates.html}
+\url{https://www.elastic.co/docs/manage-data/data-store/templates}
 }

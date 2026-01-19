@@ -65,5 +65,5 @@ reindex(x, body = body)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex}
 }

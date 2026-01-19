@@ -91,5 +91,5 @@ docs_get(x, index='shakespeare', id=10, source_excludes = "play_name")
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get}
 }

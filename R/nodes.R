@@ -16,7 +16,7 @@
 #' @param ... Curl args passed on to [crul::verb-GET]
 #'
 #' @details
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats>
 #'
 #' By default, all stats are returned. You can limit this by combining any of
 #' indices, os, process, jvm, network, transport, http, fs, breaker and
@@ -46,7 +46,7 @@
 #' @examples \dontrun{
 #' # connection setup
 #' (x <- connect())
-#' 
+#'
 #' (out <- nodes_stats(x))
 #' nodes_stats(x, node = names(out$nodes))
 #' nodes_stats(x, metric='get')
@@ -61,7 +61,7 @@
 
 #' @export
 #' @rdname nodes
-nodes_stats <- function(conn, node=NULL, metric=NULL, raw=FALSE, fields=NULL, 
+nodes_stats <- function(conn, node=NULL, metric=NULL, raw=FALSE, fields=NULL,
   ...) {
 
   is_conn(conn)

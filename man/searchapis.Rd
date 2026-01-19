@@ -29,5 +29,5 @@ define documents to retrieve these queries.
 More will be added soon.
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search}
 }

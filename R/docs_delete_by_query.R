@@ -32,7 +32,7 @@
 #' The throttling can be disabled by setting `requests_per_second=-1`
 #' @param ... Curl args passed on to [crul::verb-POST]
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query>
 #' @seealso [docs_update_by_query()]
 #' @examples \dontrun{
 #' (x <- connect())

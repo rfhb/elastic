@@ -33,19 +33,19 @@
 #' @param ... Curl args passed on to [crul::verb-POST]
 #'
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-termvectors.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-termvectors>
 #'
 #' @details Returns information and statistics on terms in the fields of a
 #' particular document. The document could be stored in the index or
 #' artificially provided by the user (Added in 1.4). Note that for
 #' documents stored in the index, this is a near realtime API as the term
 #' vectors are not available until the next refresh.
-#' 
+#'
 #' @seealso [mtermvectors()]
 #'
 #' @examples \dontrun{
 #' x <- connect()
-#' 
+#'
 #' if (!index_exists(x, 'plos')) {
 #'   plosdat <- system.file("examples", "plos_data.json",
 #'     package = "elastic")
@@ -84,8 +84,8 @@ termvectors <- function(conn, index, type = NULL, id = NULL, body = list(),
   version = NULL, version_type = NULL, ...) {
 
   is_conn(conn)
-  args <- ec(list(pretty = as_log(pretty), realtime = as_log(realtime), 
-                  preference = preference, routing = routing, 
+  args <- ec(list(pretty = as_log(pretty), realtime = as_log(realtime),
+                  preference = preference, routing = routing,
                   version = version, version_type = version_type))
   if (length(body) == 0) {
     body <- ec(list(fields = fields, field_statistics = field_statistics,

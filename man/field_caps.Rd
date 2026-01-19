@@ -31,7 +31,7 @@ if (x$es_ver() >= 540) {
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/search-field-caps.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps}
 }
 \seealso{
 \code{\link[=field_stats]{field_stats()}}

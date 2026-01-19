@@ -1,36 +1,36 @@
 #' Ingest API operations
 #'
 #' @references
-#' <https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-apis.html>,
-#' <https://www.elastic.co/guide/en/elasticsearch/plugins/current/using-ingest-attachment.html>
+#' <https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest>,
+#' <https://www.elastic.co/docs/reference/enrich-processor/attachment>
 #' @name ingest
 #'
 #' @param conn an Elasticsearch connection object, see [connect()]
-#' @param id (character) one or more pipeline id's. with delete, you can use 
+#' @param id (character) one or more pipeline id's. with delete, you can use
 #' a wildcard match
 #' @param body body describing pipeline, see examples and Elasticsearch docs
 #' @param filter_path (character) fields to return. deafults to all if not given
 #' @param index (character) an index. only used in `pipeline_attachment`
 #' @param type (character) a type. only used in `pipeline_attachment`. by default
-#' ths is set to `NULL` - optional in ES <= v6.3; not allowed in ES >= v6.4
+#' this is set to `NULL` - optional in ES <= v6.3; not allowed in ES >= v6.4
 #' @param pipeline (character) a pipeline name. only used in `pipeline_attachment`
 #' @param ... Curl args passed on to [crul::verb-POST], [crul::verb-GET],
 #' [crul::verb-PUT], or [crul::verb-DELETE]
-#' 
+#'
 #' @return a named list
-#' 
+#'
 #' @details ingest/pipeline functions available in Elasticsearch v5 and
 #' greater
-#' 
+#'
 #' @section Attachments:
-#' See https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-attachment.html
+#' See <https://www.elastic.co/docs/reference/enrich-processor/attachment>
 #' You need to install the attachment processor plugin to be able to use
 #' attachments in pipelines
 #'
 #' @examples \dontrun{
 #' # connection setup
 #' (x <- connect())
-#' 
+#'
 #' # create
 #' body1 <- '{
 #'   "description" : "do a thing",
@@ -57,16 +57,16 @@
 #' }'
 #' pipeline_create(x, id = 'foo', body = body1)
 #' pipeline_create(x, id = 'bar', body = body2)
-#' 
+#'
 #' # get
 #' pipeline_get(x, id = 'foo')
 #' pipeline_get(x, id = 'bar')
 #' pipeline_get(x, id = 'foo', filter_path = "*.version")
 #' pipeline_get(x, id = c('foo', 'bar')) # get >1
-#' 
+#'
 #' # delete
 #' pipeline_delete(x, id = 'foo')
-#' 
+#'
 #' # simulate
 #' ## with pipeline included
 #' body <- '{
@@ -87,7 +87,7 @@
 #'   ]
 #' }'
 #' pipeline_simulate(x, body)
-#' 
+#'
 #' ## referencing existing pipeline
 #' body <- '{
 #'   "docs" : [
@@ -96,7 +96,7 @@
 #'   ]
 #' }'
 #' pipeline_simulate(x, body, id = "foo")
-#' 
+#'
 #' # attchments - Note: you need the attachment plugin for this, see above
 #' body1 <- '{
 #'   "description" : "do a thing",
@@ -147,7 +147,7 @@ pipeline_attachment <- function(conn, index, id, pipeline, body, type = NULL,
 pipeline_get <- function(conn, id, filter_path = NULL, ...) {
   is_conn(conn)
   pipeline_ver(conn)
-  url <- file.path(conn$make_url(), "_ingest/pipeline", 
+  url <- file.path(conn$make_url(), "_ingest/pipeline",
     paste0(esc(id), collapse = ","))
   es_GET_(conn, url, ec(list(filter_path = filter_path)), ...)
 }
@@ -172,7 +172,7 @@ pipeline_simulate <- function(conn, body, id = NULL, ...) {
   url <- conn$make_url()
   base <- "_ingest/pipeline"
   part <- if (is.null(id)) {
-    file.path(base, "_simulate") 
+    file.path(base, "_simulate")
   } else {
     file.path(base, esc(id), "_simulate")
   }

@@ -47,12 +47,12 @@ body <- '{
 }'
 if (index_exists('test1')) index_delete('test1')
 tokenizer_set(index = "test1", body=body)
-index_analyze(text = "hello world", index = "test1", 
+index_analyze(text = "hello world", index = "test1",
   analyzer='my_ngram_analyzer')
 }
 }
 \references{
-https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html
+\url{https://www.elastic.co/docs/reference/text-analysis/tokenizer-reference}
 }
 \author{
 Scott Chamberlain \href{mailto:myrmecocystus@gmail.com}{myrmecocystus@gmail.com}

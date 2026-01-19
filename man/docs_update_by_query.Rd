@@ -105,8 +105,7 @@ Search(x, "omdb", q = "Rated:\"R\"", asdf=TRUE,
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html}
-\url{https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-api-reference.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query}
 }
 \seealso{
 \code{\link[=docs_delete_by_query]{docs_delete_by_query()}}

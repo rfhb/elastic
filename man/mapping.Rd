@@ -62,18 +62,18 @@ Mapping management
 Find documentation for each function at:
 \itemize{
 \item \code{mapping_create} -
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping}
 \item \code{type_exists} -
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-types-exists.html}
+\url{https://www.elastic.co/docs/manage-data/data-store/mapping/removal-of-mapping-types}
 \item \code{mapping_delete} - FUNCTION DEFUNCT - instead of deleting mapping, delete
 index and recreate index with new mapping
 \item \code{mapping_get} -
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping}
 \item \code{field_mapping_get} -
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-field-mapping.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping}
 }
 
-See \url{https://www.elastic.co/guide/en/elasticsearch/reference/current/removal-of-types.html}
+See \url{https://www.elastic.co/docs/manage-data/data-store/mapping/removal-of-mapping-types}
 for information on type removal
 }
 \examples{
@@ -152,7 +152,7 @@ invisible(docs_bulk(x, file))
 if (x$es_ver() < 603) {
  mapping_create(x, "shakespeare", "record", update_all_types=TRUE, body = '{
    "properties": {
-     "speaker": { 
+     "speaker": {
        "type":     "text",
        "fielddata": true
      }
@@ -162,7 +162,7 @@ if (x$es_ver() < 603) {
  index_create(x, 'brownchair')
  mapping_create(x, 'brownchair', body = '{
    "properties": {
-     "foo": { 
+     "foo": {
        "type":     "text",
        "fielddata": true
      }

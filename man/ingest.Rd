@@ -35,7 +35,7 @@ a wildcard match}
 \item{pipeline}{(character) a pipeline name. only used in \code{pipeline_attachment}}
 
 \item{type}{(character) a type. only used in \code{pipeline_attachment}. by default
-ths is set to \code{NULL} - optional in ES <= v6.3; not allowed in ES >= v6.4}
+this is set to \code{NULL} - optional in ES <= v6.3; not allowed in ES >= v6.4}
 
 \item{filter_path}{(character) fields to return. deafults to all if not given}
 }
@@ -51,7 +51,7 @@ greater
 }
 \section{Attachments}{
 
-See https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-attachment.html
+See \url{https://www.elastic.co/docs/reference/enrich-processor/attachment}
 You need to install the attachment processor plugin to be able to use
 attachments in pipelines
 }
@@ -150,6 +150,6 @@ pipeline_get(x, id = 'baz')
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-apis.html},
-\url{https://www.elastic.co/guide/en/elasticsearch/plugins/current/using-ingest-attachment.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest},
+\url{https://www.elastic.co/docs/reference/enrich-processor/attachment}
 }

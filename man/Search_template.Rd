@@ -151,7 +151,7 @@ Search_template_delete(x, 'foobar')
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html}
+\url{https://www.elastic.co/docs/solutions/search/search-templates}
 }
 \seealso{
 \code{\link[=Search]{Search()}}, \code{\link[=Search_uri]{Search_uri()}}

@@ -93,5 +93,5 @@ docs_get(x, index='plos', id=z$`_id`)
 }
 }
 \references{
-\url{https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html}
+\url{https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create}
 }
