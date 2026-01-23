@@ -16,11 +16,11 @@ jobs:
     strategy:
       matrix:
         config:
-          - {os: macos-latest,   r: 'release', esv: 7, osv: '3', which: 'o'}
-          - {os: windows-latest, r: 'release', esv: 8, osv: '3', which: 'e'}
-          - {os: ubuntu-latest,  r: 'release', esv: 9, osv: '3', which: 'o'}
-          - {os: ubuntu-latest,  r: 'devel', esv: 9, osv: 'latest', which: 'e', http-user-agent: 'release'}
-          - {os: ubuntu-latest,  r: 'oldrel-1', esv: 8, osv: '2', which: 'o'}
+          - {os: macos-latest,   r: 'release', esv: 7, osv: 3, which: 'e'}
+          - {os: windows-latest, r: 'release', esv: 8, osv: 3, which: 'e'}
+          - {os: ubuntu-latest,  r: 'release', esv: 9, osv: 3, which: 'e'}
+          - {os: ubuntu-latest,  r: 'devel', esv: 9, osv: 'latest', which: 'o', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  r: 'oldrel-1', esv: 8, osv: '2.19.1', which: 'o'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -57,7 +57,7 @@ jobs:
         if: matrix.config.which == 'o'
         uses: esmarkowski/opensearch-github-action@v1.0.0
         with:
-          version: ${{ matrix.config.esv }}
+          version: ${{ matrix.config.osv }}
           security-disabled: true
 
       # generic check:
