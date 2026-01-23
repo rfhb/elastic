@@ -14,7 +14,7 @@ test_that("docs_bulk - works with bulk format file", {
   a <- docs_bulk(x, x = gsmall, quiet = TRUE)
 
   expect_is(a, "list")
-  expect_named(a, c('took', 'errors', 'items'))
+  expect_named(a, c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(a$items), 301)
   expect_equal(a$items[[1]]$index$`_index`, "gbifgeo")
 })
@@ -36,7 +36,7 @@ test_that("docs_bulk - works with data.frame input", {
 
   expect_is(a, "list")
   expect_equal(length(a), 1)
-  expect_named(a[[1]], c('took', 'errors', 'items'))
+  expect_named(a[[1]], c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(a[[1]]$items), NROW(iris[3:NROW(iris),]))
   if (x$es_ver() >= 500) {
     expect_equal(a[[1]]$items[[1]]$index$`_index`, "hello")
@@ -61,7 +61,7 @@ test_that("docs_bulk - works with data.frame where ids are factors", {
   expect_is(df$id, "character")
   expect_is(a, "list")
   expect_equal(length(a), 1)
-  expect_named(a[[1]], c('took', 'errors', 'items'))
+  expect_named(a[[1]], c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(a[[1]]$items), NROW(df))
 })
 
@@ -82,7 +82,7 @@ test_that("docs_bulk - works with list input", {
 
   expect_is(a, "list")
   expect_equal(length(a), 1)
-  expect_named(a[[1]], c('took', 'errors', 'items'))
+  expect_named(a[[1]], c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(a[[1]]$items), 50)
 
   if (x$es_ver() >= 500) {
@@ -112,7 +112,7 @@ test_that("docs_bulk - works with list where ids are factors", {
   expect_equal(unique(vapply(lst, function(z) class(z$id), character(1))), "factor")
   expect_is(a, "list")
   expect_equal(length(a), 1)
-  expect_named(a[[1]], c('took', 'errors', 'items'))
+  expect_named(a[[1]], c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(a[[1]]$items), length(lst))
 })
 

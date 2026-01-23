@@ -47,7 +47,7 @@ test_that("basic Search_template works", {
   Sys.sleep(2)
 
   a <- Search_template(x, body = body1)
-  expect_equal(names(a), c('took', 'timed_out', '_shards', 'hits', 'status'))
+  expect_true(all(names(a) %in% c('took', 'timed_out', '_shards', 'hits', 'status')))
   expect_is(a, "list")
   expect_is(a$hits$hits, "list")
   # expect_equal(

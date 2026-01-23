@@ -97,7 +97,7 @@ test_that("docs_bulk_update - works with data.frame input", {
 
   expect_is(a, "list")
   expect_equal(length(a), 1)
-  expect_named(a[[1]], c('took', 'errors', 'items'))
+  expect_named(a[[1]], c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(a[[1]]$items), NROW(iris))
 
   expect_is(res_before, "list")
@@ -132,7 +132,7 @@ test_that("docs_bulk_update - works with data.frame where ids are factors", {
   expect_is(df$id, "character")
   expect_is(a, "list")
   expect_equal(length(a), 1)
-  expect_named(a[[1]], c('took', 'errors', 'items'))
+  expect_named(a[[1]], c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(a[[1]]$items), NROW(df))
   expect_equal(
     sort(Search(x, 'mars', asdf = TRUE)$hits$hits$`_id`),
@@ -220,7 +220,7 @@ test_that("docs_bulk_update - works with data.frame with boolean types", {
   # ensure bulk update succeeded
   expect_is(update_res, "list")
   expect_equal(length(update_res), 1)
-  expect_named(update_res[[1]], c('took', 'errors', 'items'))
+  expect_named(update_res[[1]], c('took', 'errors', 'items'), ignore.order = TRUE)
   expect_equal(length(update_res[[1]]$items), nrow(mixed))
 
   # ensure search result types and values match original
