@@ -1,12 +1,12 @@
 ## Test environments
 
-* local macOS install, R 4.0.4 patched
+* local: R Under development (unstable) (2026-01-21 r89314) on aarch64-apple-darwin20 (ok)
 
-* ubuntu 16.04 (on github actions), R 4.0.4
+* Github actions: 
 
-* win-builder (devel and release)
+* Winbuilder 
 
-* macOS builder: r-devel-macosx-arm64|4.6.0|macosx|macOS 26.2 (25C56)|Mac mini|Apple M1||en_US.UTF-8|macOS 14.4|clang-1700.6.3.2|GNU Fortran (GCC) 14.2.0 (ok)
+* macOS builder: 
 
 
 ## R CMD check results
@@ -21,9 +21,7 @@
 
 ## Submission reason
 
-- Please could the package be unarchived
-
-- New maintainer, handed over by Scott Chamberlain from rOpenSci
+- New maintainer, handed over by Scott Chamberlain (see https://github.com/ropensci/nodbi/issues/48#issuecomment-3764330745) and agreed by rOpenSci
 
 - Updates to code, tests and documentation to pass R CMD check and enable CRAN submission
 

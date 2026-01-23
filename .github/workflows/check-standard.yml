@@ -1,0 +1,68 @@
+# 2026-01-14
+# https://github.com/r-lib/actions/tree/v2/examples
+# https://github.com/r-lib/actions#where-to-find-help
+
+on: [push, pull_request, workflow_dispatch]
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    continue-on-error: true
+
+    strategy:
+      matrix:
+        config:
+          - {os: macos-latest,   r: 'release', esv: 7, osv: '3', which: 'o'}
+          - {os: windows-latest, r: 'release', esv: 8, osv: '3', which: 'e'}
+          - {os: ubuntu-latest,  r: 'release', esv: 9, osv: '3', which: 'o'}
+          - {os: ubuntu-latest,  r: 'devel', esv: 9, osv: 'latest', which: 'e', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  r: 'oldrel-1', esv: 8, osv: '2', which: 'o'}
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+
+    steps:
+
+      # generic R workflow:
+
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: rcmdcheck
+          needs: check
+
+      # databases:
+
+      # https://github.com/ankane/setup-elasticsearch#setup-elasticsearch
+      - name: ElasticSearch
+        if: matrix.config.which == 'e'
+        uses: ankane/setup-elasticsearch@v1
+        with:
+          elasticsearch-version: ${{ matrix.config.esv }}
+
+      # https://gallery.ecr.aws/opensearchproject/opensearch
+      - name: OpenSearch
+        if: matrix.config.which == 'o'
+        uses: esmarkowski/opensearch-github-action@v1.0.0
+        with:
+          version: ${{ matrix.config.esv }}
+          security-disabled: true
+
+      # generic check:
+
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          upload-snapshots: true
+          build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
