@@ -1,3 +1,7 @@
+template:
+  bootstrap: 5
+url: https://rfhb.github.io/nodbi/
+
 reference:
   - title: "elastic"
     desc: >

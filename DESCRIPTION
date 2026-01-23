@@ -18,8 +18,8 @@ Authors@R: c(
     email = "myrmecocystus@gmail.com",
     comment = c(ORCID="0000-0003-1444-9135"))
     )
-URL: https://www.elastic.co/docs/solutions/search,
-    https://github.com/rfhb/elastic
+URL: https://rfhb.github.io/nodbi, 
+    https://www.elastic.co/docs/solutions/search
 BugReports: https://github.com/rfhb/elastic/issues
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
@@ -35,4 +35,3 @@ Suggests:
 RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: Databases
 X-schema.org-keywords: database, Elasticsearch, HTTP, API, search, NoSQL, Java, JSON, documents
-X-schema.org-isPartOf: https://ropensci.org
