@@ -18,7 +18,7 @@ jobs:
         config:
           - {os: macos-latest,   r: 'release', esv: 9, osv: 3, which: 'e'}
           - {os: windows-latest, r: 'release', esv: 8, osv: 3, which: 'e'}
-          - {os: ubuntu-latest,  r: 'release', esv: 8, osv: 3, which: 'e'}
+          - {os: ubuntu-latest,  r: 'release', esv: 9, osv: 3, which: 'e'}
           - {os: ubuntu-latest,  r: 'devel', esv: 9, osv: 'latest', which: 'o', http-user-agent: 'release'}
           - {os: ubuntu-latest,  r: 'oldrel-1', esv: 8, osv: '2.19.1', which: 'o'}
 
