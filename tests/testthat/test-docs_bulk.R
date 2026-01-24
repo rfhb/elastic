@@ -219,7 +219,6 @@ test_that("docs_bulk cleans up temp files", {
   aa <- docs_bulk(x, apply(iris, 1, as.list), index="iris",
     quiet = TRUE)
 
-  Sys.sleep(3L)
   expect_equal(length(list.files(curr_tempdir, pattern = "elastic__")), 0)
 })
 
