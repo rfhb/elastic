@@ -24,3 +24,4 @@ notes-v2.md
 ^revdep$
 vignettes
 private
+^CRAN-SUBMISSION$

@@ -1,28 +1,20 @@
 {
-  "@context": [
-    "http://purl.org/codemeta/2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "elastic",
-  "description": "Connect to 'Elasticsearch', a 'NoSQL' database built on the 'Java'\n    Virtual Machine. Interacts with the 'Elasticsearch' 'HTTP' API\n    (<https://www.elastic.co/elasticsearch/>), including functions for\n    setting connection details to 'Elasticsearch' instances, loading bulk data,\n    searching for documents with both 'HTTP' query variables and 'JSON' based body\n    requests. In addition, 'elastic' provides functions for interacting with API's\n    for 'indices', documents, nodes, clusters, an interface to the cat API, and\n    more.",
-  "name": "elastic: General Purpose Interface to 'Elasticsearch'",
-  "codeRepository": "https://github.com/ropensci/elastic",
-  "issueTracker": "https://github.com/ropensci/elastic/issues",
+  "description": "Connect to 'Elasticsearch' and 'OpenSearch', 'NoSQL' databases built on the 'Java' Virtual Machine and using the 'Apache' 'Lucene' library. Interacts with the 'Elasticsearch' 'HTTP' API' (<https://www.elastic.co/elasticsearch/>) and the 'OpenSearch' 'HTTP' 'API' (<https://opensearch.org/>). Includes functions for setting connection details to 'Elasticsearch' and 'OpenSearch' instances, loading bulk data, searching for documents with both 'HTTP' query variables and 'JSON' based body requests. In addition, 'elastic' provides functions for interacting with APIs for 'indices', documents, nodes, clusters, an interface to the cat API, and more.",
+  "name": "elastic: Database Interface to 'Elasticsearch' and 'OpenSearch'",
+  "relatedLink": "https://rfhb.github.io/elastic/",
+  "codeRepository": "https://github.com/rfhb/elastic",
+  "issueTracker": "https://github.com/rfhb/elastic/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.4 Patched (2021-02-17 r80031)",
-  "provider": {
-    "@id": "https://cran.r-project.org",
-    "@type": "Organization",
-    "name": "Central R Archive Network (CRAN)",
-    "url": "https://cran.r-project.org"
-  },
+  "runtimePlatform": "R Under development (unstable) (2026-01-21 r89314)",
   "author": [
     {
       "@type": "Person",
@@ -35,10 +27,10 @@
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Shivam",
-      "familyName": "Chowdhary",
-      "email": "lucidclarity755@gmail.com",
-      "@id": ""
+      "givenName": "Ralf",
+      "familyName": "Herold",
+      "email": "ralf.herold@mailbox.org",
+      "@id": "https://orcid.org/0000-0002-8148-6748"
     }
   ],
   "softwareSuggestions": [
@@ -55,13 +47,13 @@
       "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "curl",
       "name": "curl",
@@ -74,7 +66,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=curl"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "crul",
       "name": "crul",
@@ -87,11 +79,10 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=crul"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
-      "version": ">= 1.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -100,7 +91,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "R6",
       "name": "R6",
@@ -111,17 +102,14 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=R6"
-    }
-  ],
-  "releaseNotes": "https://github.com/ropensci/elastic/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/elastic/blob/master/README.md",
-  "fileSize": "5087.624KB",
+    },
+    "SystemRequirements": null
+  },
   "applicationCategory": "Databases",
-  "isPartOf": "https://ropensci.org",
-  "keywords": ["database", "Elasticsearch", "HTTP", "API", "search", "NoSQL", "Java", "JSON", "documents", "elasticsearch", "http", "database-wrapper", "json", "rstats", "r", "r-package", "data-science", "etl"],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
-  "developmentStatus": "https://www.repostatus.org/#active",
-  "relatedLink": ["https://docs.ropensci.org/elastic", "https://docs.ropensci.org/elastic/"]
+  "keywords": ["database", "Elasticsearch", "OpenSearch", "Lucene", "HTTP", "API", "search", "NoSQL", "Java", "JSON", "documents"],
+  "fileSize": "4888.814KB",
+  "releaseNotes": "https://github.com/rfhb/elastic/blob/main/NEWS.md",
+  "readme": "https://github.com/rfhb/elastic/blob/master/README.md",
+  "contIntegration": "https://github.com/ropensci-archive/elastic/actions?query=workflow%3AR-check",
+  "developmentStatus": ["https://www.repostatus.org/#unsupported", "https://www.repostatus.org/#active"]
 }

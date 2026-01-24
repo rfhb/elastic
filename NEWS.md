@@ -1,3 +1,17 @@
+elastic 1.2.2
+=============
+
+* new maintainer
+* fixed minor issues of some functions for recent OpenSearch and Elasticsearch versions
+* fixed some tests and CI testing (Elasticsearch 8 and 9, OpenSearch 2 and 3)
+
+
+elastic 1.2.1
+=============
+
+* not released
+
+
 elastic 1.2.0
 =============
 
