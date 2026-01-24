@@ -106,7 +106,7 @@ has_ids <- function(x) {
 
 close_conns <- function() {
   cons <- showConnections()
-  ours <- as.integer(rownames(cons)[grepl("/elastic__", cons[, "description"],
+  ours <- as.integer(rownames(cons)[grepl("elastic__", cons[, "description"],
                                           fixed = TRUE)])
   for (i in ours) {
     close(getConnection(i))
