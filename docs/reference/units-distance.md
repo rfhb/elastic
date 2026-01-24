@@ -25,4 +25,4 @@ interpreted as the length of the geohash.
 
 ## See also
 
-[units-time](https://rfhb.github.io/nodbi/reference/units-time.md)
+[units-time](https://rfhb.github.io/elastic/reference/units-time.md)

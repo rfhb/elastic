@@ -3,8 +3,9 @@
 ### elastic introduction
 
 - [elastic
-  introduction](https://rfhb.github.io/nodbi/articles/elastic.md):
+  introduction](https://rfhb.github.io/elastic/articles/elastic.md):
 
 ### elastic searching
 
-- [elastic searching](https://rfhb.github.io/nodbi/articles/search.md):
+- [elastic
+  searching](https://rfhb.github.io/elastic/articles/search.md):

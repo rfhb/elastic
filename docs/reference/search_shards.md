@@ -21,7 +21,7 @@ search_shards(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -41,8 +41,8 @@ search_shards(
   Controls a preference of which shard replicas to execute the search
   request on. By default, the operation is randomized between the shard
   replicas. See
-  [preference](https://rfhb.github.io/nodbi/reference/preference.md) for
-  a list of all acceptable values.
+  [preference](https://rfhb.github.io/elastic/reference/preference.md)
+  for a list of all acceptable values.
 
 - local:
 

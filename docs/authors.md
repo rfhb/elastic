@@ -14,12 +14,12 @@ Source:
 
 Chamberlain S (2026). *elastic: Database Interface to 'Elasticsearch'
 and 'OpenSearch'*. R package version 1.2.2,
-<https://rfhb.github.io/nodbi>.
+<https://rfhb.github.io/elastic/>.
 
     @Manual{,
       title = {elastic: Database Interface to 'Elasticsearch' and 'OpenSearch'},
       author = {Scott Chamberlain},
       year = {2026},
       note = {R package version 1.2.2},
-      url = {https://rfhb.github.io/nodbi},
+      url = {https://rfhb.github.io/elastic/},
     }

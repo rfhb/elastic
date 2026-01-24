@@ -8,9 +8,10 @@ package `elastic` by <https://ropensci.org/> was archived on CRAN on
 2026-01-14 at the original maintainer’s request.
 
 Since then, changes in this repository include updates to code and
-tests, see [NEWS.md](https://rfhb.github.io/nodbi/NEWS.md). This README
-file remains to be reviewed and will be updated once package `elastic`
-is available on CRAN again and the maintainer has been changed.
+tests, see [NEWS.md](https://rfhb.github.io/elastic/NEWS.md). This
+README file remains to be reviewed and will be updated once package
+`elastic` is available on CRAN again and the maintainer has been
+changed.
 
 To install package ‘elastic’ from this repository, run in R
 
@@ -27,7 +28,7 @@ devtools::install_github("rfhb/elastic")
 Unsupported](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported)
 
 This package has been archived on CRAN. The former README is now in
-[README-not.md](https://rfhb.github.io/nodbi/README-not.md).
+[README-not.md](https://rfhb.github.io/elastic/README-not.md).
 
 # 2025-12-01 README.md
 
@@ -165,10 +166,10 @@ commands in one step
 ## Initialization
 
 The function
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) is used
-before doing anything else to set the connection details to your remote
-or local elasticsearch store. The details created by
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) are
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) is
+used before doing anything else to set the connection details to your
+remote or local elasticsearch store. The details created by
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) are
 written to your options for the current session, and are used by
 `elastic` functions.
 
@@ -230,7 +231,7 @@ shakespeare <- type_remover(shakespeare)
 Then load the data into Elasticsearch:
 
 > make sure to create your connection object with
-> [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+> [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 ``` r
 
@@ -335,9 +336,10 @@ docs_mget(x, index = "plos", id = 1:2)
 ## Parsing
 
 You can optionally get back raw `json` from
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md),
-[`docs_get()`](https://rfhb.github.io/nodbi/reference/docs_get.md), and
-[`docs_mget()`](https://rfhb.github.io/nodbi/reference/docs_mget.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md),
+[`docs_get()`](https://rfhb.github.io/elastic/reference/docs_get.md),
+and
+[`docs_mget()`](https://rfhb.github.io/elastic/reference/docs_mget.md)
 setting parameter `raw=TRUE`.
 
 For example:
@@ -360,9 +362,9 @@ jsonlite::fromJSON(out)
   - `HEAD` requests don’t seem to work, not sure why
   - If you allow only `GET` requests, a number of functions that require
     `POST` requests obviously then won’t work. A big one is
-    [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md), but
-    you can use
-    [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+    [`Search()`](https://rfhb.github.io/elastic/reference/Search.md),
+    but you can use
+    [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
     to get around this, which uses `GET` instead of `POST`, but you
     can’t pass a more complicated query via the body
 

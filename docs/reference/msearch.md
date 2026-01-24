@@ -13,7 +13,7 @@ msearch(conn, x, raw = FALSE, asdf = FALSE, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - x:
 
@@ -38,13 +38,13 @@ msearch(conn, x, raw = FALSE, asdf = FALSE, ...)
 ## Details
 
 This function behaves similarly to
-[`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md) -
+[`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md) -
 performs searches based on queries defined in a file.
 
 ## See also
 
-[`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+[`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
 
 ## Examples
 

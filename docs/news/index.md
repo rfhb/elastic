@@ -18,17 +18,18 @@ CRAN release: 2021-03-16
 
 #### NEW FEATURES
 
-- [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) and
-  [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+- [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) and
+  [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
   gain new parameter `ignore_unavailable` to determine what happens if
   an index name does not exist
   ([\#273](https://github.com/rfhb/elastic/issues/273))
-- [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) gains
-  new parameter `ignore_version`. Internally, `elastic` sometimes checks
-  the Elasticsearch version that the user is connected to to determine
-  what to do. may be useful when it’s not possible to check the
-  Elasticsearch version, e.g., when its not possible to ping the root
-  route of the API ([\#275](https://github.com/rfhb/elastic/issues/275))
+- [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
+  gains new parameter `ignore_version`. Internally, `elastic` sometimes
+  checks the Elasticsearch version that the user is connected to to
+  determine what to do. may be useful when it’s not possible to check
+  the Elasticsearch version, e.g., when its not possible to ping the
+  root route of the API
+  ([\#275](https://github.com/rfhb/elastic/issues/275))
 - all docs bulk functions gain parameter `digits` that is passed down to
   `jsonlite::toJSON() used internally`. thus, `digits` will control the
   number of decimal digits used in the JSON the package creates to be
@@ -56,18 +57,18 @@ CRAN release: 2020-01-11
   ([\#251](https://github.com/rfhb/elastic/issues/251))
   ([\#270](https://github.com/rfhb/elastic/issues/270))
 - gains new method
-  [`index_shrink()`](https://rfhb.github.io/nodbi/reference/indices.md)
+  [`index_shrink()`](https://rfhb.github.io/elastic/reference/indices.md)
   for index shrinking
   ([\#192](https://github.com/rfhb/elastic/issues/192))
 - through fixing functionality in
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   to allow pipline attachments to work, all `docs_bulk` methods that do
   http requests (i.e, not prep fxns) gain the parameter `query` to pass
   through query parameters to the http request, including for example
   `pipeline`, `_source` etc.
   ([\#253](https://github.com/rfhb/elastic/issues/253))
-- [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) and
-  [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+- [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) and
+  [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
   gain the parameter `track_total_hits` (default: `TRUE`)
   ([\#262](https://github.com/rfhb/elastic/issues/262)) thanks
   [@orenov](https://github.com/orenov)
@@ -75,16 +76,16 @@ CRAN release: 2020-01-11
 #### MINOR IMPROVEMENTS
 
 - the `warn` parameter in
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) was
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md) was
   not being used across the entire package; now all methods should
   capture any warnings returned in the Elasticsearch HTTP API headers
   ([\#261](https://github.com/rfhb/elastic/issues/261))
 - clarify in docs that
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) does
-  not create a DBI like connection object
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
+  does not create a DBI like connection object
   ([\#265](https://github.com/rfhb/elastic/issues/265))
 - fix warning in
-  [`index_analyze()`](https://rfhb.github.io/nodbi/reference/indices.md)
+  [`index_analyze()`](https://rfhb.github.io/elastic/reference/indices.md)
   function where as is method [`I()`](https://rdrr.io/r/base/AsIs.html)
   should only be applied if the input parameter is not `NULL` - to avoid
   a warning ([\#269](https://github.com/rfhb/elastic/issues/269))
@@ -92,7 +93,7 @@ CRAN release: 2020-01-11
 #### BUG FIXES
 
 - fix to
-  [`docs_bulk_update()`](https://rfhb.github.io/nodbi/reference/docs_bulk_update.md):
+  [`docs_bulk_update()`](https://rfhb.github.io/elastic/reference/docs_bulk_update.md):
   subsetting data.frame’s was not working correctly when data.frame’s
   had only 1 column; fixed
   ([\#260](https://github.com/rfhb/elastic/issues/260))
@@ -110,7 +111,7 @@ CRAN release: 2019-04-11
 #### BREAKING CHANGE
 
 ([\#87](https://github.com/rfhb/elastic/issues/87)) The
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 function is essentially the same, with some changes, but now you pass
 the connection object to each function all. This indeed will break code.
 That’s why this is a major version bump.
@@ -129,16 +130,16 @@ connection object as the first thing.
 
 - gains new ingest functions `pipeline_create`, `pipeline_delete`,
   `pipeline_get`, `pipeline_simulate`, and
-  [`pipeline_attachment()`](https://rfhb.github.io/nodbi/reference/ingest.md)
+  [`pipeline_attachment()`](https://rfhb.github.io/elastic/reference/ingest.md)
   ([\#191](https://github.com/rfhb/elastic/issues/191))
   ([\#226](https://github.com/rfhb/elastic/issues/226))
 - gains new function
-  [`docs_delete_by_query()`](https://rfhb.github.io/nodbi/reference/docs_delete_by_query.md)
+  [`docs_delete_by_query()`](https://rfhb.github.io/elastic/reference/docs_delete_by_query.md)
   and
-  [`docs_update_by_query()`](https://rfhb.github.io/nodbi/reference/docs_update_by_query.md)
+  [`docs_update_by_query()`](https://rfhb.github.io/elastic/reference/docs_update_by_query.md)
   to delete or update multiple documents at once, respectively; and new
   function
-  [`reindex()`](https://rfhb.github.io/nodbi/reference/reindex.md) to
+  [`reindex()`](https://rfhb.github.io/elastic/reference/reindex.md) to
   reindex all documents from one index to another
   ([\#237](https://github.com/rfhb/elastic/issues/237))
   ([\#195](https://github.com/rfhb/elastic/issues/195))
@@ -148,32 +149,32 @@ connection object as the first thing.
 - recent versions of Elasticsearch are starting to include warnings in
   response headers for deprecations and other things. These can now be
   turned on or off with
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
   ([\#241](https://github.com/rfhb/elastic/issues/241))
 - gains new functions for the bulk API:
-  [`docs_bulk_create()`](https://rfhb.github.io/nodbi/reference/docs_bulk_create.md),
-  [`docs_bulk_delete()`](https://rfhb.github.io/nodbi/reference/docs_bulk_delete.md),
-  [`docs_bulk_index()`](https://rfhb.github.io/nodbi/reference/docs_bulk_index.md).
+  [`docs_bulk_create()`](https://rfhb.github.io/elastic/reference/docs_bulk_create.md),
+  [`docs_bulk_delete()`](https://rfhb.github.io/elastic/reference/docs_bulk_delete.md),
+  [`docs_bulk_index()`](https://rfhb.github.io/elastic/reference/docs_bulk_index.md).
   each of which are tailored to doing the operation in the function
   name: creating docs, deleting docs, or indexing docs
   ([\#183](https://github.com/rfhb/elastic/issues/183))
 - gains new function
-  [`type_remover()`](https://rfhb.github.io/nodbi/reference/type_remover.md)
+  [`type_remover()`](https://rfhb.github.io/elastic/reference/type_remover.md)
   as a utility function to help users remove types from their files to
   use for bulk loading; could be used on example files in this package
   or user supplied files
   ([\#180](https://github.com/rfhb/elastic/issues/180))
 - gains function
-  [`alias_rename()`](https://rfhb.github.io/nodbi/reference/alias.md) to
-  rename aliases
+  [`alias_rename()`](https://rfhb.github.io/elastic/reference/alias.md)
+  to rename aliases
 
 #### MINOR IMPROVEMENTS
 
-- fixed [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md)
+- fixed [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md)
   example that wasn’t working
   ([\#228](https://github.com/rfhb/elastic/issues/228))
 - rework
-  [`alias_create()`](https://rfhb.github.io/nodbi/reference/alias.md)
+  [`alias_create()`](https://rfhb.github.io/elastic/reference/alias.md)
   ([\#230](https://github.com/rfhb/elastic/issues/230))
 - move initialize Elasticsearch connection section of README higher up
   to emphasize it in the right place
@@ -189,16 +190,16 @@ connection object as the first thing.
   document ([\#246](https://github.com/rfhb/elastic/issues/246)) thanks
   [@Jensxy](https://github.com/Jensxy)
 - added more examples to
-  [`index_create()`](https://rfhb.github.io/nodbi/reference/indices.md)
+  [`index_create()`](https://rfhb.github.io/elastic/reference/indices.md)
   ([\#211](https://github.com/rfhb/elastic/issues/211))
 - add examples to
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) and
-  [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) and
+  [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
   docs of how to use profiles
   (<https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html>)
   ([\#194](https://github.com/rfhb/elastic/issues/194))
 - additional example added to
-  [`docs_bulk_prep()`](https://rfhb.github.io/nodbi/reference/docs_bulk_prep.md)
+  [`docs_bulk_prep()`](https://rfhb.github.io/elastic/reference/docs_bulk_prep.md)
   for doing a mix of actions (i.e., delete, create, etc.)
 - improved examples throughout package docs so that examples are more
   self-contained
@@ -207,7 +208,7 @@ connection object as the first thing.
 
 #### BUG FIXES
 
-- [`docs_bulk_update()`](https://rfhb.github.io/nodbi/reference/docs_bulk_update.md)
+- [`docs_bulk_update()`](https://rfhb.github.io/elastic/reference/docs_bulk_update.md)
   was not handling boolean values correctly. now fixed
   ([\#239](https://github.com/rfhb/elastic/issues/239))
   ([\#240](https://github.com/rfhb/elastic/issues/240)) thanks to
@@ -215,14 +216,15 @@ connection object as the first thing.
 
 #### DEPRECATED AND DEFUNCT
 
-- the [`info()`](https://rfhb.github.io/nodbi/reference/info-defunct.md)
+- the
+  [`info()`](https://rfhb.github.io/elastic/reference/info-defunct.md)
   method has been moved inside of the connection object. after calling
   `x = connect()` you can call `x$info()`
-- the [`ping()`](https://rfhb.github.io/nodbi/reference/ping.md) method
-  has been marked as deprecated; instead, call
-  [`ping()`](https://rfhb.github.io/nodbi/reference/ping.md) on the
+- the [`ping()`](https://rfhb.github.io/elastic/reference/ping.md)
+  method has been marked as deprecated; instead, call
+  [`ping()`](https://rfhb.github.io/elastic/reference/ping.md) on the
   connection object created by a call to
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 ## elastic 0.8.4
 
@@ -231,7 +233,7 @@ CRAN release: 2018-06-26
 #### NEW FEATURES
 
 - Gains new function
-  [`docs_bulk_update()`](https://rfhb.github.io/nodbi/reference/docs_bulk_update.md)
+  [`docs_bulk_update()`](https://rfhb.github.io/elastic/reference/docs_bulk_update.md)
   to do bulk updates to documents
   ([\#169](https://github.com/rfhb/elastic/issues/169))
 
@@ -244,40 +246,40 @@ CRAN release: 2018-06-26
 - using markdown docs
   ([\#209](https://github.com/rfhb/elastic/issues/209))
 - `id` is now optional in
-  [`docs_create()`](https://rfhb.github.io/nodbi/reference/docs_create.md) -
+  [`docs_create()`](https://rfhb.github.io/elastic/reference/docs_create.md) -
   if you don’t pass a document identifier Elasticsearch generates one
   for you ([\#216](https://github.com/rfhb/elastic/issues/216)) thanks
   [@jbrant](https://github.com/jbrant)
-- [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+- [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   gains new parameter `quiet` to optionally turn off the progress bar
   ([\#202](https://github.com/rfhb/elastic/issues/202))
 
 #### BUG FIXES
 
 - Fix to
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   for encoding in different locales
   ([\#223](https://github.com/rfhb/elastic/issues/223))
   ([\#224](https://github.com/rfhb/elastic/issues/224)) thanks
   [@Lchiffon](https://github.com/Lchiffon)
 - Fix for
-  [`index_get()`](https://rfhb.github.io/nodbi/reference/indices.md):
+  [`index_get()`](https://rfhb.github.io/elastic/reference/indices.md):
   you can now only pass in one value to the `features` parameter (one of
   settings, mappings, or aliases)
   ([\#218](https://github.com/rfhb/elastic/issues/218)) thanks
   [@happyshows](https://github.com/happyshows)
 - Fix to
-  [`index_create()`](https://rfhb.github.io/nodbi/reference/indices.md)
+  [`index_create()`](https://rfhb.github.io/elastic/reference/indices.md)
   to handle a list body, in addition to a JSON body
   ([\#214](https://github.com/rfhb/elastic/issues/214)) thanks
   [@emillykkejensen](https://github.com/emillykkejensen)
 - Fix to
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   for document IDs as factors
   ([\#212](https://github.com/rfhb/elastic/issues/212)) thanks
   [@AMR-KELEG](https://github.com/AMR-KELEG)
 - Temporary files created when using
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   (and taking up disk space) are cleaned up now (deleted), though if you
   pass in your own file paths you have to clean them up
   ([\#208](https://github.com/rfhb/elastic/issues/208)) thanks
@@ -291,19 +293,19 @@ CRAN release: 2017-09-14
 
 - changed to S3 setup, with methods for `character` and `list`.
 - first parameter of
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md) and
-  [`scroll_clear()`](https://rfhb.github.io/nodbi/reference/scroll.md)
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md) and
+  [`scroll_clear()`](https://rfhb.github.io/elastic/reference/scroll.md)
   is now `x`, should only matter if you specified the parameter name for
   the first parameter
 - `scroll` parameter in
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md)
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md)
   function is now `time_scroll`
 - Added `asdf` (for “as data.frame”) to
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md) to give
-  back a data.frame
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md) to
+  give back a data.frame
   ([\#163](https://github.com/rfhb/elastic/issues/163))
 - streaming option added to
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md), see
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md), see
   parameter `stream_opts` in the docs and examples
   ([\#160](https://github.com/rfhb/elastic/issues/160))
 - general docs improvements
@@ -314,9 +316,9 @@ CRAN release: 2017-09-14
 - New functions `tasks` and `tasks_cancel` for the tasks API
   ([\#145](https://github.com/rfhb/elastic/issues/145))
 - streaming option added to
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md), see
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md), see
   parameter `stream_opts` in the docs and examples. `scroll` parameter
-  in [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) is
+  in [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) is
   now `time_scroll`
   ([\#160](https://github.com/rfhb/elastic/issues/160))
 - New function `field_caps` (for field capabilities) - in ES v5.4 and
@@ -348,8 +350,8 @@ CRAN release: 2017-09-14
 - `suggest` is used through query DSL instead of a route, added example
   to `Search` ([\#102](https://github.com/rfhb/elastic/issues/102))
 - Now caching internal
-  [`ping()`](https://rfhb.github.io/nodbi/reference/ping.md) calls - so
-  that after the first one we used the cached version if called again
+  [`ping()`](https://rfhb.github.io/elastic/reference/ping.md) calls -
+  so that after the first one we used the cached version if called again
   within the same R session. Should help speed up some code with respect
   to http calls ([\#184](https://github.com/rfhb/elastic/issues/184))
   thanks [@henfiber](https://github.com/henfiber)
@@ -384,11 +386,11 @@ CRAN release: 2016-11-09
 #### NEW FEATURES
 
 - New function
-  [`docs_update()`](https://rfhb.github.io/nodbi/reference/docs_update.md)
+  [`docs_update()`](https://rfhb.github.io/elastic/reference/docs_update.md)
   to do partial document updates
   ([\#152](https://github.com/rfhb/elastic/issues/152))
 - New function
-  [`docs_bulk_prep()`](https://rfhb.github.io/nodbi/reference/docs_bulk_prep.md)
+  [`docs_bulk_prep()`](https://rfhb.github.io/elastic/reference/docs_bulk_prep.md)
   to prepare bulk format files that you can use to load into
   Elasticsearch with this package, on the command line, or in any other
   context (Python, Ruby, etc.)
@@ -407,14 +409,14 @@ CRAN release: 2016-11-09
 
 #### BUG FIXES
 
-- [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+- [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   was not working on single column data.frame’s. now is working.
   ([\#151](https://github.com/rfhb/elastic/issues/151)) thanks
   [@gustavobio](https://github.com/gustavobio)
 - `docs_*` functions now support ids with whitespace in them.
   ([\#155](https://github.com/rfhb/elastic/issues/155))
 - fixes to
-  [`docs_mget()`](https://rfhb.github.io/nodbi/reference/docs_mget.md)
+  [`docs_mget()`](https://rfhb.github.io/elastic/reference/docs_mget.md)
   to fix requesting certain fields back.
 
 ## elastic 0.7.6
@@ -424,7 +426,7 @@ CRAN release: 2016-08-25
 #### BUG FIXES
 
 - Allow usage of `es_base` parameter in
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) -
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md) -
   Now, instead of [`stop()`](https://rdrr.io/r/base/stop.html) on
   `es_base` usage, we use its value for `es_host`. Only pass in one or
   the other of `es_base` and `es_host`, not both.
@@ -438,12 +440,12 @@ CRAN release: 2016-08-18
 #### NEW FEATURES
 
 - package gains new set of functions for working with search templates:
-  [`Search_template()`](https://rfhb.github.io/nodbi/reference/Search_template.md),
-  [`Search_template_register()`](https://rfhb.github.io/nodbi/reference/Search_template.md),
-  [`Search_template_get()`](https://rfhb.github.io/nodbi/reference/Search_template.md),
-  [`Search_template_delete()`](https://rfhb.github.io/nodbi/reference/Search_template.md),
+  [`Search_template()`](https://rfhb.github.io/elastic/reference/Search_template.md),
+  [`Search_template_register()`](https://rfhb.github.io/elastic/reference/Search_template.md),
+  [`Search_template_get()`](https://rfhb.github.io/elastic/reference/Search_template.md),
+  [`Search_template_delete()`](https://rfhb.github.io/elastic/reference/Search_template.md),
   and
-  [`Search_template_render()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
+  [`Search_template_render()`](https://rfhb.github.io/elastic/reference/Search_template.md)
   ([\#101](https://github.com/rfhb/elastic/issues/101))
 
 #### MINOR IMPROVEMENTS
@@ -470,7 +472,7 @@ CRAN release: 2016-08-03
 #### MINOR IMPROVEMENTS
 
 - Changed
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   to always return a list, whether it’s given a file, data.frame, or
   list. For a file, a named list is returned, while for a data.frame or
   list an unnamed list is returned as many chunks can be processed and
@@ -484,8 +486,8 @@ CRAN release: 2016-08-03
 #### BUG FIXES
 
 - Fixed bug in
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
-  and [`msearch()`](https://rfhb.github.io/nodbi/reference/msearch.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
+  and [`msearch()`](https://rfhb.github.io/elastic/reference/msearch.md)
   in which base URL construction was not done correctly
   ([\#141](https://github.com/rfhb/elastic/issues/141)) thanks
   [@steeled](https://github.com/steeled) !
@@ -497,17 +499,17 @@ CRAN release: 2016-07-25
 #### NEW FEATURES
 
 - New function
-  [`scroll_clear()`](https://rfhb.github.io/nodbi/reference/scroll.md)
+  [`scroll_clear()`](https://rfhb.github.io/elastic/reference/scroll.md)
   to clear search contexts created when using
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md)
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md)
   ([\#140](https://github.com/rfhb/elastic/issues/140))
 - New function
-  [`ping()`](https://rfhb.github.io/nodbi/reference/ping.md) to ping an
-  Elasticsearch server to see if it is up
+  [`ping()`](https://rfhb.github.io/elastic/reference/ping.md) to ping
+  an Elasticsearch server to see if it is up
   ([\#138](https://github.com/rfhb/elastic/issues/138))
-- [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) gains
-  new parameter `es_path` to specify a context path, e.g., the `bar` in
-  `http://foo.com/bar`
+- [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
+  gains new parameter `es_path` to specify a context path, e.g., the
+  `bar` in `http://foo.com/bar`
   ([\#137](https://github.com/rfhb/elastic/issues/137))
 
 #### MINOR IMPROVEMENTS
@@ -517,22 +519,22 @@ CRAN release: 2016-07-25
   calls to parse to plain text and UTF-8 encoding
   ([\#118](https://github.com/rfhb/elastic/issues/118))
 - Added note to docs that when using
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md) all
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md) all
   scores are zero b/c scores are not calculated/tracked
   ([\#127](https://github.com/rfhb/elastic/issues/127))
-- [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) no
+- [`connect()`](https://rfhb.github.io/elastic/reference/connect.md) no
   longer pings the ES server when run, but can now be done separately
-  with [`ping()`](https://rfhb.github.io/nodbi/reference/ping.md)
+  with [`ping()`](https://rfhb.github.io/elastic/reference/ping.md)
   ([\#139](https://github.com/rfhb/elastic/issues/139))
 - Let http request headers be sent with all requests - set with
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
   ([\#129](https://github.com/rfhb/elastic/issues/129))
 - Added `transport_schema` param to
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) to
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md) to
   specify http or https
   ([\#130](https://github.com/rfhb/elastic/issues/130))
 - By default use UUIDs with bulk API with
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   ([\#125](https://github.com/rfhb/elastic/issues/125))
 
 #### BUG FIXES
@@ -540,7 +542,7 @@ CRAN release: 2016-07-25
 - Fix to fail well on empty body sent by user
   ([\#119](https://github.com/rfhb/elastic/issues/119))
 - Fix to
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   function so that user supplied `doc_ids` are not changed at all now
   ([\#123](https://github.com/rfhb/elastic/issues/123))
 
@@ -558,52 +560,52 @@ problems with older versions of ES, so we can improve compatibility.
 #### NEW FEATURES
 
 - Added
-  [`index_settings_update()`](https://rfhb.github.io/nodbi/reference/indices.md)
+  [`index_settings_update()`](https://rfhb.github.io/elastic/reference/indices.md)
   function to allow updating index settings
   ([\#66](https://github.com/rfhb/elastic/issues/66))
 - All errors from the Elasticsearch server are now given back as `JSON`.
   Error parsing has thus changed in `elastic`. We now have two levels of
   error behavior: ‘simple’ and ‘complete’. These can be set in
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) with
-  the `errors` parameter. Simple errors give back often just that there
-  was an error, sometimes a message with explanation is supplied.
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
+  with the `errors` parameter. Simple errors give back often just that
+  there was an error, sometimes a message with explanation is supplied.
   Complete errors give more explanation and even the ES stack trace if
   supplied in the ES error response
   ([\#92](https://github.com/rfhb/elastic/issues/92))
   ([\#93](https://github.com/rfhb/elastic/issues/93))
 - New function
-  [`msearch()`](https://rfhb.github.io/nodbi/reference/msearch.md) to do
-  multi-searches. This works by defining queries in a file, much like is
-  done for a file to be used in bulk loading.
+  [`msearch()`](https://rfhb.github.io/elastic/reference/msearch.md) to
+  do multi-searches. This works by defining queries in a file, much like
+  is done for a file to be used in bulk loading.
   ([\#103](https://github.com/rfhb/elastic/issues/103))
 - New function
-  [`validate()`](https://rfhb.github.io/nodbi/reference/validate.md) to
-  validate a search.
+  [`validate()`](https://rfhb.github.io/elastic/reference/validate.md)
+  to validate a search.
   ([\#105](https://github.com/rfhb/elastic/issues/105))
 - New suite of functions to work with the percolator service:
-  [`percolate_count()`](https://rfhb.github.io/nodbi/reference/percolate.md),
-  [`percolate_delete()`](https://rfhb.github.io/nodbi/reference/percolate.md),
-  [`percolate_list()`](https://rfhb.github.io/nodbi/reference/percolate.md),
-  [`percolate_match()`](https://rfhb.github.io/nodbi/reference/percolate.md),
-  [`percolate_register()`](https://rfhb.github.io/nodbi/reference/percolate.md).
+  [`percolate_count()`](https://rfhb.github.io/elastic/reference/percolate.md),
+  [`percolate_delete()`](https://rfhb.github.io/elastic/reference/percolate.md),
+  [`percolate_list()`](https://rfhb.github.io/elastic/reference/percolate.md),
+  [`percolate_match()`](https://rfhb.github.io/elastic/reference/percolate.md),
+  [`percolate_register()`](https://rfhb.github.io/elastic/reference/percolate.md).
   The percolator works by first storing queries into an index and then
   you define documents in order to retrieve these queries.
   ([\#106](https://github.com/rfhb/elastic/issues/106))
 - New function
-  [`field_stats()`](https://rfhb.github.io/nodbi/reference/field_stats.md)
+  [`field_stats()`](https://rfhb.github.io/elastic/reference/field_stats.md)
   to find statistical properties of a field without executing a search
   ([\#107](https://github.com/rfhb/elastic/issues/107))
 - Added a Code of Conduct
 - New function
-  [`cat_nodeattrs()`](https://rfhb.github.io/nodbi/reference/cat.md)
+  [`cat_nodeattrs()`](https://rfhb.github.io/elastic/reference/cat.md)
 - New function
-  [`index_recreate()`](https://rfhb.github.io/nodbi/reference/indices.md)
+  [`index_recreate()`](https://rfhb.github.io/elastic/reference/indices.md)
   as a convenience function that detects if an index exists, and if so,
   deletes it first, then creates it again.
 
 #### MINOR IMPROVEMENTS
 
-- [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+- [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   now supports passing in document ids (to the `_id` field) via the
   parameter `doc_ids` for each input data.frame or list & supports using
   ids already in data.frame’s or lists
@@ -617,30 +619,31 @@ problems with older versions of ES, so we can improve compatibility.
   `_search` with `size=0` and `terminate_after=1` instead.
   ([\#104](https://github.com/rfhb/elastic/issues/104))
 - New parameter `lenient` in
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) and
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) and
   `Search_uri` to allow format based failures to be ignored, or not
   ignored.
 - Better error handling for
-  [`docs_get()`](https://rfhb.github.io/nodbi/reference/docs_get.md)
+  [`docs_get()`](https://rfhb.github.io/elastic/reference/docs_get.md)
   when gthe document isn’t found
 
 #### BUG FIXES
 
 - Fixed problems in
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   in the use case where users use the function in a for loop, for
   example, and indexing started over, replacing documents with the same
   id ([\#83](https://github.com/rfhb/elastic/issues/83))
-- Fixed bug in [`cat_()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  functions in which they sometimes failed when `parse=TRUE`
+- Fixed bug in
+  [`cat_()`](https://rfhb.github.io/elastic/reference/cat.md) functions
+  in which they sometimes failed when `parse=TRUE`
   ([\#88](https://github.com/rfhb/elastic/issues/88))
 - Fixed bug in
-  [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+  [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   in which user supplied document IDs weren’t being passed correctly
   internally ([\#90](https://github.com/rfhb/elastic/issues/90))
 - Fixed bug in
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) and
-  [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) and
+  [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
   where multiple indices weren’t supported, whereas they should have
   been - supported now
   ([\#115](https://github.com/rfhb/elastic/issues/115))
@@ -648,11 +651,11 @@ problems with older versions of ES, so we can improve compatibility.
 #### DEFUNCT
 
 - The following functions are now defunct:
-  [`mlt()`](https://rfhb.github.io/nodbi/reference/mlt-defunct.md),
-  [`nodes_shutdown()`](https://rfhb.github.io/nodbi/reference/nodes-defunct.md),
-  [`index_status()`](https://rfhb.github.io/nodbi/reference/index_status-defunct.md),
+  [`mlt()`](https://rfhb.github.io/elastic/reference/mlt-defunct.md),
+  [`nodes_shutdown()`](https://rfhb.github.io/elastic/reference/nodes-defunct.md),
+  [`index_status()`](https://rfhb.github.io/elastic/reference/index_status-defunct.md),
   and
-  [`mapping_delete()`](https://rfhb.github.io/nodbi/reference/mapping_delete-defunct.md)
+  [`mapping_delete()`](https://rfhb.github.io/elastic/reference/mapping_delete-defunct.md)
   ([\#94](https://github.com/rfhb/elastic/issues/94))
   ([\#98](https://github.com/rfhb/elastic/issues/98))
   ([\#99](https://github.com/rfhb/elastic/issues/99))
@@ -665,7 +668,7 @@ CRAN release: 2015-07-03
 #### NEW FEATURES
 
 - Added
-  [`index_settings_update()`](https://rfhb.github.io/nodbi/reference/indices.md)
+  [`index_settings_update()`](https://rfhb.github.io/elastic/reference/indices.md)
   function to allow updating index settings
   ([\#66](https://github.com/rfhb/elastic/issues/66))
 
@@ -688,16 +691,16 @@ CRAN release: 2015-05-01
 #### NEW FEATURES
 
 - New function
-  [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+  [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
   where the search is defined entirely in the URL itself. Especially
   useful for cases in which `POST` requests are forbidden, e.g, on a
   server that prevents `POST` requests (which the function
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) uses).
-  ([\#58](https://github.com/rfhb/elastic/issues/58))
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
+  uses). ([\#58](https://github.com/rfhb/elastic/issues/58))
 - New function
-  [`nodes_shutdown()`](https://rfhb.github.io/nodbi/reference/nodes-defunct.md)
+  [`nodes_shutdown()`](https://rfhb.github.io/elastic/reference/nodes-defunct.md)
   ([\#23](https://github.com/rfhb/elastic/issues/23))
-- [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+- [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
   gains ability to push data into Elasticsearch via the bulk http API
   from data.frame or list objects. Previously, this function only would
   accept a file formatted correctly. In addition, gains new parameters:
@@ -715,7 +718,7 @@ CRAN release: 2015-05-01
   data.frame or not
 - `cat_*()` functions can now optionally capture data returned in to a
   data.frame ([\#64](https://github.com/rfhb/elastic/issues/64))
-- [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) gains
+- [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) gains
   new parameter `search_path` to set the path that is used for
   searching. The default is `_search`, but sometimes in your
   configuration you’ve setup so that you don’t need that path, or it’s a
@@ -724,24 +727,24 @@ CRAN release: 2015-05-01
 #### BUG FIXES
 
 - In
-  [`docs_mget()`](https://rfhb.github.io/nodbi/reference/docs_mget.md)
+  [`docs_mget()`](https://rfhb.github.io/elastic/reference/docs_mget.md)
   added internal checker to make sure user passes in the right
   combination of `index`, `type`, and `id` parameters, or `index` and
   `type_id`, or just `index_type_id`
   ([\#42](https://github.com/rfhb/elastic/issues/42))
 - Made `index`, `type`, and `id` parameters required in the function
-  [`docs_get()`](https://rfhb.github.io/nodbi/reference/docs_get.md)
+  [`docs_get()`](https://rfhb.github.io/elastic/reference/docs_get.md)
   ([\#43](https://github.com/rfhb/elastic/issues/43))
 - Fixed bug in
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md) to
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md) to
   allow long `scroll_id`’s by passing scroll ids in the body instead of
   as query parameter ([\#44](https://github.com/rfhb/elastic/issues/44))
-- In [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+- In [`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
   function, in the `error_parser()` error parser function, check to see
   if `error` element returned in response body from Elasticsearch, and
   if so, parse error, if not, pass on body (likely empty)
   ([\#45](https://github.com/rfhb/elastic/issues/45))
-- In [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+- In [`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
   function, added helper function to check size and from parameter
   values passed in to make sure they are numbers.
   ([\#46](https://github.com/rfhb/elastic/issues/46))
@@ -760,22 +763,22 @@ First version to go to CRAN.
 #### NEW FEATURES
 
 - Added a function
-  [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md) and a
+  [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md) and a
   `scroll` parameter to the
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
   function ([\#36](https://github.com/rfhb/elastic/issues/36))
 - Added the function
-  [`explain()`](https://rfhb.github.io/nodbi/reference/explain.md) to
+  [`explain()`](https://rfhb.github.io/elastic/reference/explain.md) to
   easily get at explanation of search results.
 - Added a help file added to help explain timem and distance units. See
   `?units-time` and `?units=distance`
 - New help file added to list and explain the various search functions.
   See
-  [`?searchapis`](https://rfhb.github.io/nodbi/reference/searchapis.md)
+  [`?searchapis`](https://rfhb.github.io/elastic/reference/searchapis.md)
 - New function
-  [`tokenizer_set()`](https://rfhb.github.io/nodbi/reference/tokenizer_set.md)
+  [`tokenizer_set()`](https://rfhb.github.io/elastic/reference/tokenizer_set.md)
   to set tokenizers
-- [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) run
+- [`connect()`](https://rfhb.github.io/elastic/reference/connect.md) run
   on package load to set default base url of `localhost` and port of
   `9200` - you can override this by running that fxn yourself, or
   storing `es_base`, `es_port`, etc. in your `.Rprofile` file.
@@ -787,14 +790,14 @@ First version to go to CRAN.
 - Added vignettes for an intro and for search details and examples
   ([\#2](https://github.com/rfhb/elastic/issues/2))
 - `es_search()` changed to
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md).
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md).
 - More datasets included in the package for bulk data load
   ([\#16](https://github.com/rfhb/elastic/issues/16))
 - All examples wrapped in `\dontrun` instead of `\donttest` so they
   don’t fail on CRAN checks.
 - `es_search_body()` removed - body based queries using the query DSL
   moved to the
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
   function, passed into the `body` parameter.
 
 ## elastic 0.2.0
@@ -812,14 +815,14 @@ First version to go to CRAN.
   `cluster`, `alias`, `cdbriver`, `connect`, `documents`, `mapping`,
   `nodes`, and `search`.
 - Note that the function `es_cat()` was changed to
-  [`cat_()`](https://rfhb.github.io/nodbi/reference/cat.md) - we avoided
-  [`cat()`](https://rfhb.github.io/nodbi/reference/cat.md) because as
-  you know there is already a widely used function in base R, see
-  [`base::cat()`](https://rdrr.io/r/base/cat.html).
+  [`cat_()`](https://rfhb.github.io/elastic/reference/cat.md) - we
+  avoided [`cat()`](https://rfhb.github.io/elastic/reference/cat.md)
+  because as you know there is already a widely used function in base R,
+  see [`base::cat()`](https://rdrr.io/r/base/cat.html).
 - We changed `cat` functions to separate functions for each command,
   instead of passing the command in as an argument. For example,
   `cat('aliases')` becomes
-  [`cat_aliases()`](https://rfhb.github.io/nodbi/reference/cat.md).
+  [`cat_aliases()`](https://rfhb.github.io/elastic/reference/cat.md).
 - The `es_` prefix remains only for `es_search()`, as we have to avoid
   conflict with [`base::search()`](https://rdrr.io/r/base/search.html).
 - Removed `assertthat` package import, using

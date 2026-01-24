@@ -44,7 +44,7 @@ percolate_delete(conn, index, id, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -102,7 +102,7 @@ percolate_delete(conn, index, id, ...)
 - ...:
 
   Curl options. Or in `percolate_list` function, further args passed on
-  to [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+  to [`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
 
 ## Details
 

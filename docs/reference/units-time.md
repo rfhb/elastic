@@ -19,4 +19,4 @@ are:
 
 ## See also
 
-[units-distance](https://rfhb.github.io/nodbi/reference/units-distance.md)
+[units-distance](https://rfhb.github.io/elastic/reference/units-distance.md)

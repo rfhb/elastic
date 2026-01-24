@@ -13,7 +13,7 @@ validate(conn, index, type = NULL, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -26,11 +26,11 @@ validate(conn, index, type = NULL, ...)
 - ...:
 
   Additional args passed on to
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
 
 ## See also
 
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
 
 ## Examples
 

@@ -44,7 +44,7 @@ Search(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -193,13 +193,13 @@ Search(
 
   (character) Specify how long a consistent view of the index should be
   maintained for scrolled search, e.g., "30s", "1m". See
-  [units-time](https://rfhb.github.io/nodbi/reference/units-time.md)
+  [units-time](https://rfhb.github.io/elastic/reference/units-time.md)
 
 - search_path:
 
   (character) The path to use for searching. Default to `_search`, but
   in some cases you may already have that in the base url set using
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md), in
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md), in
   which case you can set this to `NULL`
 
 - stream_opts:
@@ -253,12 +253,12 @@ results. e.g.
 
 ## See also
 
-[`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
-[`Search_template()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
-[`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md)
-[`count()`](https://rfhb.github.io/nodbi/reference/count.md)
-[`validate()`](https://rfhb.github.io/nodbi/reference/validate.md)
-[`fielddata()`](https://rfhb.github.io/nodbi/reference/fielddata.md)
+[`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
+[`Search_template()`](https://rfhb.github.io/elastic/reference/Search_template.md)
+[`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md)
+[`count()`](https://rfhb.github.io/elastic/reference/count.md)
+[`validate()`](https://rfhb.github.io/elastic/reference/validate.md)
+[`fielddata()`](https://rfhb.github.io/elastic/reference/fielddata.md)
 
 ## Examples
 

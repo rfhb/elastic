@@ -21,7 +21,7 @@ Search_template_render(conn, body = list(), raw = FALSE, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - body:
 
@@ -68,8 +68,8 @@ the template key, like `"file": "templateName", ...`
 
 ## See also
 
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md),
-[`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md),
+[`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
 
 ## Examples
 

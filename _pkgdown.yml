@@ -1,6 +1,6 @@
 template:
   bootstrap: 5
-url: https://rfhb.github.io/nodbi/
+url: https://rfhb.github.io/elastic/
 
 reference:
   - title: "elastic"

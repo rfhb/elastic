@@ -90,11 +90,11 @@ make sure to move them outside of the temp directory.
 ## See also
 
 Other bulk-functions:
-[`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md),
-[`docs_bulk_create()`](https://rfhb.github.io/nodbi/reference/docs_bulk_create.md),
-[`docs_bulk_delete()`](https://rfhb.github.io/nodbi/reference/docs_bulk_delete.md),
-[`docs_bulk_index()`](https://rfhb.github.io/nodbi/reference/docs_bulk_index.md),
-[`docs_bulk_update()`](https://rfhb.github.io/nodbi/reference/docs_bulk_update.md)
+[`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md),
+[`docs_bulk_create()`](https://rfhb.github.io/elastic/reference/docs_bulk_create.md),
+[`docs_bulk_delete()`](https://rfhb.github.io/elastic/reference/docs_bulk_delete.md),
+[`docs_bulk_index()`](https://rfhb.github.io/elastic/reference/docs_bulk_index.md),
+[`docs_bulk_update()`](https://rfhb.github.io/elastic/reference/docs_bulk_update.md)
 
 ## Examples
 

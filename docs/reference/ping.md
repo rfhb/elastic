@@ -13,7 +13,7 @@ ping(conn, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - ...:
 
@@ -22,7 +22,7 @@ ping(conn, ...)
 
 ## See also
 
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 ## Examples
 

@@ -13,7 +13,7 @@ count(conn, index = NULL, type = NULL, callopts = list(), verbose = TRUE, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -42,8 +42,8 @@ See docs for the count API here
 <https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-count>
 
 You can also get a count of documents using
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) or
-[`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md) or
+[`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
 and setting `size = 0`
 
 ## Examples

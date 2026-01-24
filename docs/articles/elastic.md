@@ -75,10 +75,10 @@ commands in one step
 ## Initialize connection
 
 The function
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) is used
-before doing anything else to set the connection details to your remote
-or local elasticsearch store. The details created by
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) are
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) is
+used before doing anything else to set the connection details to your
+remote or local elasticsearch store. The details created by
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) are
 written to your options for the current session, and are used by
 `elastic` functions.
 
@@ -408,9 +408,10 @@ docs_mget(x, index_type_id=list(c("plos","article",1), c("gbif","record",1)))$do
 ## Raw JSON data
 
 You can optionally get back raw `json` from
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md),
-[`docs_get()`](https://rfhb.github.io/nodbi/reference/docs_get.md), and
-[`docs_mget()`](https://rfhb.github.io/nodbi/reference/docs_mget.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md),
+[`docs_get()`](https://rfhb.github.io/elastic/reference/docs_get.md),
+and
+[`docs_mget()`](https://rfhb.github.io/elastic/reference/docs_mget.md)
 setting parameter `raw=TRUE`.
 
 For example:

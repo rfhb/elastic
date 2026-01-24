@@ -39,20 +39,20 @@ For help on other platforms, see
 **Initialization**
 
 The function
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) is used
-before doing anything else to set the connection details to your remote
-or local elasticsearch store. The details created by
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) are
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) is
+used before doing anything else to set the connection details to your
+remote or local elasticsearch store. The details created by
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) are
 written to your options for the current session, and are used by
 `elastic` functions.
 
 **Search**
 
 The main way to search Elasticsearch is via the
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) function.
-E.g.:
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
+function. E.g.:
 
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
 
 ## Security
 
@@ -84,8 +84,8 @@ As of Elasticsearch v2:
 - Queries and filters have been merged - all filter clauses are now
   query clauses. Instead, query clauses can now be used in query context
   or in filter context. See examples in
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) or
-  [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) or
+  [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
 
 ## index names
 
@@ -97,7 +97,7 @@ and whitespace are also illegal.
 
 Useful links:
 
-- <https://rfhb.github.io/nodbi>
+- <https://rfhb.github.io/elastic/>
 
 - <https://www.elastic.co/docs/solutions/search>
 

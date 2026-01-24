@@ -93,7 +93,7 @@ also illegal.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://rfhb.github.io/nodbi}
+  \item \url{https://rfhb.github.io/elastic/}
   \item \url{https://www.elastic.co/docs/solutions/search}
   \item Report bugs at \url{https://github.com/rfhb/elastic/issues}
 }

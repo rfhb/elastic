@@ -33,7 +33,7 @@ termvectors(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -132,7 +132,7 @@ vectors are not available until the next refresh.
 
 ## See also
 
-[`mtermvectors()`](https://rfhb.github.io/nodbi/reference/mtermvectors.md)
+[`mtermvectors()`](https://rfhb.github.io/elastic/reference/mtermvectors.md)
 
 ## Examples
 

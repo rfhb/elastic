@@ -23,7 +23,7 @@ scroll_clear(conn, x = NULL, all = FALSE, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - x:
 
@@ -34,7 +34,7 @@ scroll_clear(conn, x = NULL, all = FALSE, ...)
 
   (character) Specify how long a consistent view of the index should be
   maintained for scrolled search, e.g., "30s", "1m". See
-  [units-time](https://rfhb.github.io/nodbi/reference/units-time.md).
+  [units-time](https://rfhb.github.io/elastic/reference/units-time.md).
 
 - raw:
 
@@ -70,8 +70,8 @@ scroll_clear(conn, x = NULL, all = FALSE, ...)
 ## Value
 
 `scroll()` returns a list, identical to what
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) returns.
-With attribute `scroll` that is the scroll value set via the
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
+returns. With attribute `scroll` that is the scroll value set via the
 `time_scroll` parameter
 
 `scroll_clear()` returns a boolean (`TRUE` on success)
@@ -86,12 +86,12 @@ scroll request. Dems da rules.
 Inputs to `scroll()` can be one of:
 
 - list - This usually will be the output of
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md), but
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md), but
   you could in theory make a list yourself with the appropriate elements
 
 - character - A scroll ID - this is typically the scroll id output from
   a call to
-  [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md),
+  [`Search()`](https://rfhb.github.io/elastic/reference/Search.md),
   accessed like `` res$`_scroll_id` ``
 
 All other classes passed to `scroll()` will fail with message
@@ -100,11 +100,12 @@ Lists passed to `scroll()` without a `_scroll_id` element will trigger
 an error.
 
 From lists output form
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) there
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md) there
 should be an attribute ("scroll") that is the `scroll` value set in the
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) request -
-if that attribute is missing from the list, we'll attempt to use the
-`time_scroll` parameter value set in the `scroll()` function call
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
+request - if that attribute is missing from the list, we'll attempt to
+use the `time_scroll` parameter value set in the `scroll()` function
+call
 
 The output of `scroll()` has the scroll time value as an attribute so
 the output can be passed back into `scroll()` to continue.
@@ -130,7 +131,7 @@ will contain the aggregations results.
 
 ## See also
 
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
 
 ## Examples
 

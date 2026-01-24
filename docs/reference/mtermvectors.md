@@ -33,7 +33,7 @@ mtermvectors(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -128,7 +128,7 @@ index, type and id.
 
 ## See also
 
-[`termvectors()`](https://rfhb.github.io/nodbi/reference/termvectors.md)
+[`termvectors()`](https://rfhb.github.io/elastic/reference/termvectors.md)
 
 ## Examples
 

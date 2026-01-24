@@ -6,15 +6,15 @@ Elasticsearch documents functions.
 
 There are five functions to work directly with documents.
 
-- [`docs_get()`](https://rfhb.github.io/nodbi/reference/docs_get.md)
+- [`docs_get()`](https://rfhb.github.io/elastic/reference/docs_get.md)
 
-- [`docs_mget()`](https://rfhb.github.io/nodbi/reference/docs_mget.md)
+- [`docs_mget()`](https://rfhb.github.io/elastic/reference/docs_mget.md)
 
-- [`docs_create()`](https://rfhb.github.io/nodbi/reference/docs_create.md)
+- [`docs_create()`](https://rfhb.github.io/elastic/reference/docs_create.md)
 
-- [`docs_delete()`](https://rfhb.github.io/nodbi/reference/docs_delete.md)
+- [`docs_delete()`](https://rfhb.github.io/elastic/reference/docs_delete.md)
 
-- [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+- [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
 
 ## Examples
 

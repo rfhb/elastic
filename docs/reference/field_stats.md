@@ -22,7 +22,7 @@ field_stats(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - fields:
 
@@ -79,7 +79,7 @@ Deprecated in Elasticsearch versions equal to/greater than 5.4.0
 
 ## See also
 
-[`field_caps()`](https://rfhb.github.io/nodbi/reference/field_caps.md)
+[`field_caps()`](https://rfhb.github.io/elastic/reference/field_caps.md)
 
 ## Examples
 

@@ -8,9 +8,10 @@ package `elastic` by <https://ropensci.org/> was archived on CRAN on
 2026-01-14 at the original maintainer’s request.
 
 Since then, changes in this repository include updates to code and
-tests, see [NEWS.md](https://rfhb.github.io/nodbi/NEWS.md). This README
-file remains to be reviewed and will be updated once package `elastic`
-is available on CRAN again and the maintainer has been changed.
+tests, see [NEWS.md](https://rfhb.github.io/elastic/NEWS.md). This
+README file remains to be reviewed and will be updated once package
+`elastic` is available on CRAN again and the maintainer has been
+changed.
 
 To install package ‘elastic’ from this repository, run in R
 
@@ -27,7 +28,7 @@ devtools::install_github("rfhb/elastic")
 Unsupported](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported)
 
 This package has been archived on CRAN. The former README is now in
-[README-not.md](https://rfhb.github.io/nodbi/README-not.md).
+[README-not.md](https://rfhb.github.io/elastic/README-not.md).
 
 # 2025-12-01 README.md
 
@@ -165,10 +166,10 @@ commands in one step
 ## Initialization
 
 The function
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) is used
-before doing anything else to set the connection details to your remote
-or local elasticsearch store. The details created by
-[`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) are
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) is
+used before doing anything else to set the connection details to your
+remote or local elasticsearch store. The details created by
+[`connect()`](https://rfhb.github.io/elastic/reference/connect.md) are
 written to your options for the current session, and are used by
 `elastic` functions.
 
@@ -230,7 +231,7 @@ shakespeare <- type_remover(shakespeare)
 Then load the data into Elasticsearch:
 
 > make sure to create your connection object with
-> [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+> [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 ``` r
 
@@ -335,9 +336,10 @@ docs_mget(x, index = "plos", id = 1:2)
 ## Parsing
 
 You can optionally get back raw `json` from
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md),
-[`docs_get()`](https://rfhb.github.io/nodbi/reference/docs_get.md), and
-[`docs_mget()`](https://rfhb.github.io/nodbi/reference/docs_mget.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md),
+[`docs_get()`](https://rfhb.github.io/elastic/reference/docs_get.md),
+and
+[`docs_mget()`](https://rfhb.github.io/elastic/reference/docs_mget.md)
 setting parameter `raw=TRUE`.
 
 For example:
@@ -360,9 +362,9 @@ jsonlite::fromJSON(out)
   - `HEAD` requests don’t seem to work, not sure why
   - If you allow only `GET` requests, a number of functions that require
     `POST` requests obviously then won’t work. A big one is
-    [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md), but
-    you can use
-    [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+    [`Search()`](https://rfhb.github.io/elastic/reference/Search.md),
+    but you can use
+    [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
     to get around this, which uses `GET` instead of `POST`, but you
     can’t pass a more complicated query via the body
 
@@ -388,210 +390,210 @@ A screencast introducing the package:
 
 High level overview of package
 
-- [`elastic`](https://rfhb.github.io/nodbi/reference/elastic.md)
-  [`elastic-package`](https://rfhb.github.io/nodbi/reference/elastic.md)
+- [`elastic`](https://rfhb.github.io/elastic/reference/elastic.md)
+  [`elastic-package`](https://rfhb.github.io/elastic/reference/elastic.md)
   : elastic
-- [`elastic-defunct`](https://rfhb.github.io/nodbi/reference/elastic-defunct.md)
+- [`elastic-defunct`](https://rfhb.github.io/elastic/reference/elastic-defunct.md)
   : Defunct functions in elastic
 
 ## Connect
 
-- [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md) : Set
-  connection details to an Elasticsearch engine.
-- [`ping()`](https://rfhb.github.io/nodbi/reference/ping.md) : Ping an
+- [`connect()`](https://rfhb.github.io/elastic/reference/connect.md) :
+  Set connection details to an Elasticsearch engine.
+- [`ping()`](https://rfhb.github.io/elastic/reference/ping.md) : Ping an
   Elasticsearch server.
 
 ## Cat
 
-- [`cat_()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_aliases()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_allocation()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_count()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_segments()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_health()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_indices()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_master()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_nodes()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_nodeattrs()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_pending_tasks()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_plugins()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_recovery()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_thread_pool()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_shards()`](https://rfhb.github.io/nodbi/reference/cat.md)
-  [`cat_fielddata()`](https://rfhb.github.io/nodbi/reference/cat.md) :
+- [`cat_()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_aliases()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_allocation()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_count()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_segments()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_health()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_indices()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_master()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_nodes()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_nodeattrs()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_pending_tasks()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_plugins()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_recovery()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_thread_pool()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_shards()`](https://rfhb.github.io/elastic/reference/cat.md)
+  [`cat_fielddata()`](https://rfhb.github.io/elastic/reference/cat.md) :
   Use the cat Elasticsearch api.
 
 ## Search
 
 Various search APIs
 
-- [`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) : Full
-  text search of Elasticsearch
-- [`Search_template()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
-  [`Search_template_register()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
-  [`Search_template_get()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
-  [`Search_template_delete()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
-  [`Search_template_render()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
+- [`Search()`](https://rfhb.github.io/elastic/reference/Search.md) :
+  Full text search of Elasticsearch
+- [`Search_template()`](https://rfhb.github.io/elastic/reference/Search_template.md)
+  [`Search_template_register()`](https://rfhb.github.io/elastic/reference/Search_template.md)
+  [`Search_template_get()`](https://rfhb.github.io/elastic/reference/Search_template.md)
+  [`Search_template_delete()`](https://rfhb.github.io/elastic/reference/Search_template.md)
+  [`Search_template_render()`](https://rfhb.github.io/elastic/reference/Search_template.md)
   : Search or validate templates
-- [`Search_uri()`](https://rfhb.github.io/nodbi/reference/Search_uri.md)
+- [`Search_uri()`](https://rfhb.github.io/elastic/reference/Search_uri.md)
   : Full text search of Elasticsearch with URI search
-- [`search_shards()`](https://rfhb.github.io/nodbi/reference/search_shards.md)
+- [`search_shards()`](https://rfhb.github.io/elastic/reference/search_shards.md)
   : Search shards
-- [`searchapis`](https://rfhb.github.io/nodbi/reference/searchapis.md) :
-  Overview of search functions
-- [`msearch()`](https://rfhb.github.io/nodbi/reference/msearch.md) :
+- [`searchapis`](https://rfhb.github.io/elastic/reference/searchapis.md)
+  : Overview of search functions
+- [`msearch()`](https://rfhb.github.io/elastic/reference/msearch.md) :
   Multi-search
-- [`count()`](https://rfhb.github.io/nodbi/reference/count.md) : Get
+- [`count()`](https://rfhb.github.io/elastic/reference/count.md) : Get
   counts of the number of records per index.
-- [`explain()`](https://rfhb.github.io/nodbi/reference/explain.md) :
+- [`explain()`](https://rfhb.github.io/elastic/reference/explain.md) :
   Explain a search query.
-- [`validate()`](https://rfhb.github.io/nodbi/reference/validate.md) :
+- [`validate()`](https://rfhb.github.io/elastic/reference/validate.md) :
   Validate a search
-- [`field_stats()`](https://rfhb.github.io/nodbi/reference/field_stats.md)
+- [`field_stats()`](https://rfhb.github.io/elastic/reference/field_stats.md)
   : Search field statistics
-- [`field_caps()`](https://rfhb.github.io/nodbi/reference/field_caps.md)
+- [`field_caps()`](https://rfhb.github.io/elastic/reference/field_caps.md)
   : Field capabilities
-- [`fielddata`](https://rfhb.github.io/nodbi/reference/fielddata.md) :
+- [`fielddata`](https://rfhb.github.io/elastic/reference/fielddata.md) :
   fielddata
-- [`percolate_register()`](https://rfhb.github.io/nodbi/reference/percolate.md)
-  [`percolate_match()`](https://rfhb.github.io/nodbi/reference/percolate.md)
-  [`percolate_list()`](https://rfhb.github.io/nodbi/reference/percolate.md)
-  [`percolate_count()`](https://rfhb.github.io/nodbi/reference/percolate.md)
-  [`percolate_delete()`](https://rfhb.github.io/nodbi/reference/percolate.md)
+- [`percolate_register()`](https://rfhb.github.io/elastic/reference/percolate.md)
+  [`percolate_match()`](https://rfhb.github.io/elastic/reference/percolate.md)
+  [`percolate_list()`](https://rfhb.github.io/elastic/reference/percolate.md)
+  [`percolate_count()`](https://rfhb.github.io/elastic/reference/percolate.md)
+  [`percolate_delete()`](https://rfhb.github.io/elastic/reference/percolate.md)
   : Percolater
-- [`scroll()`](https://rfhb.github.io/nodbi/reference/scroll.md)
-  [`scroll_clear()`](https://rfhb.github.io/nodbi/reference/scroll.md) :
-  Scroll search function
-- [`preference`](https://rfhb.github.io/nodbi/reference/preference.md) :
-  Preferences.
+- [`scroll()`](https://rfhb.github.io/elastic/reference/scroll.md)
+  [`scroll_clear()`](https://rfhb.github.io/elastic/reference/scroll.md)
+  : Scroll search function
+- [`preference`](https://rfhb.github.io/elastic/reference/preference.md)
+  : Preferences.
 
 ## Documents
 
 Work with document APIs
 
-- [`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md) :
-  Use the bulk API to create, index, update, or delete documents.
-- [`docs_bulk_create()`](https://rfhb.github.io/nodbi/reference/docs_bulk_create.md)
+- [`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
+  : Use the bulk API to create, index, update, or delete documents.
+- [`docs_bulk_create()`](https://rfhb.github.io/elastic/reference/docs_bulk_create.md)
   : Use the bulk API to create documents
-- [`docs_bulk_delete()`](https://rfhb.github.io/nodbi/reference/docs_bulk_delete.md)
+- [`docs_bulk_delete()`](https://rfhb.github.io/elastic/reference/docs_bulk_delete.md)
   : Use the bulk API to delete documents
-- [`docs_bulk_index()`](https://rfhb.github.io/nodbi/reference/docs_bulk_index.md)
+- [`docs_bulk_index()`](https://rfhb.github.io/elastic/reference/docs_bulk_index.md)
   : Use the bulk API to index documents
-- [`docs_bulk_prep()`](https://rfhb.github.io/nodbi/reference/docs_bulk_prep.md)
+- [`docs_bulk_prep()`](https://rfhb.github.io/elastic/reference/docs_bulk_prep.md)
   : Use the bulk API to prepare bulk format data
-- [`docs_bulk_update()`](https://rfhb.github.io/nodbi/reference/docs_bulk_update.md)
+- [`docs_bulk_update()`](https://rfhb.github.io/elastic/reference/docs_bulk_update.md)
   : Use the bulk API to update documents
-- [`docs_create()`](https://rfhb.github.io/nodbi/reference/docs_create.md)
+- [`docs_create()`](https://rfhb.github.io/elastic/reference/docs_create.md)
   : Create a document
-- [`docs_delete()`](https://rfhb.github.io/nodbi/reference/docs_delete.md)
+- [`docs_delete()`](https://rfhb.github.io/elastic/reference/docs_delete.md)
   : Delete a document
-- [`docs_delete_by_query()`](https://rfhb.github.io/nodbi/reference/docs_delete_by_query.md)
+- [`docs_delete_by_query()`](https://rfhb.github.io/elastic/reference/docs_delete_by_query.md)
   : Delete documents by query
-- [`docs_get()`](https://rfhb.github.io/nodbi/reference/docs_get.md) :
+- [`docs_get()`](https://rfhb.github.io/elastic/reference/docs_get.md) :
   Get documents
-- [`docs_mget()`](https://rfhb.github.io/nodbi/reference/docs_mget.md) :
-  Get multiple documents via the multiple get API
-- [`docs_update()`](https://rfhb.github.io/nodbi/reference/docs_update.md)
+- [`docs_mget()`](https://rfhb.github.io/elastic/reference/docs_mget.md)
+  : Get multiple documents via the multiple get API
+- [`docs_update()`](https://rfhb.github.io/elastic/reference/docs_update.md)
   : Update a document
-- [`docs_update_by_query()`](https://rfhb.github.io/nodbi/reference/docs_update_by_query.md)
+- [`docs_update_by_query()`](https://rfhb.github.io/elastic/reference/docs_update_by_query.md)
   : Update documents by query
-- [`documents`](https://rfhb.github.io/nodbi/reference/documents.md) :
+- [`documents`](https://rfhb.github.io/elastic/reference/documents.md) :
   Elasticsearch documents functions.
-- [`termvectors()`](https://rfhb.github.io/nodbi/reference/termvectors.md)
+- [`termvectors()`](https://rfhb.github.io/elastic/reference/termvectors.md)
   : Termvectors
-- [`mtermvectors()`](https://rfhb.github.io/nodbi/reference/mtermvectors.md)
+- [`mtermvectors()`](https://rfhb.github.io/elastic/reference/mtermvectors.md)
   : Multi Termvectors
 
 ## Indices
 
 Index APIs
 
-- [`index_template_put()`](https://rfhb.github.io/nodbi/reference/index_template.md)
-  [`index_template_get()`](https://rfhb.github.io/nodbi/reference/index_template.md)
-  [`index_template_exists()`](https://rfhb.github.io/nodbi/reference/index_template.md)
-  [`index_template_delete()`](https://rfhb.github.io/nodbi/reference/index_template.md)
+- [`index_template_put()`](https://rfhb.github.io/elastic/reference/index_template.md)
+  [`index_template_get()`](https://rfhb.github.io/elastic/reference/index_template.md)
+  [`index_template_exists()`](https://rfhb.github.io/elastic/reference/index_template.md)
+  [`index_template_delete()`](https://rfhb.github.io/elastic/reference/index_template.md)
   : Index templates
-- [`index_get()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_exists()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_delete()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_create()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_recreate()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_close()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_open()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_stats()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_settings()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_settings_update()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_segments()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_recovery()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_optimize()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_forcemerge()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_upgrade()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_analyze()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_flush()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_clear_cache()`](https://rfhb.github.io/nodbi/reference/indices.md)
-  [`index_shrink()`](https://rfhb.github.io/nodbi/reference/indices.md)
+- [`index_get()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_exists()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_delete()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_create()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_recreate()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_close()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_open()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_stats()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_settings()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_settings_update()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_segments()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_recovery()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_optimize()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_forcemerge()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_upgrade()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_analyze()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_flush()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_clear_cache()`](https://rfhb.github.io/elastic/reference/indices.md)
+  [`index_shrink()`](https://rfhb.github.io/elastic/reference/indices.md)
   : Index API operations
-- [`alias_get()`](https://rfhb.github.io/nodbi/reference/alias.md)
-  [`aliases_get()`](https://rfhb.github.io/nodbi/reference/alias.md)
-  [`alias_exists()`](https://rfhb.github.io/nodbi/reference/alias.md)
-  [`alias_create()`](https://rfhb.github.io/nodbi/reference/alias.md)
-  [`alias_rename()`](https://rfhb.github.io/nodbi/reference/alias.md)
-  [`alias_delete()`](https://rfhb.github.io/nodbi/reference/alias.md) :
-  Elasticsearch alias APIs
-- [`mapping_create()`](https://rfhb.github.io/nodbi/reference/mapping.md)
-  [`mapping_get()`](https://rfhb.github.io/nodbi/reference/mapping.md)
-  [`field_mapping_get()`](https://rfhb.github.io/nodbi/reference/mapping.md)
-  [`type_exists()`](https://rfhb.github.io/nodbi/reference/mapping.md) :
-  Mapping management
-- [`reindex()`](https://rfhb.github.io/nodbi/reference/reindex.md) :
+- [`alias_get()`](https://rfhb.github.io/elastic/reference/alias.md)
+  [`aliases_get()`](https://rfhb.github.io/elastic/reference/alias.md)
+  [`alias_exists()`](https://rfhb.github.io/elastic/reference/alias.md)
+  [`alias_create()`](https://rfhb.github.io/elastic/reference/alias.md)
+  [`alias_rename()`](https://rfhb.github.io/elastic/reference/alias.md)
+  [`alias_delete()`](https://rfhb.github.io/elastic/reference/alias.md)
+  : Elasticsearch alias APIs
+- [`mapping_create()`](https://rfhb.github.io/elastic/reference/mapping.md)
+  [`mapping_get()`](https://rfhb.github.io/elastic/reference/mapping.md)
+  [`field_mapping_get()`](https://rfhb.github.io/elastic/reference/mapping.md)
+  [`type_exists()`](https://rfhb.github.io/elastic/reference/mapping.md)
+  : Mapping management
+- [`reindex()`](https://rfhb.github.io/elastic/reference/reindex.md) :
   Reindex
 
 ## Analysis
 
 Analysis APIs
 
-- [`tokenizer_set()`](https://rfhb.github.io/nodbi/reference/tokenizer_set.md)
+- [`tokenizer_set()`](https://rfhb.github.io/elastic/reference/tokenizer_set.md)
   : Tokenizer operations
 
 ## Ingest
 
 Ingest APIs
 
-- [`pipeline_create()`](https://rfhb.github.io/nodbi/reference/ingest.md)
-  [`pipeline_attachment()`](https://rfhb.github.io/nodbi/reference/ingest.md)
-  [`pipeline_get()`](https://rfhb.github.io/nodbi/reference/ingest.md)
-  [`pipeline_delete()`](https://rfhb.github.io/nodbi/reference/ingest.md)
-  [`pipeline_simulate()`](https://rfhb.github.io/nodbi/reference/ingest.md)
+- [`pipeline_create()`](https://rfhb.github.io/elastic/reference/ingest.md)
+  [`pipeline_attachment()`](https://rfhb.github.io/elastic/reference/ingest.md)
+  [`pipeline_get()`](https://rfhb.github.io/elastic/reference/ingest.md)
+  [`pipeline_delete()`](https://rfhb.github.io/elastic/reference/ingest.md)
+  [`pipeline_simulate()`](https://rfhb.github.io/elastic/reference/ingest.md)
   : Ingest API operations
 
 ## Cluster
 
 Cluster/Nodes APIs
 
-- [`nodes_stats()`](https://rfhb.github.io/nodbi/reference/nodes.md)
-  [`nodes_info()`](https://rfhb.github.io/nodbi/reference/nodes.md)
-  [`nodes_hot_threads()`](https://rfhb.github.io/nodbi/reference/nodes.md)
+- [`nodes_stats()`](https://rfhb.github.io/elastic/reference/nodes.md)
+  [`nodes_info()`](https://rfhb.github.io/elastic/reference/nodes.md)
+  [`nodes_hot_threads()`](https://rfhb.github.io/elastic/reference/nodes.md)
   : Elasticsearch nodes endpoints.
-- [`cluster_settings()`](https://rfhb.github.io/nodbi/reference/cluster.md)
-  [`cluster_health()`](https://rfhb.github.io/nodbi/reference/cluster.md)
-  [`cluster_state()`](https://rfhb.github.io/nodbi/reference/cluster.md)
-  [`cluster_stats()`](https://rfhb.github.io/nodbi/reference/cluster.md)
-  [`cluster_reroute()`](https://rfhb.github.io/nodbi/reference/cluster.md)
-  [`cluster_pending_tasks()`](https://rfhb.github.io/nodbi/reference/cluster.md)
+- [`cluster_settings()`](https://rfhb.github.io/elastic/reference/cluster.md)
+  [`cluster_health()`](https://rfhb.github.io/elastic/reference/cluster.md)
+  [`cluster_state()`](https://rfhb.github.io/elastic/reference/cluster.md)
+  [`cluster_stats()`](https://rfhb.github.io/elastic/reference/cluster.md)
+  [`cluster_reroute()`](https://rfhb.github.io/elastic/reference/cluster.md)
+  [`cluster_pending_tasks()`](https://rfhb.github.io/elastic/reference/cluster.md)
   : Elasticsearch cluster endpoints
-- [`tasks()`](https://rfhb.github.io/nodbi/reference/tasks.md)
-  [`tasks_cancel()`](https://rfhb.github.io/nodbi/reference/tasks.md) :
-  Elasticsearch tasks endpoints
+- [`tasks()`](https://rfhb.github.io/elastic/reference/tasks.md)
+  [`tasks_cancel()`](https://rfhb.github.io/elastic/reference/tasks.md)
+  : Elasticsearch tasks endpoints
 
 ## Utilities
 
 Various utility functions
 
-- [`units-distance`](https://rfhb.github.io/nodbi/reference/units-distance.md)
+- [`units-distance`](https://rfhb.github.io/elastic/reference/units-distance.md)
   : Distance units
-- [`units-time`](https://rfhb.github.io/nodbi/reference/units-time.md) :
-  Time units
-- [`type_remover()`](https://rfhb.github.io/nodbi/reference/type_remover.md)
+- [`units-time`](https://rfhb.github.io/elastic/reference/units-time.md)
+  : Time units
+- [`type_remover()`](https://rfhb.github.io/elastic/reference/type_remover.md)
   : Utility function to remove 'type' from bulk load files
 
 # Articles
@@ -599,8 +601,9 @@ Various utility functions
 ### elastic introduction
 
 - [elastic
-  introduction](https://rfhb.github.io/nodbi/articles/elastic.md):
+  introduction](https://rfhb.github.io/elastic/articles/elastic.md):
 
 ### elastic searching
 
-- [elastic searching](https://rfhb.github.io/nodbi/articles/search.md):
+- [elastic
+  searching](https://rfhb.github.io/elastic/articles/search.md):

@@ -27,7 +27,7 @@ docs_bulk(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - x:
 
@@ -185,17 +185,17 @@ cleaned up/deleted after the R session ends.
 ## Elasticsearch versions that don't support type
 
 See the
-[`type_remover()`](https://rfhb.github.io/nodbi/reference/type_remover.md)
+[`type_remover()`](https://rfhb.github.io/elastic/reference/type_remover.md)
 function.
 
 ## See also
 
 Other bulk-functions:
-[`docs_bulk_create()`](https://rfhb.github.io/nodbi/reference/docs_bulk_create.md),
-[`docs_bulk_delete()`](https://rfhb.github.io/nodbi/reference/docs_bulk_delete.md),
-[`docs_bulk_index()`](https://rfhb.github.io/nodbi/reference/docs_bulk_index.md),
-[`docs_bulk_prep()`](https://rfhb.github.io/nodbi/reference/docs_bulk_prep.md),
-[`docs_bulk_update()`](https://rfhb.github.io/nodbi/reference/docs_bulk_update.md)
+[`docs_bulk_create()`](https://rfhb.github.io/elastic/reference/docs_bulk_create.md),
+[`docs_bulk_delete()`](https://rfhb.github.io/elastic/reference/docs_bulk_delete.md),
+[`docs_bulk_index()`](https://rfhb.github.io/elastic/reference/docs_bulk_index.md),
+[`docs_bulk_prep()`](https://rfhb.github.io/elastic/reference/docs_bulk_prep.md),
+[`docs_bulk_update()`](https://rfhb.github.io/elastic/reference/docs_bulk_update.md)
 
 ## Examples
 

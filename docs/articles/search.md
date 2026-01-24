@@ -11,12 +11,12 @@ library("elastic")
 
 The main interface to searching documents in your Elasticsearch store is
 the function
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md). I nearly
-always develop R software using all lowercase, but R has a function
-called [`search()`](https://rdrr.io/r/base/search.html), and I wanted to
-avoid collision with that function.
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md). I
+nearly always develop R software using all lowercase, but R has a
+function called [`search()`](https://rdrr.io/r/base/search.html), and I
+wanted to avoid collision with that function.
 
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md) is an
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md) is an
 interface to both the HTTP search API (in which queries are passed in
 the URI of the request, meaning queries have to be relatively simple),
 as well as the POST API, or the Query DSL, in which queries are passed

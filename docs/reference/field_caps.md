@@ -14,7 +14,7 @@ field_caps(conn, fields, index = NULL, ...)
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - fields:
 
@@ -35,7 +35,7 @@ field_caps(conn, fields, index = NULL, ...)
 
 ## See also
 
-[`field_stats()`](https://rfhb.github.io/nodbi/reference/field_stats.md)
+[`field_stats()`](https://rfhb.github.io/elastic/reference/field_stats.md)
 
 ## Examples
 

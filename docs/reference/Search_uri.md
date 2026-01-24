@@ -42,7 +42,7 @@ Search_uri(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -187,7 +187,7 @@ Search_uri(
 
   (character) The path to use for searching. Default to `_search`, but
   in some cases you may already have that in the base url set using
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md), in
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md), in
   which case you can set this to `NULL`
 
 - stream_opts:
@@ -211,12 +211,12 @@ Search_uri(
 
 ## See also
 
-[`fielddata()`](https://rfhb.github.io/nodbi/reference/fielddata.md)
+[`fielddata()`](https://rfhb.github.io/elastic/reference/fielddata.md)
 
-[`Search()`](https://rfhb.github.io/nodbi/reference/Search.md)
-[`Search_template()`](https://rfhb.github.io/nodbi/reference/Search_template.md)
-[`count()`](https://rfhb.github.io/nodbi/reference/count.md)
-[`fielddata()`](https://rfhb.github.io/nodbi/reference/fielddata.md)
+[`Search()`](https://rfhb.github.io/elastic/reference/Search.md)
+[`Search_template()`](https://rfhb.github.io/elastic/reference/Search_template.md)
+[`count()`](https://rfhb.github.io/elastic/reference/count.md)
+[`fielddata()`](https://rfhb.github.io/elastic/reference/fielddata.md)
 
 ## Examples
 

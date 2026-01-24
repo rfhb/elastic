@@ -1,4 +1,3 @@
-API's
 CouchDB
 DIY
 DSL
@@ -14,6 +13,7 @@ MLT
 Nginx
 NoSQL
 OSX
+OpenSearch
 PID
 PLOS
 Percolater
@@ -44,6 +44,7 @@ dsl
 eg
 egs
 elasticsearch
+elastic’
 env
 externalptr
 failover
@@ -74,6 +75,9 @@ linter
 linux
 lowercased
 lt
+maintainer's
+maintainer’s
+md
 mem
 mget
 mlt
@@ -84,6 +88,7 @@ nauticalmiles
 neccessary
 nmi
 noop
+orignal
 os
 osx
 param
@@ -97,6 +102,7 @@ rOpenSci
 realtime
 reindex
 relocations
+rfhb
 rstudio
 screencast
 sed

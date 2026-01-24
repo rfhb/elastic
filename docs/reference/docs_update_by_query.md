@@ -29,7 +29,7 @@ docs_update_by_query(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - index:
 
@@ -107,7 +107,7 @@ docs_update_by_query(
 
 ## See also
 
-[`docs_delete_by_query()`](https://rfhb.github.io/nodbi/reference/docs_delete_by_query.md)
+[`docs_delete_by_query()`](https://rfhb.github.io/elastic/reference/docs_delete_by_query.md)
 
 ## Examples
 

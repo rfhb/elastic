@@ -26,7 +26,7 @@ docs_bulk_update(
 - conn:
 
   an Elasticsearch connection object, see
-  [`connect()`](https://rfhb.github.io/nodbi/reference/connect.md)
+  [`connect()`](https://rfhb.github.io/elastic/reference/connect.md)
 
 - x:
 
@@ -98,7 +98,7 @@ docs_bulk_update(
 - `doc_as_upsert` - is set to `TRUE` for all records
 
 For doing updates with a file already prepared for the bulk API, see
-[`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md)
+[`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md)
 
 Only data.frame's are supported for now.
 
@@ -109,11 +109,11 @@ Only data.frame's are supported for now.
 ## See also
 
 Other bulk-functions:
-[`docs_bulk()`](https://rfhb.github.io/nodbi/reference/docs_bulk.md),
-[`docs_bulk_create()`](https://rfhb.github.io/nodbi/reference/docs_bulk_create.md),
-[`docs_bulk_delete()`](https://rfhb.github.io/nodbi/reference/docs_bulk_delete.md),
-[`docs_bulk_index()`](https://rfhb.github.io/nodbi/reference/docs_bulk_index.md),
-[`docs_bulk_prep()`](https://rfhb.github.io/nodbi/reference/docs_bulk_prep.md)
+[`docs_bulk()`](https://rfhb.github.io/elastic/reference/docs_bulk.md),
+[`docs_bulk_create()`](https://rfhb.github.io/elastic/reference/docs_bulk_create.md),
+[`docs_bulk_delete()`](https://rfhb.github.io/elastic/reference/docs_bulk_delete.md),
+[`docs_bulk_index()`](https://rfhb.github.io/elastic/reference/docs_bulk_index.md),
+[`docs_bulk_prep()`](https://rfhb.github.io/elastic/reference/docs_bulk_prep.md)
 
 ## Examples
 
