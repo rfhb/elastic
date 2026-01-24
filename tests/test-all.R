@@ -23,6 +23,9 @@ if (inherits(try_conn, "error")) {
 
   }
 
+  # clean up any remnants
+  unlink(list.files(tempdir(), pattern = "elastic__", full.names = TRUE), force = TRUE)
+
   invisible(elastic::docs_bulk(x, shakespeare))
 
   plos <- system.file("examples", "plos_data.json", package = "elastic")
