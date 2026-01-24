@@ -1,5 +1,5 @@
 make_bulk <- function(df, index, counter, es_ids, type = NULL, path = NULL,
-  digits = NA, sf = NULL) {
+                      digits = NA, sf = NULL) {
 
   if (!is.character(counter)) {
     if (max(counter) >= 10000000000) {
@@ -11,13 +11,20 @@ make_bulk <- function(df, index, counter, es_ids, type = NULL, path = NULL,
   metadata_fmt <- make_metadata(es_ids, counter, type)
   if (!"es_action" %in% names(df)) {
     action <- "index"
-    metadata <- if (!is.null(type)) {
-      sprintf(metadata_fmt, action, index, type, counter)
-    } else {
-      sprintf(metadata_fmt, action, index, counter)
-    }
+    # 2026-01-14
+    # counter seems to indicate the number
+    # of the metadata string that is needed
+    # thus warnings can be suppressed
+    # "one argument not used by format"
+    metadata <- suppressWarnings(
+      if (!is.null(type)) {
+        sprintf(metadata_fmt, action, index, type, counter)
+      } else {
+        sprintf(metadata_fmt, action, index, counter)
+      }
+    )
     data <- jsonlite::toJSON(df, collapse = FALSE, na = "null",
-      auto_unbox = TRUE, digits = digits, sf = sf)
+                             auto_unbox = TRUE, digits = digits, sf = sf)
     towrite <- paste(metadata, data, sep = "\n")
   } else {
     towrite <- unlist(unname(Map(function(a, b) {
@@ -30,7 +37,7 @@ make_bulk <- function(df, index, counter, es_ids, type = NULL, path = NULL,
       is_update <- a$es_action == "update"
       a$es_action <- NULL
       dat <- jsonlite::toJSON(a, collapse = FALSE, na = "null",
-        auto_unbox = TRUE, digits = digits, sf = sf)
+                              auto_unbox = TRUE, digits = digits, sf = sf)
       if (is_update) dat <- sprintf('{"doc": %s, "doc_as_upsert": true}', dat)
       c(tmp, dat)
     }, split(df, seq_along(df)), counter)))
