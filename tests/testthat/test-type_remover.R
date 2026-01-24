@@ -17,11 +17,11 @@ test_that("type_remover", {
   # invisible(lapply(b[c(1, 3, 5)], function(z) expect_false(grepl("_type", z))))
 
   expect_equal(
-    jsonlite::stream_in(textConnection(a)),
-    jsonlite::stream_in(textConnection(b))
+    jsonlite::stream_in(textConnection(a), verbose = FALSE),
+    jsonlite::stream_in(textConnection(b), verbose = FALSE)
   )
 
-  expect_false(any(names(jsonlite::stream_in(textConnection(a))) == "_type"))
+  expect_false(any(names(jsonlite::stream_in(textConnection(a), verbose = FALSE)) == "_type"))
 
   # cleanup
   unlink(ff)

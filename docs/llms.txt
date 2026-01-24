@@ -1,22 +1,25 @@
-# PREVIOUS DOCUMENTATION
-
-## 2026 NOTE
+# 2026 NOTE by rfhb
 
 On 2026-01-17, this repository was forked from
 <https://github.com/ropensci-archive/elastic> to explore efforts for
-maintaining R package `elastic` until such time that a current
-Lucene-like database could be found and accessed with a current R
-database adapter. Package was archived on CRAN on 2026-01-14 at the
-original maintainer’s request.
+maintaining R package `elastic` until such time that a current R package
+for a Lucene-using database could be found or developed. The orignal
+package `elastic` by <https://ropensci.org/> was archived on CRAN on
+2026-01-14 at the original maintainer’s request.
 
-To install package ‘elastic’ from this repository in R, run
+Since then, changes in this repository include updates to code and
+tests, see [NEWS.md](https://rfhb.github.io/nodbi/NEWS.md). This README
+file remains to be reviewed and will be updated once package `elastic`
+is available on CRAN again and the maintainer has been changed.
+
+To install package ‘elastic’ from this repository, run in R
 
 ``` r
 
 devtools::install_github("rfhb/elastic")
 ```
 
-## 2025-12-02 NOTE by rOpenSci
+# 2025-12-02 NOTE by rOpenSci
 
 ## elastic
 
@@ -25,6 +28,8 @@ Unsupported](https://www.repostatus.org/badges/latest/unsupported.svg)](https://
 
 This package has been archived on CRAN. The former README is now in
 [README-not.md](https://rfhb.github.io/nodbi/README-not.md).
+
+# 2025-12-01 README.md
 
 # elastic
 

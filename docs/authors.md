@@ -12,14 +12,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/rfhb/elastic/blob/HEAD/DESCRIPTION)
 
-Chamberlain S (2026). *elastic: General Purpose Interface to
-'Elasticsearch' and 'OpenSearch'*. R package version 1.2.1.92,
+Chamberlain S (2026). *elastic: Database Interface to 'Elasticsearch'
+and 'OpenSearch'*. R package version 1.2.2,
 <https://rfhb.github.io/nodbi>.
 
     @Manual{,
-      title = {elastic: General Purpose Interface to 'Elasticsearch' and 'OpenSearch'},
+      title = {elastic: Database Interface to 'Elasticsearch' and 'OpenSearch'},
       author = {Scott Chamberlain},
       year = {2026},
-      note = {R package version 1.2.1.92},
+      note = {R package version 1.2.2},
       url = {https://rfhb.github.io/nodbi},
     }
