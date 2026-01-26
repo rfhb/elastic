@@ -13,13 +13,13 @@ Source:
 [`DESCRIPTION`](https://github.com/rfhb/elastic/blob/HEAD/DESCRIPTION)
 
 Chamberlain S (2026). *elastic: Database Interface to 'Elasticsearch'
-and 'OpenSearch'*. R package version 1.2.2,
+and 'OpenSearch'*. R package version 1.2.2.9000,
 <https://rfhb.github.io/elastic/>.
 
     @Manual{,
       title = {elastic: Database Interface to 'Elasticsearch' and 'OpenSearch'},
       author = {Scott Chamberlain},
       year = {2026},
-      note = {R package version 1.2.2},
+      note = {R package version 1.2.2.9000},
       url = {https://rfhb.github.io/elastic/},
     }

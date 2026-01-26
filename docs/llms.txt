@@ -8,12 +8,20 @@ package `elastic` by <https://ropensci.org/> was archived on CRAN on
 2026-01-14 at the original maintainer’s request.
 
 Since then, changes in this repository include updates to code and
-tests, see [NEWS.md](https://rfhb.github.io/elastic/NEWS.md). This
-README file remains to be reviewed and will be updated once package
-`elastic` is available on CRAN again and the maintainer has been
-changed.
+tests, see [NEWS.md](https://rfhb.github.io/elastic/NEWS.md).
 
-To install package ‘elastic’ from this repository, run in R
+Package `elastic` is again available from CRAN since 2026-01-25 and can
+be installed with
+
+``` r
+
+install.packages("elastic")
+```
+
+This README file remains to be reviewed and updated.
+
+To install the development version of package ‘elastic’ from this
+repository, run in R
 
 ``` r
 

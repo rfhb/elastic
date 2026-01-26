@@ -11,7 +11,7 @@ Description: Connect to 'Elasticsearch' and 'OpenSearch', 'NoSQL' databases
     In addition, 'elastic' provides functions for interacting with APIs
     for 'indices', documents, nodes, clusters, an interface to the cat API, 
     and more.
-Version: 1.2.2
+Version: 1.2.2.9000
 License: MIT + file LICENSE
 Authors@R: c(
     person(given = "Ralf", family = "Herold", role = c("cre"),

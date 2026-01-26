@@ -8,13 +8,19 @@
   "codeRepository": "https://github.com/rfhb/elastic",
   "issueTracker": "https://github.com/rfhb/elastic/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.2",
+  "version": "1.2.2.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R Under development (unstable) (2026-01-21 r89314)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -107,7 +113,7 @@
   },
   "applicationCategory": "Databases",
   "keywords": ["database", "Elasticsearch", "OpenSearch", "Lucene", "HTTP", "API", "search", "NoSQL", "Java", "JSON", "documents"],
-  "fileSize": "4888.814KB",
+  "fileSize": "4888.879KB",
   "releaseNotes": "https://github.com/rfhb/elastic/blob/main/NEWS.md",
   "readme": "https://github.com/rfhb/elastic/blob/master/README.md",
   "contIntegration": "https://github.com/ropensci-archive/elastic/actions?query=workflow%3AR-check",
